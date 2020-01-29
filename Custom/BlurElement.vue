@@ -81,7 +81,7 @@ div {
     opacity: 0.01;
   }
   50% {
-    opacity: 0.5;
+    opacity: 0.50;
   }
   100% {
     opacity: 0.99;
@@ -92,7 +92,7 @@ div {
     opacity: 0.99;
   }
   50% {
-    opacity: 0.5;
+    opacity: 0.50;
   }
   100% {
     opacity: 0.01;

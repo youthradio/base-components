@@ -160,20 +160,19 @@ export default {
   transition-timing-function: ease-in-out;
   transform-origin: 50% 50%;
 }
-h4,
-h5 {
+h4, h5 {
   padding: 0px;
   margin: 0em;
   margin-left: 1rem;
 }
 h4:before {
-  content: "—";
-  // font-size: 2rem;
-  // vertical-align: bottom;
-  // position: absolute;
-  // left: 0px;
-  /* margin-right: 4px; */
-  /* margin-left: -8px; */
+    content: "—";
+    // font-size: 2rem;
+    // vertical-align: bottom;
+    // position: absolute;
+    // left: 0px;
+    /* margin-right: 4px; */
+    /* margin-left: -8px; */
 }
 blockquote {
   font-weight: 700;
