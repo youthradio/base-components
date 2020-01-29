@@ -37,13 +37,13 @@ export default {
       if (this.animaON) {
         return {
           opacity: 0.99,
-          animation: `2000ms linear 0s 1 normal forwards running onKey `
+          animation: '2000ms linear 0s 1 normal forwards running onKey '
 
         }
       } else {
         return {
           opacity: 0.01,
-          animation: `2000ms linear 0s 1 normal forwards running offKey`
+          animation: '2000ms linear 0s 1 normal forwards running offKey'
         }
       }
     }
@@ -81,7 +81,7 @@ div {
     opacity: 0.01;
   }
   50% {
-    opacity: 0.50;
+    opacity: 0.5;
   }
   100% {
     opacity: 0.99;
@@ -92,7 +92,7 @@ div {
     opacity: 0.99;
   }
   50% {
-    opacity: 0.50;
+    opacity: 0.5;
   }
   100% {
     opacity: 0.01;

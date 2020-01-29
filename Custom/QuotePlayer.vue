@@ -67,13 +67,13 @@ export default {
     fadeStyle () {
       if (!this.isSoundPlaying) {
         return {
-          transform: `scale(0.9)`,
+          transform: 'scale(0.9)',
           opacity: '0.05'
         }
       }
       return {
         opacity: '0.99',
-        transform: `scale(1)`
+        transform: 'scale(1)'
         // textShadow: '0px 0px 20px darkgray'
       }
     },
@@ -160,19 +160,20 @@ export default {
   transition-timing-function: ease-in-out;
   transform-origin: 50% 50%;
 }
-h4, h5 {
+h4,
+h5 {
   padding: 0px;
   margin: 0em;
   margin-left: 1rem;
 }
 h4:before {
-    content: "—";
-    // font-size: 2rem;
-    // vertical-align: bottom;
-    // position: absolute;
-    // left: 0px;
-    /* margin-right: 4px; */
-    /* margin-left: -8px; */
+  content: "—";
+  // font-size: 2rem;
+  // vertical-align: bottom;
+  // position: absolute;
+  // left: 0px;
+  /* margin-right: 4px; */
+  /* margin-left: -8px; */
 }
 blockquote {
   font-weight: 700;
