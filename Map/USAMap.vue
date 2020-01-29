@@ -119,11 +119,29 @@ export default {
         .attr('perserveAspectRatio', 'xMinYMid meet')
 
       const defs = this.svg.append('defs')
+
+      const pattern = defs
+        .append('pattern')
+        .attr('id', 'fill-texture')
+        .attr('patternUnits', 'userSpaceOnUse')
+        .attr('width', 5)
+        .attr('height', 5)
+      pattern
+        .append('rect')
+        .attr('width', 5)
+        .attr('height', 5)
+        .attr('fill', 'lightgray')
+      pattern.append('path')
+        .attr('d', 'M0 0L5 5ZM5 0L0 5Z')
+        .attr('stroke', 'gray')
+        .attr('stroke-width', 1)
+
       // create filter with id #drop-shadow
       // height=130% so that the shadow is not clipped
       const filter = defs.append('filter')
         .attr('id', 'drop-shadow')
         .attr('height', '130%')
+
       // SourceAlpha refers to opacity of graphic that this filter will be applied to
       // convolve that with a Gaussian with standard deviation 3 and store result
       // in blur
@@ -166,9 +184,9 @@ export default {
       const color = (val) => {
         // const ind = allUniqueAges.indexOf(val)
         if (!isNaN(val)) {
-          return d3.interpolatePlasma(0.35 + ((val - ageRange[0]) * (1 - 0) / (ageRange[1] - ageRange[0]) + 0) * 0.55)
+          return d3.interpolateGreys(0.9 - (val - ageRange[0]) * (0.9 - 0) / (ageRange[1] - ageRange[0]))
         }
-        return 'lightgrey'
+        return 'url(#fill-texture)'
       }
 
       // get years options from first content data row, only years
@@ -303,7 +321,7 @@ export default {
           if (this.ageStateColorData[d.properties.STUSPS]) {
             return this.ageStateColorData[d.properties.STUSPS][this.yearSlider][1]
           }
-          return 'lightgrey'
+          return 'url(#fill-texture)'
         })
 
       // this.svg.append('path')
@@ -426,7 +444,7 @@ button {
     font-weight: bold;
   }
   .states {
-    stroke: $white;
+    stroke: darkgray;
     stroke-width: 1px;
     stroke-linejoin: round;
     // fill: #fdc997;
