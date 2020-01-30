@@ -66,7 +66,7 @@ header {
     left: 0;
     height: 100%;
     width: 45%;
-    background-color:rgba($green, 0.65);
+    background-color:rgba(lighten($feature-header-color, 20%), 0.8);
     z-index: 0;
   }
 }
