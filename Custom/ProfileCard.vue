@@ -83,10 +83,23 @@ export default {
   overflow: hidden;
 }
 .collapsed {
-  max-height: 5rem;
+  max-height: 10rem;
   .ico-effect {
     transform: unset;
   }
+}
+.collapsed::after{
+  content: ' ';
+  position: absolute;
+  bottom: 0.1rem;
+  width: 99.4%;
+  height: 50%;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgba(2,0,36,0) 100%);
+    @include breakpoint(medium){
+      bottom: 0.1rem;
+      width: 99.4%;
+    }
 }
 ul {
   position: relative;
@@ -97,7 +110,7 @@ ul {
   li {
     position: relative;
     left: 2rem;
-    padding-right: 1.5rem;
+    padding-right: 2.5rem;
   }
 }
 h3 {
