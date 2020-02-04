@@ -3,7 +3,7 @@
     <div id="map" />
     <div>
       <div class="title">
-        Years
+        Year
       </div>
       <div class="options">
         <button

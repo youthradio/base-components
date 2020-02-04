@@ -65,7 +65,7 @@ export default {
   object-fit: cover;
   position: absolute;
   left: -1rem;
-  top: -1rem;
+  top: -2.5rem;
   z-index: 10;
   max-width: 90px;
 
