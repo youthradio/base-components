@@ -18,9 +18,7 @@ C<template>
       </div>
       <ul>
         <template v-for="item in profileData.list">
-          <li :key="item">
-            {{ item }}
-          </li>
+          <li :key="item" v-html="item.text" />
         </template>
       </ul>
     </div>
