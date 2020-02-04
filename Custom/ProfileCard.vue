@@ -114,7 +114,7 @@ ul {
 h3 {
   margin-left: auto;
   text-align: right;
-  padding-bottom: 0;
+  padding-bottom: 0.5rem;
   max-width: 50%;
   @include breakpoint(medium) {
     max-width: unset;
