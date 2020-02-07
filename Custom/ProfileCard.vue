@@ -1,13 +1,13 @@
 C<template>
   <div class="container">
-    <h3>
-      {{ profileData.figure }}
-    </h3>
-    <div>
+    <div class="head-profile">
       <img
         :src="profileData.picture"
         class="card-img"
       >
+      <h3>
+        {{ profileData.figure }}
+      </h3>
     </div>
     <div
       :class="['box-collapse', isCollapsed? 'collapsed': '']"
@@ -18,7 +18,10 @@ C<template>
       </div>
       <ul>
         <template v-for="item in profileData.list">
-          <li :key="item" v-html="item.text" />
+          <li
+            :key="item"
+            v-html="item.text"
+          />
         </template>
       </ul>
     </div>
@@ -55,20 +58,22 @@ export default {
 
 .container {
   position: relative;
-  margin-top: 3rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+}
+.head-profile {
+  display: flex;
+  align-items: flex-end;
 }
 .card-img {
-  box-shadow: 10px -10px 0px $black;
+  box-shadow: 0px 10px 0px rgba($black, 0.8);
   shape-outside: url(/profiles/profile.jpg);
   width: 100%;
   object-fit: cover;
-  position: absolute;
-  left: -1rem;
-  top: -2.5rem;
+  margin-bottom: -1rem;
+  margin-left: -1rem;
   z-index: 10;
   max-width: 90px;
-
+  border-radius: 100%;
   @include breakpoint(medium) {
     max-width: 150px;
   }
@@ -86,18 +91,22 @@ export default {
     transform: unset;
   }
 }
-.collapsed::after{
-  content: ' ';
+.collapsed::after {
+  content: " ";
   position: absolute;
   bottom: 0.1rem;
   width: 99.4%;
   height: 50%;
   background: rgb(255, 255, 255);
-  background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgba(2,0,36,0) 100%);
-    @include breakpoint(medium){
-      bottom: 0.1rem;
-      width: 99.4%;
-    }
+  background: linear-gradient(
+    0deg,
+    rgb(255, 255, 255) 0%,
+    rgba(2, 0, 36, 0) 100%
+  );
+  @include breakpoint(medium) {
+    bottom: 0.1rem;
+    width: 99.4%;
+  }
 }
 ul {
   position: relative;
@@ -112,10 +121,9 @@ ul {
   }
 }
 h3 {
-  margin-left: auto;
-  text-align: right;
-  padding-bottom: 0.5rem;
   max-width: 50%;
+  padding-bottom: 0.5rem;
+  margin-left: 1rem;
   @include breakpoint(medium) {
     max-width: unset;
   }
