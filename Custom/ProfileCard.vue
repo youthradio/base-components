@@ -65,15 +65,15 @@ export default {
   align-items: flex-end;
 }
 .card-img {
-  box-shadow: 0px 10px 0px rgba($black, 0.8);
+  box-shadow: 10px -10px 0px rgb(46, 46, 46);
   shape-outside: url(/profiles/profile.jpg);
   width: 100%;
   object-fit: cover;
-  margin-bottom: -1rem;
+  margin-bottom: -2rem;
   margin-left: -1rem;
   z-index: 10;
   max-width: 90px;
-  border-radius: 100%;
+  filter: grayscale(100%);
   @include breakpoint(medium) {
     max-width: 150px;
   }
