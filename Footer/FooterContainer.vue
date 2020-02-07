@@ -1,5 +1,6 @@
 <template>
   <footer>
+    <RelatedPostsContainer />
     <FooterMenu />
     <FooterEmailSubscribe />
   </footer>
@@ -8,11 +9,13 @@
 <script>
 import FooterEmailSubscribe from './FooterEmailSubscribe'
 import FooterMenu from './FooterMenu'
+import RelatedPostsContainer from '~/components/RelatedPosts/RelatedPostsContainer'
 
 export default {
   components: {
     FooterEmailSubscribe,
-    FooterMenu
+    FooterMenu,
+    RelatedPostsContainer
   }
 }
 </script>

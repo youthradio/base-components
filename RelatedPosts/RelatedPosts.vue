@@ -1,5 +1,5 @@
 <template>
-  <footer class="relatedPostContainer">
+  <div class="relatedPostContainer">
     <h2>RELATED POSTS </h2>
     <div class="flex postContainer">
       <div
@@ -11,7 +11,10 @@
         <div class="postInner">
           <div class="section">
             <h3>
-              <a :style="'borderBottom: 2px solid' + post.acf.secondary_color" :href="post.link">
+              <a
+                :style="'borderBottom: 2px solid' + post.acf.secondary_color"
+                :href="post.link"
+              >
                 {{ post.title.rendered | unescape }}
               </a>
             </h3>
@@ -27,7 +30,7 @@
         </div>
       </div>
     </div>
-  </footer>
+  </div>
 </template>
 
 <script>
@@ -61,60 +64,60 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@/css/vars';
-@import '~@/css/mixins';
+@import "~@/css/vars";
+@import "~@/css/mixins";
 
-.img-fluid{
+.img-fluid {
   width: 100%;
   max-width: 100%;
   min-height: 10rem;
   object-fit: cover;
 }
-.flex{
+.flex {
   display: flex;
 }
-.postInner{
+.postInner {
   margin: 1.5rem;
   h3 {
     font-weight: 800;
   }
 
-  a{
+  a {
     border-bottom: none;
   }
-  a:hover{
+  a:hover {
     background-color: transparent;
   }
-  @include breakpoint (medium){
-  .section{
-    min-height: 8rem;
-    max-height: 100%;
-  }
-  h3{
-    font-size: 1rem;
-  }
+  @include breakpoint(medium) {
+    .section {
+      min-height: 8rem;
+      max-height: 100%;
+    }
+    h3 {
+      font-size: 1rem;
+    }
   }
 }
 
-.relatedPostContainer{
+.relatedPostContainer {
   max-width: 90%;
-  margin: 0 auto;
+  margin: 1rem auto;
 }
-.postContainer{
+.postContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  @include breakpoint (medium) {
+  @include breakpoint(medium) {
     flex-wrap: nowrap;
   }
 }
-.postElement{
+.postElement {
   flex-grow: 1;
   margin-bottom: 15px;
   border-style: solid;
   border-width: 7px;
   width: 100%;
-  @include breakpoint (medium) {
+  @include breakpoint(medium) {
     margin: 0 0.5rem 0 0.5rem;
     width: calc(100% / 3);
   }

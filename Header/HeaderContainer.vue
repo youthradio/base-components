@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <header>
     <FeatureHeader
       :header-data="headerData"
       @onHeaderImgHeight="setHeaderHeight"
     />
     <MenuHeader :offset="headerImageHeight" />
-  </div>
+  </header>
 </template>
 
 <script>
@@ -52,6 +52,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-@import '~@/css/_vars';
-
+@import "~@/css/_vars";
+header {
+  margin-bottom: 2rem;
+}
 </style>

@@ -1,23 +1,35 @@
 <template>
-  <ul class="socialList">
-    <li>
-      <span class="icon-share" />
-    </li>
-    <li>
-      <a class="icon" @click="facebookThis">
-        <span class="share icon-facebook-inverted" />
-      </a>
-    </li>
-    <li>
-      <a class="icon" @click="tweetMessage">
-        <span class="share icon-twitter-inverted" />
-      </a>
-    </li><li>
-      <a class="icon" @click="emailThis">
-        <span class="share icon-email-inverted" />
-      </a>
-    </li>
-  </ul>
+  <div role="social-share-bar">
+    <ul>
+      <li>
+        <span class="icon-share" />
+      </li>
+      <li>
+        <a
+          class="icon"
+          @click="facebookThis"
+        >
+          <span class="share icon-facebook-inverted" />
+        </a>
+      </li>
+      <li>
+        <a
+          class="icon"
+          @click="tweetMessage"
+        >
+          <span class="share icon-twitter-inverted" />
+        </a>
+      </li>
+      <li>
+        <a
+          class="icon"
+          @click="emailThis"
+        >
+          <span class="share icon-email-inverted" />
+        </a>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -50,38 +62,38 @@ export default {
 </script>
 
 <style scoped lang="scss" >
-@import '~@/css/vars';
-@import '~@/css/mixins';
+@import "~@/css/vars";
+@import "~@/css/mixins";
 
 .dark {
-    color: $black;
+  color: $black;
 }
 .green {
-    color: $green;
+  color: $green;
 }
-.share{
+.share {
   cursor: pointer;
 }
-.icon{
+.icon {
   border-bottom: none;
 }
-.icon:hover{
+.icon:hover {
   background-color: transparent;
 }
-.socialList {
-    display: flex;
-    list-style-type: none;
-    width: 100%;
-    justify-content: space-around;
-    padding: 0;
+ul {
+  display: flex;
+  list-style-type: none;
+  width: 100%;
+  justify-content: space-around;
+  padding: 0;
 
-    @include breakpoint (medium){
-        max-width: 10rem;
-        margin: 0 auto;
-    }
+  @include breakpoint(medium) {
+    max-width: 10rem;
+    margin: 0 auto;
+  }
 
-    li {
-        display: inline;
-    }
+  li {
+    display: inline;
+  }
 }
 </style>

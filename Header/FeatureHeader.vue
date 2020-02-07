@@ -1,5 +1,8 @@
 <template>
-  <header ref="headerImage">
+  <div
+    ref="headerImage"
+    class="feature-container"
+  >
     <img
       :data-srcset="`${headerData.featureImage}x375.jpg 375w,
         ${headerData.featureImage}x563.jpg 563w,
@@ -9,7 +12,6 @@
         `"
       :data-src="`${headerData.featureImage}x1875.jpg`"
       alt="Elva dressed as a fairy"
-
       class="img-fluid lazyload"
       @load="updateHeaderHeight"
     >
@@ -21,7 +23,7 @@
     <div class="image-caption">
       <span> {{ headerData.imageCaption }}</span>
     </div>
-  </header>
+  </div>
 </template>
 
 <script>
@@ -48,29 +50,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@/css/vars';
-.img-fluid{
+@import "~@/css/vars";
+.img-fluid {
   max-width: 100%;
   width: 100%;
   height: auto;
   object-fit: cover;
 }
-header {
+.feature-container {
   position: relative;
   display: flex;
   height: 80vh;
-  &::after{
-    content: '';
+  &::after {
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     width: 45%;
-    background-color:rgba(lighten($feature-header-color, 20%), 0.8);
+    background-color: rgba(lighten($feature-header-color, 20%), 0.8);
     z-index: 0;
   }
 }
-.title{
+.title {
   position: absolute;
   bottom: 0px;
   // max-width:40%;
@@ -99,7 +101,7 @@ header {
     text-transform: uppercase;
   }
 }
-.image-caption{
+.image-caption {
   position: absolute;
   width: 100%;
   text-align: center;
@@ -109,10 +111,9 @@ header {
     font-weight: 400;
     font-size: 0.5rem;
     line-height: 1rem;
-    font-family: 'Roboto Mono', sans-serif;
+    font-family: "Roboto Mono", sans-serif;
     text-align: center;
     color: $blue-button;
   }
 }
-
 </style>
