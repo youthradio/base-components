@@ -95,7 +95,7 @@ export default {
   content: " ";
   position: absolute;
   bottom: 0.1rem;
-  width: 99.4%;
+  width: 99%;
   height: 50%;
   background: rgb(255, 255, 255);
   background: linear-gradient(
@@ -103,6 +103,7 @@ export default {
     rgb(255, 255, 255) 0%,
     rgba(2, 0, 36, 0) 100%
   );
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%,rgba(255, 255, 255, 1) 100%); //safari fix
   @include breakpoint(medium) {
     bottom: 0.1rem;
     width: 99.4%;
