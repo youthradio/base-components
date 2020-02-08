@@ -290,7 +290,8 @@ export default {
         .attr('height', side)
         .attr('fill', d => d[1])
 
-      const legendWidth = legend.node().getBoundingClientRect().width
+      const legendWidth = dots.size() * side
+
       legend
         .append('text')
         .attr('x', 0)
