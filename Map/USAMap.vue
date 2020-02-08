@@ -226,8 +226,11 @@ export default {
       const transform = d3.select(el).style('transform')
       const g = document.createElementNS('http://www.w3.org/2000/svg', 'g')
       g.setAttributeNS(null, 'transform', transform)
-      const matrix = g.transform.baseVal.consolidate().matrix
-      return { x: matrix.e, y: matrix.f }
+      const value = g.transform.baseVal.consolidate()
+      if (!value) {
+        return { x: 0, y: 0 }
+      }
+      return { x: value.matrix.e, y: value.matrix.f }
     },
     renderAnnotations () {
       this.makeAnnotations = d3.annotation()
@@ -291,19 +294,19 @@ export default {
       legend
         .append('text')
         .attr('x', 0)
-        .attr('y', '-0.25rem')
+        .attr('y', '-5px')
         .text('Youngest')
       legend
         .append('text')
         .attr('x', legendWidth)
-        .attr('y', '-0.25rem')
+        .attr('y', '-5px')
         .text('Oldest')
 
       legend.append('text')
         .text('Age Range')
         .attr('class', 'legend-title')
         .attr('x', legendWidth / 2)
-        .attr('y', '-1rem')
+        .attr('y', '-20px')
     },
     drawMap () {
       this.svg.append('g')

@@ -19,7 +19,7 @@ C<template>
       <ul>
         <template v-for="item in profileData.list">
           <li
-            :key="item"
+            :key="item.text"
             v-html="item.text"
           />
         </template>
