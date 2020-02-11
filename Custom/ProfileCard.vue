@@ -80,7 +80,7 @@ export default {
 }
 .box-collapse {
   cursor: pointer;
-  border: 2px solid rgba($black, 0.8);
+  outline: 2px solid rgba($black, 0.8);
   transition: all 0.25s ease-in-out;
   max-height: 1000px;
   overflow: hidden;
@@ -94,9 +94,9 @@ export default {
 .collapsed::after {
   content: " ";
   position: absolute;
-  bottom: 0.1rem;
-  width: 99%;
+  bottom: 0rem;
   height: 50%;
+  width: 100%;
   background: rgb(255, 255, 255);
   background: linear-gradient(
     0deg,
@@ -104,10 +104,6 @@ export default {
     rgba(2, 0, 36, 0) 100%
   );
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%,rgba(255, 255, 255, 1) 100%); //safari fix
-  @include breakpoint(medium) {
-    bottom: 0.1rem;
-    width: 99.4%;
-  }
 }
 ul {
   position: relative;
