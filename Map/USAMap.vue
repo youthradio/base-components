@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div id="map" />
+    <div
+      id="map"
+      ref="map"
+    />
     <div>
       <div class="title">
         Year
@@ -25,8 +28,8 @@ import * as topojson from 'topojson-client'
 import d3 from '../../util/d3'
 import customLabels from './customLabels.js'
 
-const WIDTH = 920
-const HEIGHT = 600
+const WIDTH = 960
+const HEIGHT = 500
 const MARKER_S_MIN = 0.07
 const MARKER_S_MAX = 0.15
 const MARKER_PATH = 'M -19.732,-10.330125 C -165.03,-220.96916 -192,-242.58716 -192,-320.00016 c 0,-106.039 85.961,-192 192,-192 106.039,0 192,85.961 192,192 0,77.413 -26.97,99.031 -172.268,309.670035 -9.535,13.774 -29.93,13.773 -39.464,0 z'
@@ -108,16 +111,17 @@ export default {
   },
   methods: {
     createSvg () {
-      this.svg = d3.select('#map').append('svg')
+      this.svg = d3.select(this.$refs.map).append('svg')
       this.aspect = WIDTH / HEIGHT
       this.projection = geoAlbersUsaTerritories()
         .translate([WIDTH / 2, HEIGHT / 2])
       this.path = d3.geoPath(this.projection)
-      this.svg.attr('width', WIDTH)
-        .attr('height', HEIGHT)
+      // this.svg.attr('width', WIDTH)
+      //   .attr('height', HEIGHT)
       this.svg.attr('viewBox', '0 0 ' + WIDTH + ' ' + HEIGHT)
-        .attr('perserveAspectRatio', 'xMinYMid meet')
-
+      // .attr('perserveAspectRatio', 'xMinYMid meet')
+      this.svg.style('width', '100%')
+        .style('height', 'auto')
       const defs = this.svg.append('defs')
 
       const pattern = defs
@@ -184,7 +188,7 @@ export default {
       const color = (val) => {
         // const ind = allUniqueAges.indexOf(val)
         if (!isNaN(val)) {
-          return d3.interpolateGreys(0.9 - (val - ageRange[0]) * (0.9 - 0) / (ageRange[1] - ageRange[0]))
+          return d3.interpolateGreys(0.7 - (val - ageRange[0]) * (0.7 - 0.1) / (ageRange[1] - ageRange[0]))
         }
         return 'url(#fill-texture)'
       }
@@ -239,9 +243,11 @@ export default {
         .append('g')
         .attr('class', 'annotation-group')
         .call(this.makeAnnotations)
-      // .on('dblclick', function () {
-      //   makeAnnotations.editMode(!makeAnnotations.editMode()).update()
-      // })
+        .on('dblclick', function () {
+          d3.event.preventDefault()
+          this.makeAnnotations.editMode(!this.makeAnnotations.editMode()).update()
+        })
+
       this.fixCustomAnnotations()
     },
     fixCustomAnnotations () {
@@ -252,7 +258,7 @@ export default {
 
       this.svg.select('.annotation-group')
         .selectAll('.annotation-note-label')
-        .attr('y', 0)
+        .attr('y', 2)
         .select('tspan')
 
       this.svg.select('.annotation-group')
@@ -423,7 +429,7 @@ button {
     font-size: 2rem;
     fill: $black;
     stroke: $white;
-    stroke-opacity: 0.8;
+    stroke-opacity: 0.5;
     stroke-width: 2;
     margin: 2px;
     paint-order: stroke;
