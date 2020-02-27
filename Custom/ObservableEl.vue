@@ -41,18 +41,12 @@ export default {
 
 <style lang="scss" scoped>
 @import "~@/css/mixins";
-
-svg {
-  font-family: "Assistant", sans-serif !important;
-  font-weight: 800;
-}
-
+@import "~@/css/vars";
 /deep/ .map {
-  --black: #333;
-  --white: #fff;
-  --grey: grey;
-  --lightgrey: lightgrey;
-
+  svg {
+    font-family: "Assistant", sans-serif !important;
+    font-weight: 800;
+  }
   .title {
     text-align: center;
     font-size: 1rem;
@@ -67,15 +61,15 @@ svg {
     font-weight: bold;
   }
   .annotation-note-title {
-    font-size: 1.5rem;
-    fill: var(--black);
-    stroke: var(--white);
+    font-size: 1.7rem;
+    fill: $black;
+    stroke: $white;
     stroke-opacity: 0.7;
     stroke-width: 1.8;
     margin: 2px;
     paint-order: stroke;
     @include breakpoint(medium) {
-      font-size: 1.5rem;
+      font-size: 1rem;
     }
   }
   .axis {
@@ -87,16 +81,16 @@ svg {
   }
 
   .annotation-note-label {
-    font-size: 1rem;
-    fill: var(--black);
-    stroke: var(--white);
+    font-size: 1.1rem;
+    fill: $black;
+    stroke: $white;
     stroke-opacity: 0.7;
     stroke-width: 1.8;
     margin: 2px;
     paint-order: stroke;
 
     @include breakpoint(medium) {
-      font-size: 0.8rem;
+      font-size: 0.6rem;
     }
   }
 
@@ -105,7 +99,7 @@ svg {
   }
   .linechart .annotation-note-label {
     font-size: 1rem;
-    fill: var(--black);
+    fill: $black;
     paint-order: stroke;
     @include breakpoint(medium) {
       font-size: 1rem;
@@ -131,32 +125,51 @@ svg {
   }
   button {
     font-family: "Assistant", sans-serif;
-    font-size: 1.1rem;
+    font-size: 0.7rem;
     font-weight: bold;
-    background-color: var(--white);
-    border-color: var(--black);
+    background-color: $white;
+    border-color: $black;
     border-radius: 0.3rem;
+    border-width: 0.05rem;
     padding-left: 0.3rem;
     padding-right: 0.3rem;
     margin: 5px;
     box-shadow: 0px 2px #0000004a;
+    @include breakpoint(medium) {
+      font-size: 1.1rem;
+    }
   }
   button:hover {
     box-shadow: 0px 0px #0000004a;
   }
   button:active {
-    background-color: var(--lightgrey);
+    background-color: $lightgrey;
     box-shadow: 0px 1px #0000004a;
   }
   button.active {
-    background-color: var(--lightgrey);
+    background-color: $lightgrey;
     box-shadow: 0px 1px #0000004a;
-    @include breakpoint(medium) {
-      font-size: 1.2rem;
-    }
   }
   button:focus {
     outline: none;
+  }
+  .linechart {
+    .annotation-note-label {
+      font-size: 1.1rem;
+      fill: $black;
+      paint-order: stroke;
+      @include breakpoint(medium) {
+        font-size: 0.7rem;
+      }
+    }
+    .axis {
+      font-size: 1.2rem;
+      font-weight: normal;
+
+      @include breakpoint(medium) {
+        font-size: 0.8rem;
+      }
+    }
   }
 }
 </style>
