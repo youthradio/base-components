@@ -13,6 +13,10 @@ import notebook from '3f03c8ac5dc1a903'
 
 export default {
   props: {
+    cellName: {
+      type: String,
+      required: true
+    }
 
   },
   data () {
@@ -26,7 +30,7 @@ export default {
     const runtime = new Runtime()
     const inspect = Inspector.into(this.$refs.mapmap)
     runtime.module(notebook, (name) => {
-      return (name === 'map' || name === 'viewof yearButon') && inspect()
+      return (name === this.cellName || name === (this.cellName === 'map' ? 'viewof yearButon' : null)) && inspect()
     })
   },
   methods: {

@@ -1,7 +1,7 @@
 <template>
   <div
     ref="headerImage"
-    class="feature-container"
+    :class="[`${mode}-overlay`,'feature-container']"
   >
     <img
       :data-srcset="`${headerData.featureImage}x375.jpg 375w,
@@ -15,12 +15,15 @@
       class="img-fluid lazyload"
       @load="updateHeaderHeight"
     >
-    <div class="title">
+    <div :class="[`${mode}-header`, `${mode}-text`, 'title']">
       <h2> {{ headerData.title }}</h2>
       <h3> by {{ headerData.author }}</h3>
       <h5> {{ headerData.publishDate }}</h5>
     </div>
-    <div class="image-caption">
+    <div
+      v-if="headerData.imageCaption"
+      class="image-caption"
+    >
       <span> {{ headerData.imageCaption }}</span>
     </div>
   </div>
@@ -33,6 +36,11 @@ export default {
       type: Object,
       require: true,
       default: null
+    },
+    mode: {
+      type: String,
+      required: false,
+      default: 'base'
     }
   },
   data () {
@@ -56,24 +64,58 @@ export default {
   width: 100%;
   height: auto;
   object-fit: cover;
+  max-height: 80vh;
 }
 .feature-container {
   position: relative;
   display: flex;
-  height: 80vh;
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 45%;
-    background-color: rgba(lighten($feature-header-color, 20%), 0.8);
-    z-index: 0;
+  flex-direction: column;
+  // height: 80vh;
+}
+.full-header {
+}
+.base-header {
+  position: absolute;
+}
+.full-overlay {
+}
+.base-overlay::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 45%;
+  background-color: rgba(lighten($feature-header-color, 20%), 0.8);
+  z-index: 0;
+}
+
+.base-text {
+  h2 {
+    color: $white;
+  }
+  h3 {
+  }
+  h5 {
   }
 }
+
+.full-text {
+  max-width: 40rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  h2 {
+    color: $black;
+  }
+  h3 {
+  }
+  h5 {
+  }
+}
+
 .title {
-  position: absolute;
   bottom: 0px;
   // max-width:40%;
   left: 10%;
@@ -84,18 +126,20 @@ export default {
     font-weight: 900;
     letter-spacing: 0.64px;
     text-transform: uppercase;
-    color: $white;
     word-break: break-word;
     padding-bottom: 0px;
   }
   h3 {
     padding-top: 0px;
+    padding-bottom: 0px;
+
     font-weight: 500;
     font-family: "Solano Gothic MVB", sans-serif;
     text-transform: none;
   }
   h5 {
     padding-top: 0px;
+
     // font-weight: 500;
     // font-family: "Solano Gothic MVB", sans-serif;
     text-transform: uppercase;

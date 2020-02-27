@@ -2,6 +2,7 @@
   <header>
     <FeatureHeader
       :header-data="headerData"
+      :mode="mode"
       @onHeaderImgHeight="setHeaderHeight"
     />
     <MenuHeader :offset="headerImageHeight" />
@@ -18,6 +19,13 @@ export default {
   components: {
     FeatureHeader,
     MenuHeader
+  },
+  props: {
+    mode: {
+      type: String,
+      required: false,
+      default: 'base'
+    }
   },
   data () {
     return {
@@ -54,6 +62,6 @@ export default {
 <style lang="scss" scoped>
 @import "~@/css/_vars";
 header {
-  margin-bottom: 2rem;
+  // margin-bottom: 1rem;
 }
 </style>
