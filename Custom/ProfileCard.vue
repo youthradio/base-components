@@ -2,8 +2,8 @@ C<template>
   <div class="container">
     <div class="head-profile">
       <img
-        :src="profileData.picture"
-        class="card-img"
+        :data-src="profileData.picture"
+        class="card-img lazyload"
       >
       <div>
         <h4>High Profile Case #{{ index + 1 }}</h4>
@@ -74,7 +74,6 @@ export default {
 }
 .card-img {
   box-shadow: 10px -10px 0px rgb(46, 46, 46);
-  shape-outside: url(/profiles/profile.jpg);
   width: 100%;
   object-fit: cover;
   margin-bottom: -2rem;
