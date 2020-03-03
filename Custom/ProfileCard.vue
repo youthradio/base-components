@@ -5,9 +5,12 @@ C<template>
         :src="profileData.picture"
         class="card-img"
       >
-      <h3>
-        {{ profileData.figure }}
-      </h3>
+      <div>
+        <h4>High Profile Case #{{ index + 1 }}</h4>
+        <h3>
+          {{ profileData.figure }}
+        </h3>
+      </div>
     </div>
     <div
       :class="['box-collapse', isCollapsed? 'collapsed': '']"
@@ -31,6 +34,11 @@ C<template>
 <script>
 export default {
   props: {
+    index: {
+      type: Number,
+      required: true,
+      default: 0
+    },
     profileData: {
       type: Object,
       require: true,
@@ -103,7 +111,11 @@ export default {
     rgb(255, 255, 255) 0%,
     rgba(2, 0, 36, 0) 100%
   );
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%,rgba(255, 255, 255, 1) 100%); //safari fix
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 1) 100%
+  ); //safari fix
 }
 ul {
   position: relative;
@@ -117,13 +129,11 @@ ul {
     padding-right: 2.5rem;
   }
 }
-h3 {
-  max-width: 50%;
+h3,
+h4 {
   padding-bottom: 0.5rem;
+  padding-top: 0;
   margin-left: 1rem;
-  @include breakpoint(medium) {
-    max-width: unset;
-  }
 }
 .ico-align {
   text-align: right;
