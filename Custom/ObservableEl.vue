@@ -123,6 +123,9 @@ export default {
       font-size: 0.7rem;
     }
   }
+  .buttons{
+    margin-top: 0.5rem;
+  }
   button {
     font-family: "Assistant", sans-serif;
     font-size: 0.7rem;
