@@ -93,7 +93,7 @@ export default {
   overflow: hidden;
 }
 .collapsed {
-  max-height: 5rem;
+  max-height: 10rem;
   .ico-effect {
     transform: unset;
   }

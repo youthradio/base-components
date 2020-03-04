@@ -123,12 +123,13 @@ export default {
       font-size: 0.7rem;
     }
   }
-  .buttons{
+  .buttons {
     margin-top: 0.5rem;
   }
   button {
+    position: relative;
     font-family: "Assistant", sans-serif;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     font-weight: bold;
     background-color: $white;
     border-color: $black;
@@ -172,6 +173,28 @@ export default {
       @include breakpoint(medium) {
         font-size: 0.8rem;
       }
+    }
+  }
+  .click-anima {
+    // z-index: 100;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    // margin: 100px auto;
+    background-color: #333;
+    border-radius: 100%;
+    animation: scaleout 1s infinite ease-in-out;
+  }
+  @keyframes scaleout {
+    0% {
+      transform: translate(-15px, -15px) scale(0);
+    }
+    100% {
+      transform: translate(-15px, -15px) scale(1.2);
+      opacity: 0.2;
     }
   }
 }
