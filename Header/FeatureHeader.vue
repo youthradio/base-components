@@ -4,6 +4,7 @@
     :class="[`${mode}-overlay`,'feature-container']"
   >
     <img
+      src="~./assets/blank.jpg"
       :data-srcset="`${headerData.featureImage}x375.jpg 375w,
         ${headerData.featureImage}x563.jpg 563w,
         ${headerData.featureImage}x1125.jpg 1125w,

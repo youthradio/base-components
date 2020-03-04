@@ -2,6 +2,7 @@ C<template>
   <div class="container">
     <div class="head-profile">
       <img
+        src="~./assets/blank-profile.jpg"
         :data-src="profileData.picture"
         class="card-img lazyload"
       >
