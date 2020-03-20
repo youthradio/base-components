@@ -1,14 +1,37 @@
 <template>
-  <div :class="['top-header header-sticky row', activeMenu ? 'navigation-open':'', hideNavbar ? 'hide-navigation':'']">
-    <header class="main-header" tabindex="-1">
+  <div
+    :class="['top-header header-sticky row', activeMenu ? 'navigation-open':'', hideNavbar ? 'hide-navigation':'']"
+    :style="!toggleEnable? {position: 'sticky', top: 0}:''"
+  >
+    <header
+      class="main-header"
+      tabindex="-1"
+      :style="!toggleEnable? {position: 'initial'}:''"
+    >
       <div class="header-container">
         <div>
           <div class="logo">
             <a href="https://yr.media">
-              <svg xmlns="http://www.w3.org/2000/svg" class="logo-svg" viewBox="0,0,66,66">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="logo-svg"
+                viewBox="0,0,66,66"
+              >
                 <defs>
-                  <filter id="shad" x="0" y="0" width="200%" height="200%">
-                    <feDropShadow dx="2" dy="2" stdDeviation="5" flood-color="#2E2E2E" flood-opacity="1" />
+                  <filter
+                    id="shad"
+                    x="0"
+                    y="0"
+                    width="200%"
+                    height="200%"
+                  >
+                    <feDropShadow
+                      dx="2"
+                      dy="2"
+                      stdDeviation="5"
+                      flood-color="#2E2E2E"
+                      flood-opacity="1"
+                    />
 
                   </filter>
                 </defs>
@@ -201,6 +224,11 @@ export default {
     CommonUtils
   ],
   props: {
+    toggleEnable: {
+      type: Boolean,
+      required: false,
+      default: true
+    },
     offset: {
       type: Number,
       required: false,
@@ -227,6 +255,9 @@ export default {
   },
   mounted () {
     window.addEventListener('scroll', event => this.debouceEvent(event, this.onScroll), false)
+    if (!this.toggleEnable) {
+      this.hideNavbar = false
+    }
   },
   methods: {
     onScroll () {
