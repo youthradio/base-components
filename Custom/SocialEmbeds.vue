@@ -45,7 +45,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  z-index: 1000 !important;
+
+/deep/ .instagram-media {
+  max-width: 375px!important;
+}
+/deep/ .twitter-tweet {
+  width: 100% !important;
+  max-width: 375px!important;
+}
+/deep/ .tiktok-embed {
+  width: 100% !important;
+  max-width: 375px !important;
 }
 </style>
