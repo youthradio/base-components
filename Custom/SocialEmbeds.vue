@@ -12,15 +12,28 @@
       </button>
     </div>
     <div
-      :style="[{backgroundColor: selectedCategory.color}]"
-      v-html="selectedEmbeds.map(e=>e.embed.cleanhtml).join('')"
-    />
+      v-for="category in embedsData.categories"
+      :key="category.name"
+      :style="[{backgroundColor:selectedCategory.color},selectedCategory.name !== category.name ? ({display: 'none'}):null]"
+    >
+      <Embed
+        v-for="post in filteredEmbeds(category)"
+        :key="post.user"
+        :post-data="post"
+      />
+    </div>
   </div>
 </template>
 
 <script>
+
 import * as d3require from 'd3-require'
+import Embed from './Embed.vue'
+
 export default {
+  components: {
+    Embed
+  },
   props: {
     embedsData: {
       type: Array,
@@ -37,9 +50,6 @@ export default {
     }
   },
   computed: {
-    selectedEmbeds () {
-      return this.embedsData.embeds.filter(e => e.categories.includes(this.selectedCategory.name))
-    }
   },
   created () {
     this.getScripts()
@@ -49,6 +59,9 @@ export default {
 
   },
   methods: {
+    filteredEmbeds (category) {
+      return this.embedsData.embeds.filter(e => e.categories.includes(category.name))
+    },
     setCategory (category) {
       this.selectedCategory = category
     },
@@ -69,17 +82,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-/deep/ .instagram-media {
-  max-width: 375px !important;
-}
-/deep/ .twitter-tweet {
-  width: 100% !important;
-  max-width: 375px !important;
-}
-/deep/ .tiktok-embed {
-  width: 100% !important;
-  max-width: 375px !important;
-}
 .tab-link {
   position: relative;
   border: none;
