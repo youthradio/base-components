@@ -4,10 +4,11 @@
       <USAMap
         :map-data="mapData"
         :map-ready="mapReady"
+        :active-state="activeState "
       />
     </div>
     <div class="city">
-      Oakland, California
+      {{ activeState? activeState.location : '' }}
     </div>
   </div>
 </template>
@@ -19,6 +20,13 @@ export default {
   name: 'MapContainer',
   components: {
     USAMap
+  },
+  props: {
+    activeState: {
+      type: Object,
+      default: null,
+      required: false
+    }
   },
   data () {
     return {
@@ -62,7 +70,7 @@ export default {
   margin-left: -1.5rem;
   margin-right: -1.5rem;
 }
-.city{
+.city {
   background-color: $grey;
   font-weight: bold;
   padding: 0.2rem;

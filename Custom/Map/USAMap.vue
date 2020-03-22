@@ -32,6 +32,11 @@ export default {
       type: Boolean,
       default: false,
       required: true
+    },
+    activeState: {
+      type: Object,
+      default: null,
+      required: false
     }
   },
   data () {
@@ -49,8 +54,19 @@ export default {
     mapReady () {
       if (this.mapReady) {
         this.drawMap()
-        // this.setAnimation(true)
+        this.setStateColor(this.activeState.state, this.activeState.color)
       }
+    },
+    activeState: {
+      handler (newval, oldval) {
+        if (newval && !oldval) {
+          this.setStateColor(newval.state, newval.color)
+        } else if (newval.state !== oldval.state) {
+          this.setStateColor()
+          this.setStateColor(newval.state, newval.color)
+        }
+      },
+      deep: true
     }
   },
   created () {
@@ -132,8 +148,10 @@ export default {
       //   // .style('stroke', 'black')
       //   .attr('d', this.projection.getCompositionBorders())
     },
-    drawContentData () {
-
+    setStateColor (state = null, color = 'gray') {
+      this.svg.selectAll('.states')
+        .filter(e => !state ? true : state === e.properties.STUSPS)
+        .attr('fill', color)
     },
     resizeContainer () {
       const targetWidth = parseInt(this.svg.node().parentNode.clientWidth)
@@ -159,7 +177,6 @@ export default {
 @import "~@/css/mixins";
 
 /deep/ #map {
-
   .state-label {
     text-transform: uppercase;
     font-weight: bold;

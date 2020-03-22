@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div ref="container" class="container">
     <div class="tab-header">
       <button
         v-for="category in embedsData.categories"
@@ -17,10 +17,12 @@
       :style="[{backgroundColor:selectedCategory.color},selectedCategory.name !== category.name ? ({display: 'none'}):null]"
     >
       <Embed
-        v-for="post in filteredEmbeds(category)"
+        v-for="(post,id) in filteredEmbeds(category)"
         :key="post.user"
+        ref="embedsRef"
+        :data-refid="id"
         :post-data="post"
-        @onvisibility="onvisibility"
+        @onLoadEmbed="onLoadEmbed"
       />
     </div>
   </div>
@@ -55,12 +57,25 @@ export default {
   created () {
     this.getScripts()
     this.selectedCategory = this.embedsData.categories[0]
+    this.$emit('onSelectCategory', this.selectedCategory)
   },
   mounted () {
-
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.boundingClientRect.y < 20) {
+          // console.log(entry.target.dataset)
+          const post = this.$refs.embedsRef[entry.target.dataset.refid]
+          this.$emit('onActiveState', { state: post.postData.state, location: post.postData.location })
+        }
+      })
+    },
+    {
+      threshold: Array(100).fill().map((_, i) => i / 100)
+    })
+    this.$refs.embedsRef.map(e => observer.observe(e.$el))
   },
   methods: {
-    onvisibility ({ provider, el }) {
+    onLoadEmbed ({ provider, el }) {
       switch (provider) {
         case 'Instagram': {
           if (this.instgrm) { this.instgrm.Embeds.process() }
@@ -83,6 +98,7 @@ export default {
     },
     setCategory (category) {
       this.selectedCategory = category
+      this.$emit('onSelectCategory', this.selectedCategory)
     },
     async getScripts () {
       if (process.client) {

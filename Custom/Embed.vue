@@ -2,7 +2,7 @@
   <div
     v-observe-visibility="{
       callback: visibilityChanged,
-      once: true,
+      once: true
     }"
     class="container"
   >
@@ -24,7 +24,8 @@ export default {
   },
   data () {
     return {
-      isVisible: false
+      isVisible: false,
+      isReady: false
     }
   },
   computed: {
@@ -38,10 +39,11 @@ export default {
   methods: {
     visibilityChanged (isVisible, entry) {
       this.isVisible = isVisible
-      if (isVisible) {
+      if (entry.isIntersecting && !this.isReady) {
+        this.isReady = true
         const el = this.$refs.embed.querySelector('.embed-class')
         el.classList.add(this.className) // add provider class
-        this.$emit('onvisibility', { provider: this.postData.embed.provider_name, el })
+        this.$emit('onLoadEmbed', { provider: this.postData.embed.provider_name, el })
         // send visibility event, with element node and provider name, now we can trigger provider render script
       }
     }
@@ -54,23 +56,27 @@ export default {
   max-width: 375px !important;
   margin-left: auto !important;
   margin-right: auto !important;
+  margin-top: 0px !important;
 }
 /deep/ .twitter-tweet {
   width: 100% !important;
   max-width: 375px !important;
   margin-left: auto !important;
   margin-right: auto !important;
+  margin-top: 0px !important;
 }
 /deep/ .tiktok-embed {
   width: 100% !important;
   max-width: 375px !important;
   margin-left: auto !important;
   margin-right: auto !important;
+  margin-top: 0px !important;
 }
 /deep/ .embed-class {
   width: 100% !important;
   max-width: 375px !important;
   margin-left: auto !important;
   margin-right: auto !important;
+  margin-top: 0px !important;
 }
 </style>
