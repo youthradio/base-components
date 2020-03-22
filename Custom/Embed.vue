@@ -1,6 +1,15 @@
 <template>
-  <div class="container">
-    <div v-html="htmlContent" />
+  <div
+    v-observe-visibility="{
+      callback: visibilityChanged,
+      once: true,
+    }"
+    class="container"
+  >
+    <div
+      ref="embed"
+      v-html="htmlContent"
+    />
   </div>
 </template>
 
@@ -15,16 +24,27 @@ export default {
   },
   data () {
     return {
-
+      isVisible: false
     }
   },
   computed: {
     htmlContent () {
       return this.postData.embed.cleanhtml
+    },
+    className () {
+      return this.postData.embed.classname
     }
   },
   methods: {
-
+    visibilityChanged (isVisible, entry) {
+      this.isVisible = isVisible
+      if (isVisible) {
+        const el = this.$refs.embed.querySelector('.embed-class')
+        el.classList.add(this.className) // add provider class
+        this.$emit('onvisibility', { provider: this.postData.embed.provider_name, el })
+        // send visibility event, with element node and provider name, now we can trigger provider render script
+      }
+    }
   }
 }
 </script>
@@ -32,14 +52,20 @@ export default {
 <style lang="scss" scoped>
 /deep/ .instagram-media {
   max-width: 375px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 /deep/ .twitter-tweet {
   width: 100% !important;
   max-width: 375px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 /deep/ .tiktok-embed {
   width: 100% !important;
   max-width: 375px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 /deep/ .embed-class {
   width: 100% !important;

@@ -20,6 +20,7 @@
         v-for="post in filteredEmbeds(category)"
         :key="post.user"
         :post-data="post"
+        @onvisibility="onvisibility"
       />
     </div>
   </div>
@@ -36,7 +37,7 @@ export default {
   },
   props: {
     embedsData: {
-      type: Array,
+      type: Object,
       require: true,
       default: null
     }
@@ -59,6 +60,24 @@ export default {
 
   },
   methods: {
+    onvisibility ({ provider, el }) {
+      switch (provider) {
+        case 'Instagram': {
+          if (this.instgrm) { this.instgrm.Embeds.process() }
+          break
+        }
+        case 'TikTok': {
+          // console.log(this.tiktokEmbed)
+          if (this.tiktokEmbed) { this.tiktokEmbed.lib.render([el]) }
+
+          break
+        }
+        case 'Twitter': {
+          if (this.twttr) { this.twttr.widgets.load(el) }
+          break
+        }
+      }
+    },
     filteredEmbeds (category) {
       return this.embedsData.embeds.filter(e => e.categories.includes(category.name))
     },
@@ -66,16 +85,18 @@ export default {
       this.selectedCategory = category
     },
     async getScripts () {
-      this.twttr = await d3require.require('https://platform.twitter.com/widgets.js').catch(
-        () => window.twttr)
-      this.instgrm = await d3require.require('https://instagram.com/embed.js').catch(
-        () => window.instgrm
-      )
-      this.tiktokEmbed = await new Promise((resolve) => {
-        d3require.require('https://www.tiktok.com/embed.js').catch(
-          () => setTimeout(() => resolve(window.tiktokEmbed), 500)
+      if (process.client) {
+        this.twttr = await d3require.require('https://platform.twitter.com/widgets.js').catch(
+          () => window.twttr)
+        this.instgrm = await d3require.require('https://instagram.com/embed.js').catch(
+          () => window.instgrm
         )
-      })
+        this.tiktokEmbed = await new Promise((resolve) => {
+          d3require.require('https://www.tiktok.com/embed.js').catch(
+            () => setTimeout(() => resolve(window.tiktokEmbed), 1000)
+          )
+        })
+      }
     }
   }
 }
