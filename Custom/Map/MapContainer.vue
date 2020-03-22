@@ -3,7 +3,6 @@
     <div class="margin">
       <USAMap
         :map-data="mapData"
-        :content-data="contentData"
         :map-ready="mapReady"
       />
     </div>
@@ -36,9 +35,10 @@ export default {
     // this.loadContentData()
     // this.loadMapData()
     // this.loadMarkersData()
-    this.initMap()
+
   },
   mounted () {
+    this.initMap()
   },
   methods: {
     async initMap () {
