@@ -1,6 +1,9 @@
 <template>
-  <div ref="container" class="container">
-    <div class="tab-header">
+  <div
+    ref="container"
+    class="container"
+  >
+    <div class="tab-header sticky">
       <button
         v-for="category in embedsData.categories"
         :key="category.name"
@@ -11,10 +14,15 @@
         {{ category.name }}
       </button>
     </div>
+    <div ref="line" />
     <div
       v-for="category in embedsData.categories"
       :key="category.name"
-      :style="[{backgroundColor:selectedCategory.color},selectedCategory.name !== category.name ? ({display: 'none'}):null]"
+      class="embeds-container"
+      :style="[
+        {backgroundColor:selectedCategory.color},
+        selectedCategory.name !== category.name ? ({display: 'none'}):null
+      ]"
     >
       <Embed
         v-for="(post,id) in filteredEmbeds(category)"
@@ -99,6 +107,7 @@ export default {
     setCategory (category) {
       this.selectedCategory = category
       this.$emit('onSelectCategory', this.selectedCategory)
+      this.$refs.line.scrollIntoView()
     },
     async getScripts () {
       if (process.client) {
@@ -132,6 +141,16 @@ export default {
   clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 40%, 85% 0);
 }
 .tab-header {
+  background-color: white;
   padding-top: 1.15rem;
+  margin-bottom: -0.5rem;
+  z-index: 1000;
+}
+.embeds-container {
+  padding-top: 1rem;
+}
+.sticky {
+  position: sticky;
+  top: 68px;
 }
 </style>

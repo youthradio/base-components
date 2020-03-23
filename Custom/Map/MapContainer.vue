@@ -1,12 +1,10 @@
 <template>
   <div>
-    <div class="margin">
-      <USAMap
-        :map-data="mapData"
-        :map-ready="mapReady"
-        :active-state="activeState "
-      />
-    </div>
+    <USAMap
+      :map-data="mapData"
+      :map-ready="mapReady"
+      :active-state="activeState "
+    />
     <div class="city">
       {{ activeState? activeState.location : '' }}
     </div>
