@@ -3,7 +3,10 @@
     ref="container"
     class="container"
   >
-    <div class="tab-header sticky">
+    <div
+      class="tab-header sticky"
+      :style="{backgroundColor: selectedCategory.color}"
+    >
       <button
         v-for="category in embedsData.categories"
         :key="category.name"
@@ -135,12 +138,22 @@ export default {
   cursor: pointer;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  font-size: 1rem;
+  font-size: 0.8rem;
   border-top-left-radius: 10px;
-  -webkit-clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 40%, 85% 0);
-  clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 40%, 85% 0);
+  -webkit-clip-path: polygon(0 0, 0 100%, 100% 100%, 100% calc(100% - 10px), calc(100% - 10px) 0);
+  clip-path: polygon(0 0, 0 100%, 100% 100%, 100% calc(100% - 10px), calc(100% - 10px) 0);
+}
+.tab-header::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  margin-top: -0.5rem;
+  background-color: white;
 }
 .tab-header {
+  position: relative;
   background-color: white;
   padding-top: 1.15rem;
   margin-bottom: -0.5rem;
@@ -148,6 +161,7 @@ export default {
 }
 .embeds-container {
   padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 .sticky {
   position: sticky;
