@@ -69,6 +69,9 @@ export default {
   margin-right: -1.5rem;
 }
 .city {
+  max-width: 75%;
+  margin-left: auto;
+  margin-right: auto;
   background-color: $grey;
   font-weight: bold;
   padding: 0.2rem;
