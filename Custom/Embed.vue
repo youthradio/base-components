@@ -57,6 +57,7 @@ export default {
   margin-left: auto !important;
   margin-right: auto !important;
   margin-top: 0px !important;
+  overflow-y: hidden !important;
 }
 /deep/ .twitter-tweet {
   width: 100% !important;
@@ -64,6 +65,7 @@ export default {
   margin-left: auto !important;
   margin-right: auto !important;
   margin-top: 0px !important;
+  overflow-y: hidden !important;
 }
 /deep/ .tiktok-embed {
   width: 100% !important;
@@ -71,6 +73,7 @@ export default {
   margin-left: auto !important;
   margin-right: auto !important;
   margin-top: 0px !important;
+  overflow-y: hidden !important;
 }
 /deep/ .embed-class {
   width: 100% !important;
@@ -78,5 +81,6 @@ export default {
   margin-left: auto !important;
   margin-right: auto !important;
   margin-top: 0px !important;
+  overflow-y: hidden !important;
 }
 </style>
