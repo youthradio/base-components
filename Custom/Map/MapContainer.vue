@@ -64,6 +64,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 @import "~@/css/_vars";
+@import "~@/css/mixins";
+
 .margin {
   margin-left: -1.5rem;
   margin-right: -1.5rem;
@@ -72,7 +74,9 @@ export default {
   max-width: 75%;
   margin-left: auto;
   margin-right: auto;
-  background-color: $grey;
+  @include breakpoint(medium) {
+    background-color: $grey;
+  }
   font-weight: bold;
   padding: 0.2rem;
   text-align: center;
