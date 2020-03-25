@@ -4,6 +4,7 @@
       :map-data="mapData"
       :map-ready="mapReady"
       :active-state="activeState "
+      class="map"
     />
     <div class="city">
       {{ activeState? activeState.location : '' }}
@@ -69,6 +70,12 @@ export default {
 .margin {
   margin-left: -1.5rem;
   margin-right: -1.5rem;
+}
+.map {
+  opacity: 0.8;
+  @include breakpoint(medium) {
+    opacity: 1;
+  }
 }
 .city {
   max-width: 75%;

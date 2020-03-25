@@ -153,7 +153,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "~@/css/vars";
+
 .tab-link {
+  font-family: $baseFont;
   position: relative;
   border: none;
   outline: none;
