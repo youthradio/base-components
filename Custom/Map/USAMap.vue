@@ -54,7 +54,9 @@ export default {
     mapReady () {
       if (this.mapReady) {
         this.drawMap()
-        this.setStateColor(this.activeState.state, this.activeState.color)
+        if (this.activeState) {
+          this.setStateColor(this.activeState.state, this.activeState.color)
+        }
       }
     },
     activeState: {

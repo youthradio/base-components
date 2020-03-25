@@ -24,23 +24,23 @@
       class="embeds-container"
       :style="[
         {backgroundColor:selectedCategory.color},
-        selectedCategory.name !== category.name ? ({display: 'none'}):null
+        checkSelectedCategory(category)
       ]"
     >
       <Embed
         v-for="(post,id) in filteredEmbeds(category)"
         :key="post.user"
         ref="embedsRef"
-        :data-refid="id"
+        :data-refid="`${category.name}-${id}`"
         :post-data="post"
         @onLoadEmbed="onLoadEmbed"
+        @mouseActive="mouseActive"
       />
     </div>
   </div>
 </template>
 
 <script>
-
 import * as d3require from 'd3-require'
 import Embed from './Embed.vue'
 
@@ -60,33 +60,55 @@ export default {
       selectedCategory: null,
       twttr: null,
       instgrm: null,
-      tiktokEmbed: null
+      tiktokEmbed: null,
+      currentActiveState: null
     }
   },
   computed: {
+
   },
   created () {
     this.getScripts()
     this.selectedCategory = this.embedsData.categories[0]
     this.$emit('onSelectCategory', this.selectedCategory)
+    const initPost = this.filteredEmbeds(this.selectedCategory)[0]
+    this.currentActiveState = { state: initPost.state, location: initPost.location }
+    this.$emit('onActiveState', this.currentActiveState)
   },
   mounted () {
+    // const windowHalf = window.innerHeight / 2
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.boundingClientRect.y < 20) {
-          // console.log(entry.target.dataset)
-          const post = this.$refs.embedsRef[entry.target.dataset.refid]
-          this.$emit('onActiveState', { state: post.postData.state, location: post.postData.location })
-        }
+        this.checkEmbedMapLocation(entry.boundingClientRect, entry.target)
       })
     },
     {
-      threshold: Array(100).fill().map((_, i) => i / 100)
+      threshold: Array(50).fill().map((_, i) => i / 50)
     })
-    this.$refs.embedsRef.map(e => observer.observe(e.$el))
+    this.$refs.embedsRef.map((e) => {
+      observer.observe(e.$el)
+    })
   },
   methods: {
-    onLoadEmbed ({ provider, el }) {
+    mouseActive ({ postData, event }) {
+      if (event === 'enter') {
+        this.$emit('onActiveState', { state: postData.state, location: postData.location })
+      } else {
+        this.$emit('onActiveState', this.currentActiveState)
+      }
+    },
+    checkSelectedCategory (category) {
+      return (this.selectedCategory.name !== category.name) ? { display: 'none' } : null
+    },
+    checkEmbedMapLocation (boundingRect, target) {
+      const entryPos = boundingRect.height - boundingRect.top
+      if (entryPos > 0 && boundingRect.top < 200 && boundingRect.top > 0) {
+        const post = this.$refs.embedsRef.find(e => e.$el.dataset.refid === target.dataset.refid)
+        this.currentActiveState = { state: post.postData.state, location: post.postData.location }
+        this.$emit('onActiveState', this.currentActiveState)
+      }
+    },
+    onLoadEmbed ({ provider, el, entry }) {
       switch (provider) {
         case 'Instagram': {
           if (this.instgrm) { this.instgrm.Embeds.process() }
@@ -136,12 +158,25 @@ export default {
   border: none;
   outline: none;
   cursor: pointer;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.2rem;
   font-size: 0.8rem;
   border-top-left-radius: 10px;
-  -webkit-clip-path: polygon(0 0, 0 100%, 100% 100%, 100% calc(100% - 10px), calc(100% - 10px) 0);
-  clip-path: polygon(0 0, 0 100%, 100% 100%, 100% calc(100% - 10px), calc(100% - 10px) 0);
+  -webkit-clip-path: polygon(
+    0 0,
+    0 100%,
+    100% 100%,
+    100% calc(100% - 10px),
+    calc(100% - 10px) 0
+  );
+  clip-path: polygon(
+    0 0,
+    0 100%,
+    100% 100%,
+    100% calc(100% - 10px),
+    calc(100% - 10px) 0
+  );
 }
 .tab-header::before {
   position: absolute;

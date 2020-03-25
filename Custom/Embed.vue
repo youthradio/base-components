@@ -5,6 +5,8 @@
       once: true
     }"
     class="container"
+    @mouseenter="mouseEventHand"
+    @mouseleave="mouseEventHand"
   >
     <div
       ref="embed"
@@ -37,13 +39,20 @@ export default {
     }
   },
   methods: {
+    mouseEventHand (event) {
+      if (event.type === 'mouseenter') {
+        this.$emit('mouseActive', { postData: this.postData, event: 'enter' })
+      } else if (event.type === 'mouseleave') {
+        this.$emit('mouseActive', { postData: this.postData, event: 'leave' })
+      }
+    },
     visibilityChanged (isVisible, entry) {
       this.isVisible = isVisible
       if (entry.isIntersecting && !this.isReady) {
         this.isReady = true
         const el = this.$refs.embed.querySelector('.embed-class')
         el.classList.add(this.className) // add provider class
-        this.$emit('onLoadEmbed', { provider: this.postData.embed.provider_name, el })
+        this.$emit('onLoadEmbed', { provider: this.postData.embed.provider_name, el, entry })
         // send visibility event, with element node and provider name, now we can trigger provider render script
       }
     }
@@ -52,6 +61,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 /deep/ .instagram-media {
   max-width: 375px !important;
   margin-left: auto !important;
