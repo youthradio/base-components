@@ -78,6 +78,7 @@ export default {
   }
 }
 .city {
+  margin-top: 1rem;
   max-width: 75%;
   margin-left: auto;
   margin-right: auto;
