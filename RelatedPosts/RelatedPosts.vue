@@ -80,6 +80,7 @@ export default {
   margin: 1.5rem;
   h3 {
     font-weight: 800;
+    line-height: 1rem;
   }
 
   a {
