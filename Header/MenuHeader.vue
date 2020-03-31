@@ -152,61 +152,63 @@
               ><span class="icon-instagram" /></a>
             </li>
           </ul>
+
           <ul
             id="menu-media-categories-menu"
             class="media-menu"
           >
-            <li
-              id="menu-item-36510"
-              class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36510"
-            >
-              <a href="https://yr.media/podcasts/adult-ish/">Podcasts</a>
-            </li>
-            <li
-              id="menu-item-35702"
-              class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-35702"
-            >
-              <a href="https://yr.media/category/video/">Video</a>
-            </li>
-            <li
-              id="menu-item-36509"
-              class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-36509"
-            >
-              <a href="https://yr.media/category/interactive/">Interactive</a>
-            </li>
             <li
               id="menu-item-38608"
               class="menu-item menu-item-type-custom menu-item-object-custom menu-item-38608"
             >
               <a
                 target="_blank"
+                rel="noopener noreferrer"
                 href="https://adp.fm/"
               >ADP.FM Stream</a>
+            </li>
+            <li
+              id="menu-item-36510"
+              class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36510"
+            >
+              <a href="https://yr.media/adult-ish/">Adult ISH Podcast</a>
+            </li>
+            <li
+              id="menu-item-65520"
+              class="menu-item menu-item-type-post_type menu-item-object-page menu-item-65520"
+            >
+              <a href="https://yr.media/ryl-studios/">RYL Studios</a>
             </li>
           </ul>
         </div>
         <div>
           <ul
-            id="menu-footer-menu"
+            id="menu-second-header-menu"
             class="pages-menu"
           >
             <li
-              id="menu-item-36521"
-              class="menu-item menu-item-type-post_type menu-item-object-page menu-item-36521"
+              id="menu-item-57009"
+              class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57009"
             >
               <a href="https://yr.media/about-yr/">About YR Media</a>
             </li>
             <li
-              id="menu-item-38723"
-              class="menu-item menu-item-type-post_type menu-item-object-page menu-item-38723"
+              id="menu-item-66508"
+              class="menu-item menu-item-type-post_type menu-item-object-page menu-item-66508"
             >
-              <a href="https://yr.media/join-us/">Join Us</a>
+              <a href="https://yr.media/yr-classes/">Apply to Classes</a>
             </li>
             <li
-              id="menu-item-42578"
-              class="menu-item menu-item-type-post_type menu-item-object-page menu-item-42578"
+              id="menu-item-63928"
+              class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-63928"
             >
-              <a href="https://yr.media/career-opportunities/">Career At YR</a>
+              <a href="https://yr.media/category/diy/">Our DIY Tools</a>
+            </li>
+            <li
+              id="menu-item-57010"
+              class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57010"
+            >
+              <a href="https://yr.media/career-opportunities/">Careers at YR</a>
             </li>
           </ul>
         </div>
