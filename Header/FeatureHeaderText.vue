@@ -79,6 +79,7 @@ export default {
   h3 {
     font-family: "Assistant";
     font-style: normal;
+    font-weight: 300;
   }
   h3 {
     font-size: 1rem;
