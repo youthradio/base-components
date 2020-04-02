@@ -13,6 +13,27 @@
         >
       </audio>
     </VuePlyr>
+
+    <div
+      v-for="dialog in dialogs"
+      :key="dialog.passage"
+      class="dialog"
+    >
+      <div class="profile-container">
+        <img
+          :src="guestsMap.get(dialog.speaker).photo.a"
+          class="profile-img hidden"
+        >
+        <img
+          :src="guestsMap.get(dialog.speaker).photo.b"
+          class="profile-img visible"
+        >
+        <span class="bio"> Bio </span>
+      </div>
+      <div class="passage">
+        {{ dialog.passage }}
+      </div>
+    </div>
   </div>
 </template>
 
@@ -26,6 +47,16 @@ export default {
       type: Array,
       require: true,
       default: null
+    },
+    guests: {
+      type: Array,
+      require: true,
+      default: null
+    },
+    dialogs: {
+      type: Array,
+      require: true,
+      default: null
     }
   },
   data () {
@@ -34,6 +65,9 @@ export default {
     }
   },
   computed: {
+    guestsMap () {
+      return new Map(this.guests.map(g => [g.key, g]))
+    },
     playerOptions () {
       return {
         iconUrl: process.env.baseUrl + '/images/plyr.svg',
@@ -64,4 +98,69 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.dialog {
+  display: flex;
+}
+.profile-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  // background-color: lightblue;
+
+  .profile-img {
+    width: 100px;
+    height: auto;
+  }
+  .hidden {
+    display: none;
+  }
+  &:hover {
+    .visible {
+      display: none;
+    }
+    .hidden {
+      display: inline-block;
+    }
+  }
+  .bio {
+    font-size: 1rem;
+    font-weight: 200;
+    text-align: center;
+  }
+}
+
+.passage {
+  position: relative;
+  border-bottom: lightblue;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-left: lightblue;
+  border-left-width: 2px;
+  border-left-style: solid;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+
+  &:before,
+  &:after {
+    right: 100%;
+    top: 20%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+  &:after {
+    border-right-color: white;
+    border-width: 14px;
+    margin-top: -14px;
+  }
+  &:before {
+    border-right-color: lightblue;
+    border-width: 17px;
+    margin-top: -17px;
+  }
+}
 </style>
