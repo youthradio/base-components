@@ -3,6 +3,13 @@
     <VuePlyr
       ref="audioPlayer"
       :options="playerOptions"
+      :emit="['play','pause','timeupdate','ready','canplay','seeking']"
+      @seeking="onSeek"
+      @play="onAudioPlay"
+      @pause="onAudioPause"
+      @timeupdate="onTime"
+      @ready="onPlayerReady"
+      @canplay="audioReady"
     >
       <audio>
         <source
@@ -15,7 +22,7 @@
     </VuePlyr>
 
     <div
-      v-for="dialog in dialogs"
+      v-for="(dialog, i) in dialogs"
       :key="dialog.passage"
       class="dialog"
     >
@@ -30,8 +37,15 @@
         >
         <span class="bio"> Bio </span>
       </div>
-      <div class="passage">
+      <div
+        class="passage"
+        :style="{'--border-color': guestsMap.get(dialog.speaker).color}"
+      >
         {{ dialog.passage }}
+        <div
+          class="progress"
+          :style="(activePassage === i)? {width: progress}: {}"
+        />
       </div>
     </div>
   </div>
@@ -61,7 +75,10 @@ export default {
   },
   data () {
     return {
-
+      vueplayer: null,
+      activePassage: 0,
+      progress: '0%',
+      audioDuration: 0
     }
   },
   computed: {
@@ -89,9 +106,49 @@ export default {
         ]
       }
     }
-  },
 
+  },
+  mounted () {
+    this.vueplayer = this.$refs.audioPlayer
+  },
   methods: {
+
+    onSeek (event) {
+      // find active live when audion seeking
+      const currTime = this.vueplayer.player.currentTime
+      this.dialogs.map((e, i) => {
+        const start = e.startSeconds
+        const end = e.endSeconds
+        if (currTime > start && currTime <= end) {
+          this.activePassage = i
+          // this.scrollTo(this.activePassage)
+        }
+      })
+      // console.log(event)
+    },
+    onAudioPlay (event) {
+      // console.log(event)
+    },
+    onAudioPause (event) {
+      // console.log(event)
+    },
+    onTime (event) {
+      const currTime = this.vueplayer.player.currentTime
+      const start = this.dialogs[this.activePassage].startSeconds
+      const end = this.dialogs[this.activePassage].endSeconds
+      this.progress = (100 * (currTime - start) / (end - start)) + '%'
+      if (currTime >= end) {
+        this.progress = '0%'
+        this.activePassage = (this.activePassage + 1) % this.dialogs.length
+      }
+    },
+    onPlayerReady (event) {
+      // console.log(event)
+    },
+    audioReady (event) {
+      this.audioDuration = this.vueplayer.player.duration
+      // console.log(event)
+    }
 
   }
 }
@@ -130,11 +187,12 @@ export default {
 }
 
 .passage {
+  --border-color: red;
   position: relative;
-  border-bottom: lightblue;
+  border-bottom: var(--border-color);
   border-bottom-width: 2px;
   border-bottom-style: solid;
-  border-left: lightblue;
+  border-left: var(--border-color);
   border-left-width: 2px;
   border-left-style: solid;
   margin-left: 1rem;
@@ -158,9 +216,19 @@ export default {
     margin-top: -14px;
   }
   &:before {
-    border-right-color: lightblue;
+    border-right-color: var(--border-color);
     border-width: 17px;
     margin-top: -17px;
   }
+  .progress {
+    position: absolute;
+    background-color: var(--border-color);
+    margin-left: -0.5rem;
+    height: 5px;
+    bottom: 0;
+  }
+}
+.player-custom-style >>> .plyr--audio .plyr__controls {
+  background: none;
 }
 </style>
