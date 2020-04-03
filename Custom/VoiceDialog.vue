@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div ref="container">
     <VuePlyr
       ref="audioPlayer"
       :options="playerOptions"
@@ -135,29 +135,32 @@ export default {
   },
   mounted () {
     this.vueplayer = this.$refs.audioPlayer
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.intersectionRatio <= 0 && this.vueplayer.player.playing) {
+          this.vueplayer.player.pause()
+        }
+      })
+    },
+    {
+      threshold: 0
+      // trackVisibility: true,
+      // delay: 100
+    })
+    observer.observe(this.$refs.container)
   },
   methods: {
     togglePassage (id) {
-      // jump to specific passage
       const start = this.dialogs[id].startSeconds
-      this.vueplayer.player.currentTime = start
-      if (!this.isPlaying) {
-        this.vueplayer.player.play()
-      } else {
+      if (this.activePassage === id && this.isPlaying) {
         this.vueplayer.player.pause()
+        return
       }
+      this.vueplayer.player.currentTime = start
+      this.vueplayer.player.play()
     },
     onSeek (event) {
-      // find active live when audion seeking
-      const currTime = this.vueplayer.player.currentTime
-      this.dialogs.map((e, i) => {
-        const start = e.startSeconds
-        const end = e.endSeconds
-        if (currTime > start && currTime <= end) {
-          this.activePassage = i
-          // this.scrollTo(this.activePassage)
-        }
-      })
+      this.setCurrPassage()
     },
     onAudioPlay (event) {
       this.isPlaying = true
@@ -176,11 +179,19 @@ export default {
       }
     },
     onPlayerReady (event) {
-      // console.log(event)
     },
     audioReady (event) {
       this.audioDuration = this.vueplayer.player.duration
-      // console.log(event)
+    },
+    setCurrPassage () {
+      const currTime = this.vueplayer.player.currentTime
+      this.dialogs.map((e, i) => {
+        const start = e.startSeconds
+        const end = e.endSeconds
+        if (currTime >= start && currTime < end) {
+          this.activePassage = i
+        }
+      })
     }
 
   }
