@@ -3,9 +3,16 @@
     <div class="quiz-question">
       <h3> {{ questionSet.question }} </h3>
     </div>
-    <div class="quiz-answers">
-      <button>{{ questionSet.A }}</button>
-      <button>{{ questionSet.B }}</button>
+    <div v-if="!hasVoted" class="quiz-answers">
+      <button @click="submitVote('A')">
+        {{ questionSet.A }}
+      </button>
+      <button @click="submitVote('B')">
+        {{ questionSet.B }}
+      </button>
+    </div>
+    <div v-else class="quiz-result">
+      Test
     </div>
   </div>
 </template>
@@ -18,7 +25,19 @@ export default {
       default: null
     }
   },
+  data () {
+    return {
+      selectedButton: null,
+      hasVoted: false
+    }
+  },
   mounted () {
+  },
+  methods: {
+    submitVote (vote) {
+      this.selectedButton = vote
+      this.hasVoted = true
+    }
   }
 }
 </script>
