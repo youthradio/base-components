@@ -47,9 +47,13 @@ export default {
 @import "~@/css/vars";
 
 .container {
+    padding-top: 1rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    *{
+        font-size: 100%;
+    }
     .flex-item{
         margin: 0 1rem 0 1rem;
         flex-grow: 1;
@@ -58,6 +62,14 @@ export default {
     h3 {
         padding: 0;
     }
+}
+
+.quiz-question{
+        background-color: #332849;
+        color: white;
+        text-align: center;
+        border-radius: 5px;
+        padding: 1rem;
 }
 
 .quiz-answers{
@@ -72,7 +84,7 @@ export default {
         padding: 0.5rem 0rem 0.5rem 0rem;
         margin: 0.3rem;
 
-        font-weight: bold;
+        font-weight: 300;
     }
 }
 
