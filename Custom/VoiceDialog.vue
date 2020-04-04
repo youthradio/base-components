@@ -35,13 +35,19 @@
           :src="guestsMap.get(dialog.speaker).photo.b"
           class="profile-img visible"
         >
-        <span class="bio"> Bio </span>
+        <span class="bio"> {{ guestsMap.get(dialog.speaker).name }} </span>
+        <div
+          class="bio-tootlip"
+          :style="{backgroundColor: guestsMap.get(dialog.speaker).color}"
+        >
+          <strong> {{ guestsMap.get(dialog.speaker).name }} </strong>
+          {{ guestsMap.get(dialog.speaker).bio }}
+        </div>
       </div>
       <div
         class="passage"
         :style="{'--border-color': guestsMap.get(dialog.speaker).color}"
       >
-        {{ dialog.passage }}
         <div class="small-play">
           <a
             href="#"
@@ -66,6 +72,7 @@
               /></svg>
           </a>
         </div>
+        {{ dialog.passage }}
         <div
           class="progress"
           :style="(activePassage === i)? {width: progress}: {}"
@@ -199,11 +206,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "~@/css/mixins";
+
 .dialog {
   display: flex;
+  align-items: flex-start;
 }
 .profile-container {
-  position: relative;
+  position: sticky;
+  top: 70px;
   display: flex;
   flex-direction: column;
   // background-color: lightblue;
@@ -216,6 +227,7 @@ export default {
     display: none;
   }
   &:hover {
+    z-index: 10;
     .visible {
       display: none;
     }
@@ -223,10 +235,28 @@ export default {
       display: inline-block;
     }
   }
+
   .bio {
+    background-color: white;
     font-size: 1rem;
     font-weight: 200;
     text-align: center;
+    cursor: pointer;
+    &:hover {
+      + .bio-tootlip {
+        display: inline-block;
+      }
+    }
+  }
+  .bio-tootlip {
+    padding: 0.8em;
+    pointer-events: none;
+    display: none;
+    position: absolute;
+    font-size: 0.8rem;
+    top: 50px;
+    left: 50%;
+    right: MIN(-200px, -50vw);
   }
 }
 
@@ -272,6 +302,8 @@ export default {
     bottom: 0;
   }
   .small-play {
+    position: sticky;
+    top: 70px;
     float: right;
     a {
       text-decoration: unset;
