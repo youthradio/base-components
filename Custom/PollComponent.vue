@@ -5,10 +5,10 @@
     </div>
     <div v-if="!hasVoted" class="quiz-answers flex-item">
       <button @click="submitVote('A')">
-        {{ questionSet.A }}
+        {{ questionSet.options[0].title }}
       </button>
       <button @click="submitVote('B')">
-        {{ questionSet.B }}
+        {{ questionSet.options[1].title }}
       </button>
     </div>
     <div v-else class="quiz-result flex-item">
