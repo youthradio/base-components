@@ -61,6 +61,7 @@ export default {
     }
     h3 {
         padding: 0;
+        font-weight: 800;
     }
 }
 
@@ -81,9 +82,10 @@ export default {
         background: transparent;
         border: 5px solid #332849;
         border-radius: 5px;
-        padding: 0.5rem 0rem 0.5rem 0rem;
-        margin: 0.3rem;
-
+        margin: 0.2rem 0 0.2rem 0;
+        width: 100%;
+        flex-grow: 1;
+        flex-basis: 0;
         font-weight: 300;
     }
 }
