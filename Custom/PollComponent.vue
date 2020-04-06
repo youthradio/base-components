@@ -78,15 +78,20 @@ export default {
     flex-direction: column;
     justify-content: center;
 
+    //First button
     button {
         background: transparent;
         border: 5px solid #332849;
         border-radius: 5px;
-        margin: 0.2rem 0 0.2rem 0;
+        margin: 0rem 0 0.3rem 0;
         width: 100%;
         flex-grow: 1;
         flex-basis: 0;
         font-weight: 300;
+    }
+    //Second button
+    button + button {
+      margin: 0.3rem 0 0.0rem 0;
     }
 }
 
