@@ -3,6 +3,23 @@
     ref="headerImage"
     class="feature-container"
   >
+    <video
+      autoplay
+      loop
+      muted
+      playsinline
+      class="img-fluid"
+    >
+      <source
+        :src="`./${headerData.featureImage}.webp`"
+        type="video/webm"
+      >
+      <source
+        :src="`./${headerData.featureImage}.mp4`"
+        type="video/mp4"
+      >
+      <a :href="`./${headerData.featureImage}.gif`">No support </a>
+    </video>
     <!-- <img
       src="~./assets/blank.jpg"
       height="115px"
@@ -54,11 +71,9 @@ export default {
   width: 100%;
   height: auto;
   object-fit: cover;
-  max-height: 80vh;
 }
 .feature-container {
   position: relative;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   background-color: $grey;
