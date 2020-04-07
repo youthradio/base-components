@@ -58,7 +58,7 @@ export default {
 }
 .feature-container {
   position: relative;
-  height: 40vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   background-color: $grey;
