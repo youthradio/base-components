@@ -35,7 +35,7 @@
           :src="guestsMap.get(dialog.speaker).photo.b"
           class="profile-img visible"
         >
-        <span class="bio"> {{ guestsMap.get(dialog.speaker).name }} </span>
+        <span class="bio"> Bio </span>
         <div
           class="bio-tootlip"
           :style="{backgroundColor: guestsMap.get(dialog.speaker).color}"
@@ -72,7 +72,10 @@
               /></svg>
           </a>
         </div>
-        {{ dialog.passage }}
+        <div class="margin-right">
+          {{ dialog.passage }}
+          <span class="speaker-name">{{ guestsMap.get(dialog.speaker).name }}</span>
+        </div>
         <div
           class="progress"
           :style="(activePassage === i)? {width: progress}: {}"
@@ -151,8 +154,6 @@ export default {
     },
     {
       threshold: 0
-      // trackVisibility: true,
-      // delay: 100
     })
     observer.observe(this.$refs.container)
   },
@@ -214,11 +215,10 @@ export default {
 }
 .profile-container {
   position: sticky;
-  top: 70px;
+  top: 130px;
   display: flex;
   flex-direction: column;
   // background-color: lightblue;
-
   .profile-img {
     width: 100px;
     height: auto;
@@ -272,7 +272,10 @@ export default {
   margin-left: 1rem;
   margin-bottom: 1rem;
   padding: 0.5rem;
-
+  font-family: "Roboto Mono";
+  font-style: italic;
+  font-weight: 200;
+  font-size: 0.8rem;
   &:before,
   &:after {
     right: 100%;
@@ -303,7 +306,7 @@ export default {
   }
   .small-play {
     position: sticky;
-    top: 70px;
+    top: 130px;
     float: right;
     a {
       text-decoration: unset;
@@ -313,6 +316,14 @@ export default {
       background-color: unset;
       text-decoration: unset;
     }
+  }
+  .margin-right {
+    margin-right: 20px;
+  }
+  .speaker-name {
+    display: block;
+    text-align: right;
+    font-weight: bold;
   }
 }
 .player-custom-style >>> .plyr--audio .plyr__controls {
