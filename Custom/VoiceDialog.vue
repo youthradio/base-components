@@ -48,29 +48,59 @@
         class="passage"
         :style="{'--border-color': guestsMap.get(dialog.speaker).color}"
       >
-        <div class="small-play">
-          <a
-            href="#"
-            @click.prevent="togglePassage(i)"
-          >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 552 552"
+        <div class="function-container">
+          <div class="small-play">
+            <a
+              href="#"
+              @click.prevent="togglePassage(i)"
             >
-              <path
-                v-if="(activePassage === i) && isPlaying"
-                style="fill:black;"
-                d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm96-280v160c0 8.8-7.2 16-16 16h-48c-8.8 0-16-7.2-16-16V176c0-8.8 7.2-16 16-16h48c8.8 0 16 7.2 16 16zm-112 0v160c0 8.8-7.2 16-16 16h-48c-8.8 0-16-7.2-16-16V176c0-8.8 7.2-16 16-16h48c8.8 0 16 7.2 16 16z"
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 552 552"
+              >
+                <path
+                  v-if="(activePassage === i) && isPlaying"
+                  style="fill:black;"
+                  d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm96-280v160c0 8.8-7.2 16-16 16h-48c-8.8 0-16-7.2-16-16V176c0-8.8 7.2-16 16-16h48c8.8 0 16 7.2 16 16zm-112 0v160c0 8.8-7.2 16-16 16h-48c-8.8 0-16-7.2-16-16V176c0-8.8 7.2-16 16-16h48c8.8 0 16 7.2 16 16z"
+                  class=""
+                />
+                <path
+                  v-else
+                  style="fill:black;"
+                  d="M371.7 238l-176-107c-15.8-8.8-35.7 2.5-35.7 21v208c0 18.4 19.8 29.8 35.7 21l176-101c16.4-9.1 16.4-32.8 0-42zM504 256C504 119 393 8 256 8S8 119 8 256s111 248 248 248 248-111 248-248zm-448 0c0-110.5 89.5-200 200-200s200 89.5 200 200-89.5 200-200 200S56 366.5 56 256z"
+                  class=""
+                /></svg>
+            </a>
+          </div>
+
+          <div class="twitter-share">
+            <a
+              class="hand-over"
+              title="Share on Twitter"
+              @click="tweetMessage(dialog.passage)"
+            >
+              <svg
+                id="White"
                 class=""
-              />
-              <path
-                v-else
-                style="fill:black;"
-                d="M371.7 238l-176-107c-15.8-8.8-35.7 2.5-35.7 21v208c0 18.4 19.8 29.8 35.7 21l176-101c16.4-9.1 16.4-32.8 0-42zM504 256C504 119 393 8 256 8S8 119 8 256s111 248 248 248 248-111 248-248zm-448 0c0-110.5 89.5-200 200-200s200 89.5 200 200-89.5 200-200 200S56 366.5 56 256z"
-                class=""
-              /></svg>
-          </a>
+                width="20"
+                height="20"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                version="1.1"
+                x="0px"
+                y="0px"
+                viewBox="0 0 400 400"
+                style="enable-background:new 0 0 400 400;"
+                xml:space="preserve"
+              >
+                <path
+                  class="st0"
+                  d="M400,400H0V0h400V400z M153.6,301.6c94.3,0,145.9-78.2,145.9-145.9c0-2.2,0-4.4-0.1-6.6  c10-7.2,18.7-16.3,25.6-26.6c-9.2,4.1-19.1,6.8-29.5,8.1c10.6-6.3,18.7-16.4,22.6-28.4c-9.9,5.9-20.9,10.1-32.6,12.4  c-9.4-10-22.7-16.2-37.4-16.2c-28.3,0-51.3,23-51.3,51.3c0,4,0.5,7.9,1.3,11.7c-42.6-2.1-80.4-22.6-105.7-53.6  c-4.4,7.6-6.9,16.4-6.9,25.8c0,17.8,9.1,33.5,22.8,42.7c-8.4-0.3-16.3-2.6-23.2-6.4c0,0.2,0,0.4,0,0.7c0,24.8,17.7,45.6,41.1,50.3  c-4.3,1.2-8.8,1.8-13.5,1.8c-3.3,0-6.5-0.3-9.6-0.9c6.5,20.4,25.5,35.2,47.9,35.6c-17.6,13.8-39.7,22-63.7,22  c-4.1,0-8.2-0.2-12.2-0.7C97.7,293.1,124.7,301.6,153.6,301.6"
+                />
+              </svg>
+            </a>
+          </div>
         </div>
         <div class="margin-right">
           {{ dialog.passage }}
@@ -166,6 +196,12 @@ export default {
       }
       this.vueplayer.player.currentTime = start
       this.vueplayer.player.play()
+    },
+    tweetMessage (msg) {
+      const url = 'https://yr.media/the-dread-play-artificial-Intelligence'
+      const tweet = `#DreadAndPlay: “${msg}” - via @itsyrmedia ${url}`
+      const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}`
+      window.open(tweetUrl, 'pop', 'width=600, height=400, scrollbars=no')
     },
     onSeek (event) {
       this.setCurrPassage()
@@ -305,6 +341,19 @@ export default {
     bottom: 0;
   }
   .small-play {
+    position: sticky;
+    top: 130px;
+    float: right;
+    a {
+      text-decoration: unset;
+      border-bottom: unset;
+    }
+    a:hover {
+      background-color: unset;
+      text-decoration: unset;
+    }
+  }
+  .twitter-share {
     position: sticky;
     top: 130px;
     float: right;
