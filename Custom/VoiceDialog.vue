@@ -91,7 +91,7 @@
                 x="0px"
                 y="0px"
                 viewBox="0 0 400 400"
-                style="enable-background:new 0 0 400 400;"
+                style=""
                 xml:space="preserve"
               >
                 <path

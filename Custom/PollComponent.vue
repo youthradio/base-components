@@ -7,10 +7,10 @@
       v-if="!hasVoted"
       class="quiz-answers flex-item"
     >
-      <button @click="submitVote('A')">
+      <button @click="submitVote(questionSet.options[0].title)">
         {{ questionSet.options[0].title }}
       </button>
-      <button @click="submitVote('B')">
+      <button @click="submitVote(questionSet.options[1].title)">
         {{ questionSet.options[1].title }}
       </button>
     </div>
@@ -18,7 +18,8 @@
       v-else
       class="quiz-result flex-item"
     >
-      You selected {{ selectedButton }}!
+      <h2>Yo, same.</h2>
+      ??% answered "{{ selectedButton }}"
     </div>
   </div>
 </template>
@@ -74,6 +75,16 @@ export default {
     .flex-item {
       margin: 0 1rem 0 1rem;
     }
+  }
+}
+
+.quiz-result {
+  background-color: #C4C4C4;
+  text-align: center;
+  border-radius: 5px;
+  padding: 2rem;
+  h2{
+    padding: 0;
   }
 }
 
