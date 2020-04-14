@@ -186,7 +186,7 @@ export default {
   methods: {
     tweetMessage (msg, author) {
       const url = 'https://interactive.yr.media/the-dread-play-artificial-Intelligence'
-      const tweet = `#DreadAndPlay: “${msg}” by ${author.name} @${author.twitter}- via @itsyrmedia ${url}`
+      const tweet = `#DreadAndPlay: “${msg.replace(/(\r\n|\n|\r)/gm, '')}” by ${author.name} @${author.twitter}- via @itsyrmedia ${url}`
       const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}`
       window.open(tweetUrl, 'pop', 'width=600, height=400, scrollbars=no')
     },
