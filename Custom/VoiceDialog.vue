@@ -11,7 +11,7 @@
       @ready="onPlayerReady"
       @canplay="audioReady"
     >
-      <audio>
+      <audio preload="metadata">
         <source
           v-for="audio in audios"
           :key="audio.src"
@@ -28,12 +28,12 @@
     >
       <div class="profile-container">
         <img
-          :src="guestsMap.get(dialog.speaker).photo.a"
-          class="profile-img hidden"
+          :data-src="guestsMap.get(dialog.speaker).photo.a"
+          class="lazyload profile-img hidden"
         >
         <img
-          :src="guestsMap.get(dialog.speaker).photo.b"
-          class="profile-img visible"
+          :data-src="guestsMap.get(dialog.speaker).photo.b"
+          class="lazyload profile-img visible"
         >
         <span class="bio"> Bio </span>
         <div

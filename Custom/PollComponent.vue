@@ -79,6 +79,7 @@ h3 {
   padding: 1rem;
   font-weight: 800;
   text-align: center;
+  margin: auto;
 }
 
 .quiz-question {
@@ -125,6 +126,7 @@ h3 {
     font-size: 1rem;
     font-weight: 300;
     margin: 0.5rem;
+    min-height: 3.5rem;
   }
 }
 </style>
