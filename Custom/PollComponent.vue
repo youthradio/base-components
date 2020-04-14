@@ -1,22 +1,23 @@
 <template>
   <div class="container">
-    <div class="quiz-question flex-item">
+    <div class="quiz-question">
       <h3> {{ questionSet.question }} </h3>
     </div>
     <div
       v-if="!hasVoted"
-      class="quiz-answers flex-item"
+      class="quiz-answers"
     >
-      <button @click="submitVote('A')">
-        {{ questionSet.options[0].title }}
-      </button>
-      <button @click="submitVote('B')">
-        {{ questionSet.options[1].title }}
+      <button
+        v-for="option in questionSet.options"
+        :key="option.title"
+        @click="submitVote(option)"
+      >
+        {{ option.title }}
       </button>
     </div>
     <div
       v-else
-      class="quiz-result flex-item"
+      class="quiz-result"
     >
       You selected {{ selectedButton }}!
     </div>
@@ -51,72 +52,47 @@ export default {
 <style lang="scss" scoped>
 @import "~@/css/mixins";
 @import "~@/css/vars";
-
 .container {
-  padding-top: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  * {
-    font-size: 100%;
-  }
-  .flex-item {
-    margin: 0rem 0rem 1rem 0rem;
-    flex-grow: 1;
-    flex-basis: 0;
-  }
-  h3 {
-    padding: 0;
-    font-weight: 800;
-  }
   @include breakpoint(medium) {
     flex-direction: row;
-    .flex-item {
-      margin: 0 1rem 0 1rem;
-    }
   }
 }
 
-.quiz-question {
-  background-color: #332849;
-  color: white;
-  text-align: center;
-  border-radius: 5px;
+h3 {
   padding: 1rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.quiz-question {
+  display: flex;
+  place-content: center;
+  flex-basis: 70%;
+  background-color: $darkblue;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 0.5rem;
 }
 
 .quiz-answers {
   display: flex;
-  flex-direction: row;
   justify-content: center;
-
+  @include breakpoint(medium) {
+    flex-direction: column;
+  }
   //First button
   button {
-    background: transparent;
-    border: 5px solid #332849;
-    border-radius: 5px;
-    margin: 0rem 0.3rem 0rem 0;
-    width: 100%;
-    flex-grow: 1;
-    flex-basis: 0;
+    flex-basis: 50%;
+    text-align: center;
+    background: unset;
+    border: 0.5rem solid $darkblue;
+    border-radius: 0.5rem;
+    font-size: 1rem;
     font-weight: 300;
-  }
-  //Second button
-  button + button {
-    margin: 0rem 0 0rem 0.3rem;
-  }
-
-  @include breakpoint(medium) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    button {
-      margin: 0rem 0 0.3rem 0;
-    }
-    //Second button
-    button + button {
-      margin: 0.3rem 0 0rem 0;
-    }
+    margin: 0.5rem;
   }
 }
 </style>
