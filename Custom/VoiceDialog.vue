@@ -272,9 +272,6 @@ export default {
   margin-left: 1rem;
   margin-bottom: 1rem;
   padding: 0.5rem;
-  font-family: "Roboto Mono";
-  font-style: italic;
-  font-weight: 200;
   font-size: 0.8rem;
   &:before,
   &:after {
@@ -321,8 +318,9 @@ export default {
     margin-right: 20px;
   }
   .speaker-name {
+    font-family:  "Roboto Mono";
     display: block;
-    text-align: right;
+    text-align: left;
     font-weight: bold;
   }
 }
