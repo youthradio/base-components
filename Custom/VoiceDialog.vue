@@ -27,19 +27,24 @@
       class="dialog"
     >
       <div class="profile-container">
-        <img
-          :data-src="guestsMap.get(dialog.speaker).photo.a"
-          width="200px"
-          height="200px"
-          class="lazyload profile-img hidden"
-        >
-        <img
-          :data-src="guestsMap.get(dialog.speaker).photo.b"
-          width="200px"
-          height="200px"
-          class="lazyload profile-img visible"
-        >
-        <span class="bio"> Bio </span>
+        <template v-if="!dialog.repeate">
+          <img
+            :data-src="guestsMap.get(dialog.speaker).photo.a"
+            width="200px"
+            height="200px"
+            class="lazyload profile-img hidden"
+          >
+          <img
+            :data-src="guestsMap.get(dialog.speaker).photo.b"
+            width="200px"
+            height="200px"
+            class="lazyload profile-img visible"
+          >
+          <span class="bio"> Bio </span>
+        </template>
+        <template v-else>
+          <div class="profile-img" />
+        </template>
         <div
           class="bio-tootlip"
           :style="{backgroundColor: guestsMap.get(dialog.speaker).color}"
@@ -75,31 +80,17 @@
                 class=""
               /></svg>
           </a>
-        </div>
-        <div class="small-play">
           <a
             href="#"
             @click.prevent="tweetMessage(dialog.passage, guestsMap.get(dialog.speaker))"
           >
             <svg
-              id="White"
-              class="float-right"
+              xmlns="http://www.w3.org/2000/svg"
               width="20"
               height="20"
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              version="1.1"
-              x="0px"
-              y="0px"
-              viewBox="0 0 400 400"
-              style="enable-background:new 0 0 400 400;"
-              xml:space="preserve"
+              viewBox="0 0 24 24"
             >
-              <path
-                class="st0"
-                d="M400,400H0V0h400V400z M153.6,301.6c94.3,0,145.9-78.2,145.9-145.9c0-2.2,0-4.4-0.1-6.6  c10-7.2,18.7-16.3,25.6-26.6c-9.2,4.1-19.1,6.8-29.5,8.1c10.6-6.3,18.7-16.4,22.6-28.4c-9.9,5.9-20.9,10.1-32.6,12.4  c-9.4-10-22.7-16.2-37.4-16.2c-28.3,0-51.3,23-51.3,51.3c0,4,0.5,7.9,1.3,11.7c-42.6-2.1-80.4-22.6-105.7-53.6  c-4.4,7.6-6.9,16.4-6.9,25.8c0,17.8,9.1,33.5,22.8,42.7c-8.4-0.3-16.3-2.6-23.2-6.4c0,0.2,0,0.4,0,0.7c0,24.8,17.7,45.6,41.1,50.3  c-4.3,1.2-8.8,1.8-13.5,1.8c-3.3,0-6.5-0.3-9.6-0.9c6.5,20.4,25.5,35.2,47.9,35.6c-17.6,13.8-39.7,22-63.7,22  c-4.1,0-8.2-0.2-12.2-0.7C97.7,293.1,124.7,301.6,153.6,301.6"
-              />
-            </svg>
+              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" /></svg>
           </a>
         </div>
         <div class="margin-right">
@@ -116,6 +107,7 @@
 </template>
 
 <script>
+import POSTCONFIG from '../../post.config'
 import VuePlyr from './VuePlyr.vue'
 
 export default {
@@ -189,8 +181,8 @@ export default {
   },
   methods: {
     tweetMessage (msg, author) {
-      const url = 'https://interactive.yr.media/the-dread-play-artificial-Intelligence'
-      const tweet = `#DreadAndPlay: “${msg.replace(/(\r\n|\n|\r)/gm, '')}” by ${author.name} @${author.twitter}- via @itsyrmedia ${url}`
+      const url = POSTCONFIG.url
+      const tweet = `#DreadAndPlay: “${msg.replace(/(\r\n|\n|\r)/gm, '')}” by ${author.name} @${author.twitter} - via @itsyrmedia ${url}`
       const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}`
       window.open(tweetUrl, 'pop', 'width=600, height=400, scrollbars=no')
     },
@@ -256,7 +248,10 @@ export default {
   flex-direction: column;
   // background-color: lightblue;
   .profile-img {
-    width: 100px;
+    width: 60px;
+    @include breakpoint(medium) {
+      width: 100px;
+    }
     height: auto;
   }
   .hidden {
@@ -274,7 +269,7 @@ export default {
 
   .bio {
     background-color: white;
-    font-size: 1rem;
+    font-size: 0.5rem;
     font-weight: 200;
     text-align: center;
     cursor: pointer;
@@ -344,6 +339,7 @@ export default {
     a {
       text-decoration: unset;
       border-bottom: unset;
+      display: block;
     }
     a:hover {
       background-color: unset;

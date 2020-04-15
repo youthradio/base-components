@@ -21,7 +21,7 @@
     >
       <div class="content">
         <strong> {{ result.total }}% </strong>
-        choose {{ result.title }}
+        chose {{ result.title }}
       </div>
     </div>
   </div>

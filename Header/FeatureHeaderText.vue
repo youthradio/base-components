@@ -75,13 +75,13 @@ export default {
   width: 100%;
   height: auto;
   object-fit: cover;
+  max-height: 60vh;
 }
 .feature-container {
   position: relative;
   display: flex;
   flex-direction: column;
   background-color: $grey;
-  // height: 80vh;
 }
 .base-header {
   position: absolute;
