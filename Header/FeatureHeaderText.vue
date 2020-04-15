@@ -11,7 +11,11 @@
       class="img-fluid"
     >
       <source
-        :src="`./${headerData.featureImage}.webp`"
+        :src="`./${headerData.featureImage}.ogv`"
+        type="video/ogv"
+      >
+      <source
+        :src="`./${headerData.featureImage}.webm`"
         type="video/webm"
       >
       <source
@@ -94,18 +98,20 @@ export default {
   h3 {
     font-family: "Assistant";
     font-style: normal;
-    font-weight: 300;
+    font-weight: 500;
+    color: $white;
+    text-shadow: 0px 0px 20px black;
   }
   h3 {
-    font-size: 1rem;
+    font-size: 1.2rem;
     @include breakpoint(medium) {
       font-size: 1.5rem;
     }
     &:first-of-type {
-      margin-left: -40%;
+      margin-left: -30%;
     }
     &:last-of-type {
-      margin-right: -40%;
+      margin-right: -30%;
     }
   }
   h1 {
