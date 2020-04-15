@@ -29,10 +29,14 @@
       <div class="profile-container">
         <img
           :data-src="guestsMap.get(dialog.speaker).photo.a"
+          width="200px"
+          height="200px"
           class="lazyload profile-img hidden"
         >
         <img
           :data-src="guestsMap.get(dialog.speaker).photo.b"
+          width="200px"
+          height="200px"
           class="lazyload profile-img visible"
         >
         <span class="bio"> Bio </span>
