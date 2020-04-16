@@ -3,25 +3,23 @@
     <div class="quiz-question">
       <h3> {{ questionSet.question }} </h3>
     </div>
-    <div
-      v-if="!hasVoted"
-      class="quiz-answers"
-    >
+    <div class="quiz-answers">
       <button
         v-for="option in questionSet.options"
         :key="option.title"
+        :style="{visibility: hasVoted? 'hidden' : ''}"
         @click="submitVote(option)"
       >
         {{ option.title }}
       </button>
-    </div>
-    <div
-      v-else
-      class="quiz-result"
-    >
-      <div class="content">
-        <strong> {{ result.total }}% </strong>
-        chose {{ result.title }}
+      <div
+        v-if="hasVoted"
+        class="quiz-result"
+      >
+        <div class="content">
+          <strong> {{ result.total }}% </strong>
+          chose {{ result.title }}
+        </div>
       </div>
     </div>
   </div>
@@ -67,6 +65,7 @@ export default {
 <style lang="scss" scoped>
 @import "~@/css/mixins";
 @import "~@/css/vars";
+
 .container {
   display: flex;
   flex-direction: column;
@@ -89,29 +88,31 @@ h3 {
   background-color: $darkblue;
   color: $white;
   border-radius: 0.5rem;
-  padding: 1rem;
-  margin: 0.5rem;
 }
 .quiz-result {
-  flex-basis: 30%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
   display: flex;
   flex-grow: 1;
   place-items: center;
   background-color: $lightgrey;
   border-radius: 0.5rem;
-  padding: 1rem;
-  margin: 0.5rem;
-
   .content {
     margin: auto;
+    padding: 1rem;
+
     font-size: larger;
   }
 }
 
 .quiz-answers {
+  position: relative;
   display: flex;
   justify-content: center;
-  flex-basis: 30%;
+  margin-left: 0.5rem;
+  flex-basis: 35%;
   @include breakpoint(medium) {
     flex-direction: column;
   }
@@ -125,8 +126,21 @@ h3 {
     border-radius: 0.5rem;
     font-size: 1rem;
     font-weight: 300;
-    margin: 0.5rem;
     min-height: 3.5rem;
+    &:hover {
+      background-color: $lightpurple;
+      color: $white;
+    }
+
+    &:first-of-type {
+      margin-bottom: 0.5rem;
+      &:active {
+        transform: translateY(5px);
+      }
+    }
+    &:active {
+      transform: translateY(-5px);
+    }
   }
 }
 </style>

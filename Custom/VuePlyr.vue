@@ -72,7 +72,7 @@ export default {
   // background: 0 0;
   // border: 0;
   // border-radius: 26px;
-  color: $green;
+  color: $darkblue;
   // display: block;
   // height: 19px;
   // margin: 0;
@@ -90,6 +90,6 @@ export default {
 .plyr--video .plyr__control[aria-expanded=true],
 .plyr__control--overlaid
 {
-  background: $green;
+  background: $darkblue;
 }
 </style>
