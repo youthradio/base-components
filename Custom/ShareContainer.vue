@@ -40,7 +40,7 @@ export default {
   methods: {
     tweetMessage () {
       const url = window.location.href
-      const tweet = POSTCONFIG.title + ` :${url}`
+      const tweet = POSTCONFIG.title + `: ${url}`
       const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}`
       window.open(tweetUrl, 'pop', 'width=600, height=400, scrollbars=no')
     },

@@ -3,12 +3,17 @@
     ref="headerImage"
     class="feature-container"
   >
+    <img
+      class="img-fluid"
+      width="1280"
+      height="720"
+    >
     <video
       autoplay
       loop
       muted
       playsinline
-      class="img-fluid"
+      class="img-fluid video-float"
     >
       <source
         :src="`./${headerData.featureImage}.ogv`"
@@ -70,6 +75,10 @@ export default {
 @import "~@/css/vars";
 @import "~@/css/mixins";
 
+.video-float{
+  position:absolute;
+  top: 0;
+}
 .img-fluid {
   max-width: 100%;
   width: 100%;
