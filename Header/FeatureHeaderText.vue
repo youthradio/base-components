@@ -75,7 +75,6 @@ export default {
   width: 100%;
   height: auto;
   object-fit: cover;
-  max-height: 60vh;
 }
 .feature-container {
   position: relative;
