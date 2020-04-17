@@ -3,11 +3,6 @@
     ref="headerImage"
     class="feature-container"
   >
-    <img
-      class="img-fluid"
-      width="1280"
-      height="720"
-    >
     <video
       autoplay
       loop
@@ -75,8 +70,8 @@ export default {
 @import "~@/css/vars";
 @import "~@/css/mixins";
 
-.video-float{
-  position:absolute;
+.video-float {
+  position: absolute;
   top: 0;
 }
 .img-fluid {
@@ -89,7 +84,13 @@ export default {
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: $grey;
+  background-color: $darkblue;
+  padding-bottom: 56.25%;
+  height: 0;
+  background: radial-gradient(circle at 25% 10%, #292e49 20%, transparent 100%),
+    radial-gradient(circle at 70% 30%, #6b5b67 50%, transparent 100%),
+    radial-gradient(at 30% 50%, #332849 20%, transparent 100%),
+    radial-gradient(at 70% 90%, #18102c 20%, white 100%);
 }
 .base-header {
   position: absolute;

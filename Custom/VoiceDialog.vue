@@ -280,6 +280,7 @@ export default {
     font-size: 0.5rem;
     font-weight: 200;
     text-align: center;
+    width: 100%;
     cursor: pointer;
     &:hover {
       + .bio-tootlip {
