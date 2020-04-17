@@ -129,6 +129,11 @@ export default {
       type: Array,
       require: true,
       default: null
+    },
+    sectionId: {
+      type: String,
+      require: true,
+      default: null
     }
   },
   data () {
@@ -183,7 +188,7 @@ export default {
   },
   methods: {
     tweetMessage (msg, author) {
-      const url = POSTCONFIG.url
+      const url = POSTCONFIG.url + '/' + this.sectionId
       const tweet = `#DreadAndPlay: “${msg.replace(/(\r\n|\n|\r)/gm, '')}” by ${author.name} @${author.twitter} - via @itsyrmedia ${url}`
       const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}`
       window.open(tweetUrl, 'pop', 'width=600, height=400, scrollbars=no')
