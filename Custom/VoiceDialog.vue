@@ -95,7 +95,9 @@
         </div>
         <div class="margin-right">
           {{ dialog.passage }}
-          <span class="speaker-name">{{ guestsMap.get(dialog.speaker).name }}</span>
+          <h5 class="speaker-name">
+            {{ guestsMap.get(dialog.speaker).name }}
+          </h5>
         </div>
         <div
           class="progress"
@@ -240,6 +242,7 @@ export default {
 .dialog {
   display: flex;
   align-items: flex-start;
+  margin-top: 1rem;
 }
 .profile-container {
   position: sticky;
@@ -303,7 +306,6 @@ export default {
   margin-left: 1rem;
   margin-bottom: 1rem;
   padding: 0.5rem;
-  font-size: 0.8rem;
   &:before,
   &:after {
     right: 100%;
@@ -353,9 +355,7 @@ export default {
     margin-right: 25px;
   }
   .speaker-name {
-    font-family: "Roboto Mono";
-    display: block;
-    text-align: left;
+    padding: 0;
     font-weight: bold;
   }
 }

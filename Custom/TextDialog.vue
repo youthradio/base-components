@@ -5,9 +5,9 @@
       :key="dialog.text"
       class="dialog"
     >
-      <div class="speaker-name col-l">
+      <h5 class="speaker-name col-l">
         {{ dialog.name }}
-      </div>
+      </h5>
       <div
         class="text col-r"
         v-html="dialog.text"
@@ -59,11 +59,9 @@ export default {
   .col-r {
     grid-area: right;
   }
-  .text {
-    font-size: 0.8rem;
-  }
   .speaker-name {
     font-family: "Roboto Mono";
+    padding: 0;
     font-weight: bold;
     text-align: right;
   }

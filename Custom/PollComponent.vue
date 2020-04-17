@@ -111,10 +111,13 @@ h3 {
   position: relative;
   display: flex;
   justify-content: center;
-  margin-left: 0.5rem;
   flex-basis: 35%;
+  margin-top: 0.5rem;
+
   @include breakpoint(medium) {
     flex-direction: column;
+    margin-left: 0.5rem;
+    margin-top: 0;
   }
   //First button
   button {
@@ -132,10 +135,21 @@ h3 {
       color: $white;
     }
 
-    &:first-of-type {
-      margin-bottom: 0.5rem;
+    &:nth-of-type(1) {
+      margin-right: 0.25rem;
+      @include breakpoint(medium) {
+        margin-bottom: 0.25rem;
+        margin-right: 0;
+      }
       &:active {
         transform: translateY(5px);
+      }
+    }
+    &:nth-of-type(2) {
+      margin-left: 0.25rem;
+      @include breakpoint(medium) {
+        margin-left: 0;
+        margin-top: 0.25rem;
       }
     }
     &:active {
