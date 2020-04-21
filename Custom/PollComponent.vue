@@ -97,12 +97,13 @@ h3 {
   display: flex;
   flex-grow: 1;
   place-items: center;
-  background-color: $lightgrey;
+  background-color: $lightpurple;
+  color: $white;
   border-radius: 0.5rem;
+  text-align: center;
   .content {
     margin: auto;
     padding: 1rem;
-
     font-size: larger;
   }
 }

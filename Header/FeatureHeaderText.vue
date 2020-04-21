@@ -33,7 +33,6 @@
       @load="updateHeaderHeight"
     > -->
     <div class="base-header title">
-      <h3> {{ headerData.suptitle }}</h3>
       <h1 v-html="headerData.title" />
       <h3> {{ headerData.subtitle }}</h3>
 
@@ -117,14 +116,14 @@ export default {
       font-size: 1.5rem;
     }
     &:first-of-type {
-      margin-left: -30%;
+      // margin-left: -30%;
     }
     &:last-of-type {
-      margin-right: -30%;
+      // margin-right: -30%;
     }
   }
   h1 {
-    padding: 0;
+    padding: 1rem;
     text-transform: uppercase;
     font-size: 5rem;
     line-height: 3.5rem;

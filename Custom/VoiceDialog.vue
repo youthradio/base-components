@@ -310,7 +310,6 @@ export default {
   border-left-width: 2px;
   border-left-style: solid;
   margin-left: 1rem;
-  margin-bottom: 1rem;
   padding: 0.5rem;
   &:before,
   &:after {
