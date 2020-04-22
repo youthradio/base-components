@@ -25,6 +25,8 @@
   </div>
 </template>
 <script>
+import POSTCONFIG from '~/post.config'
+
 export default {
   props: {
     questionSet: {
@@ -44,7 +46,7 @@ export default {
   methods: {
     async submitVote (vote) {
       const res = await fetch(
-        `https://ee51aej7u4.execute-api.us-west-2.amazonaws.com/latest/vote_poll/${this.questionSet.id}/${vote.id}`,
+        `${POSTCONFIG.POLLSERVER}/vote_poll/${this.questionSet.id}/${vote.id}`,
         {
           method: 'GET',
           credentials: 'include'

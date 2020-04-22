@@ -50,7 +50,7 @@
           :style="{backgroundColor: guestsMap.get(dialog.speaker).color}"
         >
           <strong> {{ guestsMap.get(dialog.speaker).name }} </strong>
-          {{ guestsMap.get(dialog.speaker).bio }}
+          <span v-html="guestsMap.get(dialog.speaker).bio" />
         </div>
       </div>
       <div
