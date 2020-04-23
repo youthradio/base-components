@@ -111,7 +111,7 @@ export default {
   h3 {
     color: $white;
     text-shadow: 0px 0px 20px black;
-
+    letter-spacing: 0;
     /deep/ span {
       &::before {
         content: "\A";
@@ -138,12 +138,12 @@ export default {
   h1 {
     padding: 0rem;
     text-transform: uppercase;
-    font-size: 2.5rem;
     line-height: 2rem;
     font-weight: 800;
+    font-size: 2.5rem;
     @include breakpoint(medium) {
-      font-size: 3.5rem;
-      line-height: 3rem;
+      line-height: 3.5rem;
+      font-size: 4.5rem;
     }
   }
 }

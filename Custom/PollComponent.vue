@@ -78,6 +78,7 @@ export default {
 
 h3 {
   padding: 1rem;
+  letter-spacing: 0;
   font-weight: 800;
   text-align: center;
   margin: auto;
@@ -86,7 +87,7 @@ h3 {
 .quiz-question {
   display: flex;
   place-content: center;
-  flex-basis: 70%;
+  flex-basis: 60%;
   background-color: $darkblue;
   color: $white;
   border-radius: 0.5rem;
@@ -114,7 +115,7 @@ h3 {
   position: relative;
   display: flex;
   justify-content: center;
-  flex-basis: 35%;
+  flex-basis: 40%;
   margin-top: 0.5rem;
 
   @include breakpoint(medium) {
