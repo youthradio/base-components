@@ -121,7 +121,6 @@ export default {
   }
   h3 {
     max-width: 85%;
-    font-family: "Roboto Mono";
     font-style: normal;
     font-weight: 500;
     font-size: 0.9rem;
@@ -143,7 +142,7 @@ export default {
     font-size: 2.5rem;
     @include breakpoint(medium) {
       line-height: 3.5rem;
-      font-size: 4.5rem;
+      font-size: 4rem;
     }
   }
 }
@@ -157,7 +156,7 @@ export default {
     font-weight: 400;
     font-size: 0.5rem;
     line-height: 1rem;
-    font-family: "Roboto Mono", sans-serif;
+    font-family: "Roboto Mono", Arial, Helvetica, sans-serif;
     text-align: center;
     color: $blue-button;
   }
