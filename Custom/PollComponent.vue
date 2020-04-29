@@ -125,6 +125,7 @@ h3 {
   }
   //First button
   button {
+    font-family: "Assistant", Arial, Helvetica, sans-serif;
     cursor: pointer;
     flex-basis: 50%;
     text-align: center;
