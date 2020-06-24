@@ -1,5 +1,5 @@
 <template>
-  <div role="social-share-bar">
+  <div>
     <ul>
       <li>
         <span class="icon-share" />
@@ -30,6 +30,7 @@
       </li>
     </ul>
   </div>
+  </di>
 </template>
 
 <script>
