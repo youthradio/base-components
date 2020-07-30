@@ -5,12 +5,20 @@
       activeMenu ? 'navigation-open' : '',
       hideNavbar ? 'hide-navigation' : ''
     ]"
-    :style="!toggleEnable ? { position: 'sticky', top: 0 } : ''"
+    :style="
+      menuFixed ? '' : !toggleEnable ? { position: 'sticky', top: 0 } : ''
+    "
   >
     <header
       class="main-header"
       tabindex="-1"
-      :style="!toggleEnable ? { position: 'initial' } : ''"
+      :style="
+        menuFixed
+          ? { position: 'initial' }
+          : !toggleEnable
+          ? { position: 'initial' }
+          : ''
+      "
     >
       <div class="header-container">
         <div>
@@ -194,6 +202,11 @@ export default {
   name: 'MenuHeader',
   mixins: [CommonUtils],
   props: {
+    menuFixed: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
     toggleEnable: {
       type: Boolean,
       required: false,
