@@ -35,9 +35,8 @@ c0,0.4-0.1,0.6-0.5,0.5C33.8,26.6,33.6,26.6,33.4,26.6z"
 
 <style lang="scss" scoped>
 @import '~@/css/mixins';
-    .svg-logo {
-    width: 40px;
-    height: 40px;
-
-    }
+.svg-logo {
+  width: 40px;
+  height: 40px;
+}
 </style>

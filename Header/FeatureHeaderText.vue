@@ -1,27 +1,9 @@
 <template>
-  <div
-    ref="headerImage"
-    class="feature-container"
-  >
-    <video
-      autoplay
-      loop
-      muted
-      playsinline
-      class="img-fluid video-float"
-    >
-      <source
-        :src="`./${headerData.featureImage}.ogv`"
-        type="video/ogv"
-      >
-      <source
-        :src="`./${headerData.featureImage}.webp`"
-        type="video/webp"
-      >
-      <source
-        :src="`./${headerData.featureImage}.mp4`"
-        type="video/mp4"
-      >
+  <div ref="headerImage" class="feature-container">
+    <video autoplay loop muted playsinline class="img-fluid video-float">
+      <source :src="`./${headerData.featureImage}.ogv`" type="video/ogv" />
+      <source :src="`./${headerData.featureImage}.webp`" type="video/webp" />
+      <source :src="`./${headerData.featureImage}.mp4`" type="video/mp4" />
       <a :href="`./${headerData.featureImage}.gif`">No support </a>
     </video>
     <!-- <img
@@ -52,23 +34,25 @@ export default {
       default: null
     }
   },
-  data () {
+  data() {
     return {
       innervalue: null
     }
   },
   methods: {
-    updateHeaderHeight () {
-      this.$emit('onHeaderImgHeight', this.$refs.headerImage.getBoundingClientRect().height)
+    updateHeaderHeight() {
+      this.$emit(
+        'onHeaderImgHeight',
+        this.$refs.headerImage.getBoundingClientRect().height
+      )
     }
   }
-
 }
 </script>
 
 <style lang="scss" scoped>
-@import "~@/css/vars";
-@import "~@/css/mixins";
+@import '~@/css/vars';
+@import '~@/css/mixins';
 
 .video-float {
   position: absolute;
@@ -114,7 +98,7 @@ export default {
     letter-spacing: 0;
     /deep/ span {
       &::before {
-        content: "\A";
+        content: '\A';
         white-space: pre;
       }
     }
@@ -156,7 +140,7 @@ export default {
     font-weight: 400;
     font-size: 0.5rem;
     line-height: 1rem;
-    font-family: "Roboto Mono", Arial, Helvetica, sans-serif;
+    font-family: 'Roboto Mono', Arial, Helvetica, sans-serif;
     text-align: center;
     color: $blue-button;
   }

@@ -1,12 +1,16 @@
 <template>
   <div
-    :class="['top-header header-sticky row', activeMenu ? 'navigation-open':'', hideNavbar ? 'hide-navigation':'']"
-    :style="!toggleEnable? {position: 'sticky', top: 0}:''"
+    :class="[
+      'top-header header-sticky row',
+      activeMenu ? 'navigation-open' : '',
+      hideNavbar ? 'hide-navigation' : ''
+    ]"
+    :style="!toggleEnable ? { position: 'sticky', top: 0 } : ''"
   >
     <header
       class="main-header"
       tabindex="-1"
-      :style="!toggleEnable? {position: 'initial'}:''"
+      :style="!toggleEnable ? { position: 'initial' } : ''"
     >
       <div class="header-container">
         <div>
@@ -18,13 +22,7 @@
                 viewBox="0,0,66,66"
               >
                 <defs>
-                  <filter
-                    id="shad"
-                    x="0"
-                    y="0"
-                    width="200%"
-                    height="200%"
-                  >
+                  <filter id="shad" x="0" y="0" width="200%" height="200%">
                     <feDropShadow
                       dx="2"
                       dy="2"
@@ -32,7 +30,6 @@
                       flood-color="#2E2E2E"
                       flood-opacity="1"
                     />
-
                   </filter>
                 </defs>
                 <path
@@ -45,10 +42,7 @@
               </svg>
             </a>
           </div>
-          <button
-            class="hamburger"
-            @click="toggleMenu()"
-          >
+          <button class="hamburger" @click="toggleMenu()">
             <span />
             <span />
             <span />
@@ -56,37 +50,22 @@
           </button>
         </div>
         <div>
-          <a
-            href="https://yr.media/join-us/"
-            class="icon-join-us"
-          />
-          <button
-            class="icon-search"
-            @click="toggleSeach()"
-          />
+          <a href="https://yr.media/join-us/" class="icon-join-us" />
+          <button class="icon-search" @click="toggleSeach()" />
         </div>
       </div>
-      <div :class="['search-container', searchContainer? 'active':'']">
+      <div :class="['search-container', searchContainer ? 'active' : '']">
         <div class="search-input">
           <form action="https://yr.media/search">
-            <input
-              type="text"
-              name="s"
-            >
+            <input type="text" name="s" />
             <button>Go</button>
           </form>
         </div>
-        <button
-          class="icon-close"
-          @click="toggleSeach()"
-        />
+        <button class="icon-close" @click="toggleSeach()" />
       </div>
     </header>
     <nav class="main-navigation">
-      <ul
-        id="menu-main-menu"
-        class="main-menu"
-      >
+      <ul id="menu-main-menu" class="main-menu">
         <li
           id="menu-item-35699"
           class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-35699"
@@ -128,35 +107,28 @@
         <div>
           <ul class="social-menu">
             <li>
-              <a
-                href="https://www.youtube.com/user/youthradio"
-                target="_blank"
-              ><span class="icon-youtube" /></a>
+              <a href="https://www.youtube.com/user/youthradio" target="_blank"
+                ><span class="icon-youtube"
+              /></a>
             </li>
             <li>
-              <a
-                href="https://www.facebook.com/yrmediapage"
-                target="_blank"
-              ><span class="icon-facebook" /></a>
+              <a href="https://www.facebook.com/yrmediapage" target="_blank"
+                ><span class="icon-facebook"
+              /></a>
             </li>
             <li>
-              <a
-                href="https://twitter.com/itsYRmedia"
-                target="_blank"
-              ><span class="icon-twitter" /></a>
+              <a href="https://twitter.com/itsYRmedia" target="_blank"
+                ><span class="icon-twitter"
+              /></a>
             </li>
             <li>
-              <a
-                href="https://www.instagram.com/yr.media"
-                target="_blank"
-              ><span class="icon-instagram" /></a>
+              <a href="https://www.instagram.com/yr.media" target="_blank"
+                ><span class="icon-instagram"
+              /></a>
             </li>
           </ul>
 
-          <ul
-            id="menu-media-categories-menu"
-            class="media-menu"
-          >
+          <ul id="menu-media-categories-menu" class="media-menu">
             <li
               id="menu-item-38608"
               class="menu-item menu-item-type-custom menu-item-object-custom menu-item-38608"
@@ -165,7 +137,8 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 href="https://adp.fm/"
-              >ADP.FM Stream</a>
+                >ADP.FM Stream</a
+              >
             </li>
             <li
               id="menu-item-36510"
@@ -182,10 +155,7 @@
           </ul>
         </div>
         <div>
-          <ul
-            id="menu-second-header-menu"
-            class="pages-menu"
-          >
+          <ul id="menu-second-header-menu" class="pages-menu">
             <li
               id="menu-item-57009"
               class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57009"
@@ -222,9 +192,7 @@ import CommonUtils from '../../mixins/CommonUtils'
 
 export default {
   name: 'MenuHeader',
-  mixins: [
-    CommonUtils
-  ],
+  mixins: [CommonUtils],
   props: {
     toggleEnable: {
       type: Boolean,
@@ -237,7 +205,7 @@ export default {
       default: 0
     }
   },
-  data () {
+  data() {
     return {
       activeMenu: false,
       searchContainer: false,
@@ -246,7 +214,7 @@ export default {
     }
   },
   computed: {
-    logoFixed () {
+    logoFixed() {
       return {
         position: 'fixed',
         top: '10px',
@@ -255,14 +223,18 @@ export default {
       }
     }
   },
-  mounted () {
-    window.addEventListener('scroll', event => this.debouceEvent(event, this.onScroll), false)
+  mounted() {
+    window.addEventListener(
+      'scroll',
+      (event) => this.debouceEvent(event, this.onScroll),
+      false
+    )
     if (!this.toggleEnable) {
       this.hideNavbar = false
     }
   },
   methods: {
-    onScroll () {
+    onScroll() {
       this.hideNavbar = window.scrollY < this.offset + 83
       this.lastScrollY = window.scrollY
       if (this.activeMenu || this.searchContainer) {
@@ -270,12 +242,16 @@ export default {
         this.searchContainer = window.scrollY < this.offset + 83
       }
     },
-    toggleMenu () {
-      if (this.searchContainer) { this.toggleSeach() }
+    toggleMenu() {
+      if (this.searchContainer) {
+        this.toggleSeach()
+      }
       this.activeMenu = !this.activeMenu
     },
-    toggleSeach () {
-      if (this.activeMenu) { this.toggleMenu() }
+    toggleSeach() {
+      if (this.activeMenu) {
+        this.toggleMenu()
+      }
       this.searchContainer = !this.searchContainer
     }
   }
@@ -284,5 +260,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-@import "~@/css/header/style.scss";
+@import './assets/style.scss';
 </style>

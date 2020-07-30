@@ -1,9 +1,6 @@
 <template>
   <div>
-    <div
-      ref="mapmap"
-      class="map"
-    />
+    <div ref="mapmap" class="map" />
   </div>
 </template>
 
@@ -17,41 +14,39 @@ export default {
       type: String,
       required: true
     }
-
   },
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
-  computed: {
-
-  },
-  mounted () {
+  computed: {},
+  mounted() {
     const runtime = new Runtime()
     const inspect = Inspector.into(this.$refs.mapmap)
     runtime.module(notebook, (name) => {
-      return (name === this.cellName || name === (this.cellName === 'map' ? 'viewof yearButon' : null)) && inspect()
+      return (
+        (name === this.cellName ||
+          name === (this.cellName === 'map' ? 'viewof yearButon' : null)) &&
+        inspect()
+      )
     })
   },
-  methods: {
-
-  }
+  methods: {}
 }
 </script>
 
 <style lang="scss" scoped>
-@import "~@/css/mixins";
-@import "~@/css/vars";
+@import '~@/css/mixins';
+@import '~@/css/vars';
 /deep/ .map {
   svg {
-    font-family: "Assistant", sans-serif !important;
+    font-family: 'Assistant', sans-serif !important;
     font-weight: 800;
   }
   .title {
     text-align: center;
     font-size: 1rem;
     font-weight: bold;
-    font-family: "Assistant", sans-serif !important;
+    font-family: 'Assistant', sans-serif !important;
     font-weight: 800;
     @include breakpoint(medium) {
       font-size: 0.7rem;
@@ -94,7 +89,7 @@ export default {
     }
   }
 
-  [data-mode="N/A"] {
+  [data-mode='N/A'] {
     font-size: 1rem;
   }
   .linechart .annotation-note-label {
@@ -128,7 +123,7 @@ export default {
   }
   button {
     position: relative;
-    font-family: "Assistant", sans-serif;
+    font-family: 'Assistant', sans-serif;
     font-size: 0.8rem;
     font-weight: bold;
     background-color: $white;

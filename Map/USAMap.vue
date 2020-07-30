@@ -1,18 +1,15 @@
 <template>
   <div>
-    <div
-      id="map"
-      ref="map"
-    />
+    <div id="map" ref="map" />
     <div>
       <div class="title">
         Year
       </div>
       <div class="options">
         <button
-          v-for="(year,id) in yearsButtonsData"
+          v-for="(year, id) in yearsButtonsData"
           :key="year"
-          :class="[yearSlider === id?'active':'']"
+          :class="[yearSlider === id ? 'active' : '']"
           @click="yearSlider = id"
         >
           {{ year }}
@@ -32,7 +29,8 @@ const WIDTH = 960
 const HEIGHT = 500
 const MARKER_S_MIN = 0.07
 const MARKER_S_MAX = 0.15
-const MARKER_PATH = 'M -19.732,-10.330125 C -165.03,-220.96916 -192,-242.58716 -192,-320.00016 c 0,-106.039 85.961,-192 192,-192 106.039,0 192,85.961 192,192 0,77.413 -26.97,99.031 -172.268,309.670035 -9.535,13.774 -29.93,13.773 -39.464,0 z'
+const MARKER_PATH =
+  'M -19.732,-10.330125 C -165.03,-220.96916 -192,-242.58716 -192,-320.00016 c 0,-106.039 85.961,-192 192,-192 106.039,0 192,85.961 192,192 0,77.413 -26.97,99.031 -172.268,309.670035 -9.535,13.774 -29.93,13.773 -39.464,0 z'
 export default {
   name: 'USAMap',
   props: {
@@ -57,7 +55,7 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       ageStateColorData: {},
       svg: null,
@@ -72,17 +70,15 @@ export default {
       yearsButtonsData: []
     }
   },
-  computed: {
-  },
+  computed: {},
   watch: {
-    yearSlider () {
-      this.svg.selectAll('.states')
-        .attr('fill', (d) => {
-          if (this.ageStateColorData[d.properties.STUSPS]) {
-            return this.ageStateColorData[d.properties.STUSPS][this.yearSlider][1]
-          }
-          return 'black'
-        })
+    yearSlider() {
+      this.svg.selectAll('.states').attr('fill', (d) => {
+        if (this.ageStateColorData[d.properties.STUSPS]) {
+          return this.ageStateColorData[d.properties.STUSPS][this.yearSlider][1]
+        }
+        return 'black'
+      })
 
       this.makeAnnotations.annotations().forEach((annotation) => {
         if (annotation.note.years) {
@@ -92,7 +88,7 @@ export default {
       this.makeAnnotations.updateText()
       this.fixCustomAnnotations()
     },
-    mapReady () {
+    mapReady() {
       if (this.mapReady) {
         this.preRender()
         this.drawMap()
@@ -102,26 +98,26 @@ export default {
       }
     }
   },
-  created () {
-  },
-  mounted () {
+  created() {},
+  mounted() {
     this.createSvg()
 
     // topojson.feature(this.mapData, this.mapData.objects.states).features
   },
   methods: {
-    createSvg () {
+    createSvg() {
       this.svg = d3.select(this.$refs.map).append('svg')
       this.aspect = WIDTH / HEIGHT
-      this.projection = geoAlbersUsaTerritories()
-        .translate([WIDTH / 2, HEIGHT / 2])
+      this.projection = geoAlbersUsaTerritories().translate([
+        WIDTH / 2,
+        HEIGHT / 2
+      ])
       this.path = d3.geoPath(this.projection)
       // this.svg.attr('width', WIDTH)
       //   .attr('height', HEIGHT)
       this.svg.attr('viewBox', '0 0 ' + WIDTH + ' ' + HEIGHT)
       // .attr('perserveAspectRatio', 'xMinYMid meet')
-      this.svg.style('width', '100%')
-        .style('height', 'auto')
+      this.svg.style('width', '100%').style('height', 'auto')
       const defs = this.svg.append('defs')
 
       const pattern = defs
@@ -135,27 +131,31 @@ export default {
         .attr('width', 5)
         .attr('height', 5)
         .attr('fill', 'lightgray')
-      pattern.append('path')
+      pattern
+        .append('path')
         .attr('d', 'M0 0L5 5ZM5 0L0 5Z')
         .attr('stroke', 'gray')
         .attr('stroke-width', 1)
 
       // create filter with id #drop-shadow
       // height=130% so that the shadow is not clipped
-      const filter = defs.append('filter')
+      const filter = defs
+        .append('filter')
         .attr('id', 'drop-shadow')
         .attr('height', '130%')
 
       // SourceAlpha refers to opacity of graphic that this filter will be applied to
       // convolve that with a Gaussian with standard deviation 3 and store result
       // in blur
-      filter.append('feGaussianBlur')
+      filter
+        .append('feGaussianBlur')
         .attr('in', 'SourceAlpha')
         .attr('stdDeviation', 5)
         .attr('result', 'blur')
       // translate output of Gaussian blur to the right and downwards with 2px
       // store result in offsetBlur
-      filter.append('feOffset')
+      filter
+        .append('feOffset')
         .attr('in', 'blur')
         .attr('dx', 5)
         .attr('dy', 5)
@@ -163,23 +163,22 @@ export default {
       // overlay original SourceGraphic over translated blurred opacity by using
       // feMerge filter. Order of specifying inputs is important!
       const feMerge = filter.append('feMerge')
-      feMerge.append('feMergeNode')
-        .attr('in', 'offsetBlur')
-      feMerge.append('feMergeNode')
-        .attr('in', 'SourceGraphic')
+      feMerge.append('feMergeNode').attr('in', 'offsetBlur')
+      feMerge.append('feMergeNode').attr('in', 'SourceGraphic')
       this.resizeContainer()
       window.addEventListener('resize', this.resizeContainer)
     },
-    preRender () {
-      const basetype = d3.annotationCustomType(
-        d3.annotationLabel, {
-          note: {
-            padding: 0,
-            bgPadding: 0,
-            wrap: 10
-          }
-        })
-      const allAges = this.contentData.map(e => e.values.map(d => +d[1])).flat()
+    preRender() {
+      const basetype = d3.annotationCustomType(d3.annotationLabel, {
+        note: {
+          padding: 0,
+          bgPadding: 0,
+          wrap: 10
+        }
+      })
+      const allAges = this.contentData
+        .map((e) => e.values.map((d) => +d[1]))
+        .flat()
       const ageRange = d3.extent(allAges)
       const allUniqueAges = allAges
         .filter((e, i, values) => values.indexOf(e) === i)
@@ -188,45 +187,56 @@ export default {
       const color = (val) => {
         // const ind = allUniqueAges.indexOf(val)
         if (!isNaN(val)) {
-          return d3.interpolateGreys(0.7 - (val - ageRange[0]) * (0.7 - 0.1) / (ageRange[1] - ageRange[0]))
+          return d3.interpolateGreys(
+            0.7 -
+              ((val - ageRange[0]) * (0.7 - 0.1)) / (ageRange[1] - ageRange[0])
+          )
         }
         return 'url(#fill-texture)'
       }
 
       // get years options from first content data row, only years
 
-      this.yearsButtonsData = this.contentData[0].values.map(e => e[0])
+      this.yearsButtonsData = this.contentData[0].values.map((e) => e[0])
 
       // filter unique ages from flat array make array of colors
-      this.legendData = allUniqueAges.map(age => [age, color(age)])
+      this.legendData = allUniqueAges.map((age) => [age, color(age)])
 
-      this.annotations = topojson.feature(this.mapData, this.mapData.objects.states).features.map((e) => {
-        const x = this.path.centroid(e)[0]
-        const y = this.path.centroid(e)[1]
-        const label = e.properties.STUSPS
-        const custom = customLabels.find(d => d.note.label === label)
-        const stateData = this.contentData.find(e => e.abbr === label)
-        const age = stateData ? (stateData.values[this.yearSlider][1]) : ''
-        this.ageStateColorData[label] = stateData ? stateData.values.map(d => [d[0], color(+d[1])]) : ''
-        return ({
-          note: {
-            label,
-            title: age,
-            align: custom ? ((label === 'VT') ? 'middle' : 'dynamic') : '',
-            orientation: custom ? ((label === 'VT') ? 'topBottom' : 'leftRight') : 'topBottom',
-            custom: !!(custom),
-            years: stateData ? stateData.values : null
-          },
-          offset: 0,
-          type: basetype,
-          x,
-          y,
-          dx: custom ? custom.dx : 0,
-          dy: custom ? custom.dy : 0
+      this.annotations = topojson
+        .feature(this.mapData, this.mapData.objects.states)
+        .features.map((e) => {
+          const x = this.path.centroid(e)[0]
+          const y = this.path.centroid(e)[1]
+          const label = e.properties.STUSPS
+          const custom = customLabels.find((d) => d.note.label === label)
+          const stateData = this.contentData.find((e) => e.abbr === label)
+          const age = stateData ? stateData.values[this.yearSlider][1] : ''
+          this.ageStateColorData[label] = stateData
+            ? stateData.values.map((d) => [d[0], color(+d[1])])
+            : ''
+          return {
+            note: {
+              label,
+              title: age,
+              align: custom ? (label === 'VT' ? 'middle' : 'dynamic') : '',
+              orientation: custom
+                ? label === 'VT'
+                  ? 'topBottom'
+                  : 'leftRight'
+                : 'topBottom',
+              custom: !!custom,
+              years: stateData ? stateData.values : null
+            },
+            offset: 0,
+            type: basetype,
+            x,
+            y,
+            dx: custom ? custom.dx : 0,
+            dy: custom ? custom.dy : 0
+          }
         })
-      })
     },
-    getTransform (el) {
+    getTransform(el) {
       const transform = d3.select(el).style('transform')
       const g = document.createElementNS('http://www.w3.org/2000/svg', 'g')
       g.setAttributeNS(null, 'transform', transform)
@@ -236,53 +246,59 @@ export default {
       }
       return { x: value.matrix.e, y: value.matrix.f }
     },
-    renderAnnotations () {
-      this.makeAnnotations = d3.annotation()
-        .annotations(this.annotations)
+    renderAnnotations() {
+      this.makeAnnotations = d3.annotation().annotations(this.annotations)
       this.svg
         .append('g')
         .attr('class', 'annotation-group')
         .call(this.makeAnnotations)
-        .on('dblclick', function () {
+        .on('dblclick', function() {
           d3.event.preventDefault()
-          this.makeAnnotations.editMode(!this.makeAnnotations.editMode()).update()
+          this.makeAnnotations
+            .editMode(!this.makeAnnotations.editMode())
+            .update()
         })
 
       this.fixCustomAnnotations()
     },
-    fixCustomAnnotations () {
-      this.svg.select('.annotation-group')
+    fixCustomAnnotations() {
+      this.svg
+        .select('.annotation-group')
         .selectAll('.annotation-note-title')
         .select('tspan')
         .attr('dy', 0)
 
-      this.svg.select('.annotation-group')
+      this.svg
+        .select('.annotation-group')
         .selectAll('.annotation-note-label')
         .attr('y', 2)
         .select('tspan')
 
-      this.svg.select('.annotation-group')
+      this.svg
+        .select('.annotation-group')
         .selectAll('.annotation-note-label')
-        .filter(d => d.note.label === 'VT')
+        .filter((d) => d.note.label === 'VT')
         .attr('y', 0)
         .select('tspan')
 
-      this.svg.select('.annotation-group')
+      this.svg
+        .select('.annotation-group')
         .selectAll('.annotation-note-content')
-        .filter(d => d.note.label === 'VT')
+        .filter((d) => d.note.label === 'VT')
         .attr('transform', (d, i, nodes) => {
           const { x, y } = this.getTransform(nodes[i])
           return `translate(${x} ${y * 0.3})`
         })
     },
-    renderLegend () {
+    renderLegend() {
       const side = 10
       const legend = this.svg
         .append('g')
         .attr('class', 'age-legend')
         .attr('transform', `translate(${WIDTH - 150}, ${HEIGHT - 100})`)
 
-      const dots = legend.selectAll('g')
+      const dots = legend
+        .selectAll('g')
         .data(this.legendData)
         .enter()
         .append('g')
@@ -294,7 +310,7 @@ export default {
         .attr('y', 0)
         .attr('width', side)
         .attr('height', side)
-        .attr('fill', d => d[1])
+        .attr('fill', (d) => d[1])
 
       const legendWidth = dots.size() * side
 
@@ -309,27 +325,45 @@ export default {
         .attr('y', '-5px')
         .text('Oldest')
 
-      legend.append('text')
+      legend
+        .append('text')
         .text('Age Range')
         .attr('class', 'legend-title')
         .attr('x', legendWidth / 2)
         .attr('y', '-20px')
     },
-    drawMap () {
-      this.svg.append('g')
+    drawMap() {
+      this.svg
+        .append('g')
         .attr('class', 'boundaries')
         .append('path')
         // .attr('filter', 'url(#drop-shadow)')
-        .attr('d', this.path(topojson.mesh(this.mapData, this.mapData.objects.states, (a, b) => a === b)))
+        .attr(
+          'd',
+          this.path(
+            topojson.mesh(
+              this.mapData,
+              this.mapData.objects.states,
+              (a, b) => a === b
+            )
+          )
+        )
 
-      this.svg.append('g').selectAll('.states')
-        .data(topojson.feature(this.mapData, this.mapData.objects.states).features)
-        .enter().append('path')
+      this.svg
+        .append('g')
+        .selectAll('.states')
+        .data(
+          topojson.feature(this.mapData, this.mapData.objects.states).features
+        )
+        .enter()
+        .append('path')
         .attr('class', 'states')
         .attr('d', this.path)
         .attr('fill', (d) => {
           if (this.ageStateColorData[d.properties.STUSPS]) {
-            return this.ageStateColorData[d.properties.STUSPS][this.yearSlider][1]
+            return this.ageStateColorData[d.properties.STUSPS][
+              this.yearSlider
+            ][1]
           }
           return 'url(#fill-texture)'
         })
@@ -339,25 +373,40 @@ export default {
       //   // .style('stroke', 'black')
       //   .attr('d', this.projection.getCompositionBorders())
     },
-    drawMarkers () {
-      this.svg.append('g').selectAll('.marker')
-        .data(this.markersData.filter(e => (e.geo ? (!isNaN(e.geo[0]) || !isNaN(e.geo[1])) : false)))
+    drawMarkers() {
+      this.svg
+        .append('g')
+        .selectAll('.marker')
+        .data(
+          this.markersData.filter((e) =>
+            e.geo ? !isNaN(e.geo[0]) || !isNaN(e.geo[1]) : false
+          )
+        )
         .enter()
         .append('path')
         .attr('d', MARKER_PATH)
         .attr('id', (e, i) => `marker-id-${i}`)
         .attr('class', (e, i) => `marker marker-category-${i % 4}`)
-        .attr('transform', e => `translate(${this.projection(e.geo)[0]},${(-Math.random() * 1000)})scale(${MARKER_S_MAX},${MARKER_S_MAX})`)
+        .attr(
+          'transform',
+          (e) =>
+            `translate(${this.projection(e.geo)[0]},${-Math.random() *
+              1000})scale(${MARKER_S_MAX},${MARKER_S_MAX})`
+        )
         .transition()
         .ease(d3.easeBounce)
         .duration(1500)
-        .attr('transform', e => `translate(${this.projection(e.geo)[0]},${this.projection(e.geo)[1]})scale(${MARKER_S_MIN},${MARKER_S_MIN})`)
+        .attr(
+          'transform',
+          (e) =>
+            `translate(${this.projection(e.geo)[0]},${
+              this.projection(e.geo)[1]
+            })scale(${MARKER_S_MIN},${MARKER_S_MIN})`
+        )
         .attr('filter', 'url(#drop-shadow)')
     },
-    drawContentData () {
-
-    },
-    resizeContainer () {
+    drawContentData() {},
+    resizeContainer() {
       const targetWidth = parseInt(this.svg.node().parentNode.clientWidth)
       this.svg.attr('width', targetWidth)
       this.svg.attr('height', Math.round(targetWidth / this.aspect))
@@ -377,8 +426,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-@import "~@/css/vars";
-@import "~@/css/mixins";
+@import '~@/css/vars';
+@import '~@/css/mixins';
 
 .title {
   text-align: center;
@@ -394,7 +443,7 @@ export default {
   align-items: center;
 }
 button {
-  font-family: "Assistant", sans-serif;
+  font-family: 'Assistant', sans-serif;
   font-size: 1.1rem;
 
   font-weight: bold;

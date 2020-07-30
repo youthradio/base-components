@@ -1,17 +1,14 @@
 <template>
   <div class="temp-container">
     <div class="img-container">
-      <h2
-        :style="titleColor"
-        class="theme-title"
-      >
+      <h2 :style="titleColor" class="theme-title">
         {{ slideContent.title }}
       </h2>
       <img
         :style="borderColor"
         class="img-fluid img-slide"
         :src="`${slideContent.featureImage}`"
-      >
+      />
     </div>
     <div class="grid-container">
       <div
@@ -20,17 +17,11 @@
         class="grid-topic"
       >
         <NuxtLink :to="slideContent.slug + '/' + topic.slug">
-          <p
-            :style="borderColor"
-            class="slide-content"
-          >
+          <p :style="borderColor" class="slide-content">
             {{ topic.title }}
           </p>
           <div class="svg-container">
-            <img
-              :src="`icon/${topic.format.trim()}.svg`"
-              class="ico-fluid"
-            >
+            <img :src="`icon/${topic.format.trim()}.svg`" class="ico-fluid" />
           </div>
         </NuxtLink>
       </div>
@@ -40,10 +31,8 @@
 
 <script>
 export default {
-  components: {
-  },
-  mixins: [
-  ],
+  components: {},
+  mixins: [],
   props: {
     slideContent: {
       type: Object,
@@ -51,16 +40,14 @@ export default {
       default: null
     }
   },
-  asyncData (ctx) {
-    return {
-    }
+  asyncData(ctx) {
+    return {}
   },
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
   computed: {
-    borderColor () {
+    borderColor() {
       if (this.slideContent) {
         return {
           'border-top-color': this.slideContent.color
@@ -68,7 +55,7 @@ export default {
       }
       return ''
     },
-    titleColor () {
+    titleColor() {
       if (this.slideContent) {
         return {
           color: this.slideContent.color
@@ -77,12 +64,10 @@ export default {
       return ''
     }
   },
-  watch: {
-  },
-  mounted () {
-  },
+  watch: {},
+  mounted() {},
   methods: {
-    selectTopic (topic) {
+    selectTopic(topic) {
       this.$emit('onTopicChange', topic)
     }
   }
@@ -90,8 +75,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~@/css/vars";
-@import "~@/css/mixins";
+@import '~@/css/vars';
+@import '~@/css/mixins';
 
 .img-fluid {
   width: 100%;

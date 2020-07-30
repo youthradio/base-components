@@ -14,7 +14,7 @@ export default {
     options: {
       type: Object,
       required: false,
-      default () {
+      default() {
         return {}
       }
     },
@@ -22,16 +22,18 @@ export default {
     emit: {
       type: Array,
       required: false,
-      default () { return [] }
+      default() {
+        return []
+      }
     }
   },
-  data () {
+  data() {
     return {
       player: {}
     }
   },
   computed: {
-    opts () {
+    opts() {
       const options = this.options
       if (!{}.hasOwnProperty.call(this.options, 'hideYouTubeDOMError')) {
         options.hideYouTubeDOMError = true
@@ -39,24 +41,29 @@ export default {
       return options
     }
   },
-  mounted () {
+  mounted() {
     this.player = new Plyr(this.$el.firstChild, this.opts)
     this.emit.forEach((element) => {
       this.player.on(element, this.emitPlayerEvent)
     })
   },
-  beforeDestroy () {
+  beforeDestroy() {
     try {
       this.player.destroy()
     } catch (e) {
-      if (!(this.opts.hideYouTubeDOMError && e.message === 'The YouTube player is not attached to the DOM.')) {
+      if (
+        !(
+          this.opts.hideYouTubeDOMError &&
+          e.message === 'The YouTube player is not attached to the DOM.'
+        )
+      ) {
         // eslint-disable-next-line no-console
         console.error(e)
       }
     }
   },
   methods: {
-    emitPlayerEvent (event) {
+    emitPlayerEvent(event) {
       this.$emit(event.type, event)
     }
   }
@@ -64,10 +71,10 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~@/node_modules/plyr/dist/plyr.css";
-@import "~@/css/vars";
+@import '~@/node_modules/plyr/dist/plyr.css';
+@import '~@/css/vars';
 
-.plyr--full-ui input[type=range] {
+.plyr--full-ui input[type='range'] {
   // -webkit-appearance: none;
   // background: 0 0;
   // border: 0;
@@ -85,11 +92,10 @@ export default {
 .plyr--audio,
 .plyr--video,
 .plyr--audio .plyr__control:hover,
-.plyr--audio .plyr__control[aria-expanded=true],
+.plyr--audio .plyr__control[aria-expanded='true'],
 .plyr--video .plyr__control:hover,
-.plyr--video .plyr__control[aria-expanded=true],
-.plyr__control--overlaid
-{
+.plyr--video .plyr__control[aria-expanded='true'],
+.plyr__control--overlaid {
   background: $darkblue;
 }
 </style>

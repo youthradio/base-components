@@ -1,6 +1,6 @@
 <template>
   <div class="relatedPostContainer">
-    <h2>RELATED POSTS </h2>
+    <h2 class="roboto-mono f2">RELATED POSTS</h2>
     <div class="flex postContainer">
       <div
         v-for="post in postsData"
@@ -12,6 +12,7 @@
           <div class="section">
             <h3>
               <a
+                class="f3 roboto-mono no-underline black"
                 :style="'borderBottom: 2px solid' + post.acf.secondary_color"
                 :href="post.link"
               >
@@ -24,7 +25,7 @@
               <img
                 class="img-fluid postImage lazyload"
                 :data-src="post.episode_featured_image"
-              >
+              />
             </a>
           </div>
         </div>
@@ -38,8 +39,10 @@
 
 export default {
   filters: {
-    unescape (value) {
-      if (!value) { return '' }
+    unescape(value) {
+      if (!value) {
+        return ''
+      }
       if (process.client) {
         const d = document.createElement('div')
         d.innerHTML = value
@@ -56,16 +59,13 @@ export default {
       default: null
     }
   },
-  computed: {
-
-  }
-
+  computed: {}
 }
 </script>
 
 <style lang="scss" scoped>
-@import "~@/css/vars";
-@import "~@/css/mixins";
+@import '../../css/vars';
+@import '../../css/mixins';
 
 .img-fluid {
   width: 100%;

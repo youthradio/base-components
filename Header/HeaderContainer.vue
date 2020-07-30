@@ -27,13 +27,13 @@ export default {
       default: 'base'
     }
   },
-  data () {
+  data() {
     return {
       headerImageHeight: 0
     }
   },
   computed: {
-    headerData () {
+    headerData() {
       return {
         featureImage: POSTCONFIG.featureImagePath,
         title: POSTCONFIG.title,
@@ -44,14 +44,10 @@ export default {
       }
     }
   },
-  created () {
-
-  },
-  mounted () {
-
-  },
+  created() {},
+  mounted() {},
   methods: {
-    setHeaderHeight (val) {
+    setHeaderHeight(val) {
       this.headerImageHeight = val
     }
   }
@@ -60,7 +56,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-@import "~@/css/_vars";
+@import '~@/css/_vars';
 header {
   // margin-bottom: 1rem;
 }

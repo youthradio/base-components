@@ -3,11 +3,11 @@
     <USAMap
       :map-data="mapData"
       :map-ready="mapReady"
-      :active-state="activeState "
+      :active-state="activeState"
       class="map"
     />
     <div class="city">
-      {{ activeState? activeState.location : '' }}
+      {{ activeState ? activeState.location : '' }}
     </div>
   </div>
 </template>
@@ -27,7 +27,7 @@ export default {
       required: false
     }
   },
-  data () {
+  data() {
     return {
       mapData: {},
       loadingMap: false,
@@ -35,27 +35,25 @@ export default {
       mapReady: false
     }
   },
-  computed: {
-
-  },
-  created () {
+  computed: {},
+  created() {
     // this.loadContentData()
     // this.loadMapData()
     // this.loadMarkersData()
-
   },
-  mounted () {
+  mounted() {
     this.initMap()
   },
   methods: {
-    async initMap () {
+    async initMap() {
       await this.loadMapData()
       this.mapReady = true
     },
-    async loadMapData () {
+    async loadMapData() {
       this.loadingMap = true
-      this.mapData = await fetch('maps/us-all-states-20m-ligth-basic.json')
-        .then(res => res.json())
+      this.mapData = await fetch(
+        'maps/us-all-states-20m-ligth-basic.json'
+      ).then((res) => res.json())
       this.loadingMap = false
     }
   }
@@ -64,8 +62,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-@import "~@/css/_vars";
-@import "~@/css/mixins";
+@import '~@/css/_vars';
+@import '~@/css/mixins';
 
 .margin {
   margin-left: -1.5rem;

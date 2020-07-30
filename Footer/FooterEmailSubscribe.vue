@@ -4,12 +4,7 @@
       <h3 class="title">
         Get Fresh Updates
       </h3>
-      <form
-        class="mc-form"
-        method="POST"
-        action=""
-        @submit.prevent="submit"
-      >
+      <form class="mc-form" method="POST" action="" @submit.prevent="submit">
         <input
           v-model="email"
           class="text email"
@@ -17,29 +12,19 @@
           name="mc-email"
           rrequired
           placeholder="enter email address"
-        >
+        />
         <input
           v-model="name"
           type="text"
           value="pending"
           name="status"
           hidden=""
-        >
-        <button
-          class="submit icon-arrow-right"
-          type="submit"
-          name="submit"
         />
-        <p
-          v-if="response && response.error"
-          class="message error-message"
-        >
+        <button class="submit icon-arrow-right" type="submit" name="submit" />
+        <p v-if="response && response.error" class="message error-message">
           {{ response.message }}
         </p>
-        <p
-          v-if="response && response.sucess"
-          class="message"
-        >
+        <p v-if="response && response.sucess" class="message">
           {{ response.message }}
         </p>
       </form>
@@ -48,42 +33,38 @@
 </template>
 
 <script>
-
 export default {
-  components: {
-
-  },
-  data () {
+  components: {},
+  data() {
     return {
       name: null,
       email: null,
       response: null
-
     }
   },
   methods: {
-    encode (obj) {
-      return Object.keys(obj).map((key) => {
-        return encodeURIComponent(key) + '=' + encodeURIComponent(obj[key])
-      }).join('&')
+    encode(obj) {
+      return Object.keys(obj)
+        .map((key) => {
+          return encodeURIComponent(key) + '=' + encodeURIComponent(obj[key])
+        })
+        .join('&')
     },
-    async submit () {
+    async submit() {
       const url = 'https://yr.media/wp-admin/admin-ajax.php'
 
       const data = {
         action: 'mailchimp_subscription',
         email: this.email
-
       }
       try {
-        const res = await fetch(url,
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded;'
-            },
-            body: this.encode(data)
-          })
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;'
+          },
+          body: this.encode(data)
+        })
         this.response = await res.json()
       } catch (error) {
         // console.log(error)
@@ -94,12 +75,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "~@/css/mixins";
-@import "~@/css/vars";
+@import '~@/css/mixins';
+@import '~@/css/vars';
 
 form {
-  > input[type="text"],
-  > input[type="email"] {
+  > input[type='text'],
+  > input[type='email'] {
     &:invalid {
       color: $red;
     }
@@ -155,7 +136,7 @@ footer {
 }
 .menu-container {
   text-transform: uppercase;
-  font: 900 22px/1.8 "Roboto Mono", sans-serif;
+  font: 900 22px/1.8 'Roboto Mono', sans-serif;
   letter-spacing: 2px;
   text-transform: uppercase;
   a {
@@ -207,11 +188,11 @@ footer {
   .title {
     margin-bottom: 20px;
     color: white;
-    font: 700 25px "Calps", sans-serif;
+    font: 700 25px 'Calps', sans-serif;
     letter-spacing: 1.35px;
 
     @include breakpoint(small) {
-      font: 700 57px "Calps", sans-serif;
+      font: 700 57px 'Calps', sans-serif;
       letter-spacing: 0.57px;
     }
     @include breakpoint(large) {
@@ -222,7 +203,7 @@ footer {
 
   .message {
     margin-top: 20px;
-    font: 20px "Roboto Mono", sans-serif;
+    font: 20px 'Roboto Mono', sans-serif;
     color: white;
   }
 }
@@ -238,7 +219,7 @@ footer {
     background-color: transparent;
     border: 3px solid white;
     color: white;
-    font: 700 15px "Calps", sans-serif;
+    font: 700 15px 'Calps', sans-serif;
     text-transform: uppercase;
     letter-spacing: 1.5px;
 
@@ -261,7 +242,7 @@ footer {
 
     @include breakpoint(small) {
       padding: 12px 50px 12px 15px;
-      font: 700 20px "Roboto Mono", sans-serif;
+      font: 700 20px 'Roboto Mono', sans-serif;
       letter-spacing: 8.05px;
       color: white;
 

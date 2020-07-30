@@ -1,9 +1,6 @@
 <template>
   <div>
-    <div
-      id="map"
-      ref="map"
-    />
+    <div id="map" ref="map" />
   </div>
 </template>
 
@@ -39,7 +36,7 @@ export default {
       required: false
     }
   },
-  data () {
+  data() {
     return {
       svg: null,
       aspect: null,
@@ -48,10 +45,9 @@ export default {
       isMapReady: false
     }
   },
-  computed: {
-  },
+  computed: {},
   watch: {
-    mapReady () {
+    mapReady() {
       if (this.mapReady) {
         this.drawMap()
         if (this.activeState) {
@@ -60,7 +56,7 @@ export default {
       }
     },
     activeState: {
-      handler (newval, oldval) {
+      handler(newval, oldval) {
         if (newval && !oldval) {
           this.setStateColor(newval.state, newval.color)
         } else if (newval.state !== oldval.state) {
@@ -71,42 +67,45 @@ export default {
       deep: true
     }
   },
-  created () {
-  },
-  mounted () {
+  created() {},
+  mounted() {
     this.createSvg()
     // topojson.feature(this.mapData, this.mapData.objects.states).features
   },
   methods: {
-    createSvg () {
+    createSvg() {
       this.svg = d3.select(this.$refs.map).append('svg')
       this.aspect = WIDTH / HEIGHT
-      this.projection = geoAlbersUsaTerritories()
-        .translate([WIDTH / 2, HEIGHT / 2])
+      this.projection = geoAlbersUsaTerritories().translate([
+        WIDTH / 2,
+        HEIGHT / 2
+      ])
       this.path = d3.geoPath(this.projection)
       // this.svg.attr('width', WIDTH)
       //   .attr('height', HEIGHT)
       this.svg.attr('viewBox', '0 0 ' + WIDTH + ' ' + HEIGHT)
       // .attr('perserveAspectRatio', 'xMinYMid meet')
-      this.svg.style('width', '100%')
-        .style('height', 'auto')
+      this.svg.style('width', '100%').style('height', 'auto')
       const defs = this.svg.append('defs')
       // create filter with id #drop-shadow
       // height=130% so that the shadow is not clipped
-      const filter = defs.append('filter')
+      const filter = defs
+        .append('filter')
         .attr('id', 'drop-shadow')
         .attr('height', '130%')
 
       // SourceAlpha refers to opacity of graphic that this filter will be applied to
       // convolve that with a Gaussian with standard deviation 3 and store result
       // in blur
-      filter.append('feGaussianBlur')
+      filter
+        .append('feGaussianBlur')
         .attr('in', 'SourceAlpha')
         .attr('stdDeviation', 5)
         .attr('result', 'blur')
       // translate output of Gaussian blur to the right and downwards with 2px
       // store result in offsetBlur
-      filter.append('feOffset')
+      filter
+        .append('feOffset')
         .attr('in', 'blur')
         .attr('dx', 5)
         .attr('dy', 5)
@@ -114,14 +113,12 @@ export default {
       // overlay original SourceGraphic over translated blurred opacity by using
       // feMerge filter. Order of specifying inputs is important!
       const feMerge = filter.append('feMerge')
-      feMerge.append('feMergeNode')
-        .attr('in', 'offsetBlur')
-      feMerge.append('feMergeNode')
-        .attr('in', 'SourceGraphic')
+      feMerge.append('feMergeNode').attr('in', 'offsetBlur')
+      feMerge.append('feMergeNode').attr('in', 'SourceGraphic')
       this.resizeContainer()
       window.addEventListener('resize', this.resizeContainer)
     },
-    getTransform (el) {
+    getTransform(el) {
       const transform = d3.select(el).style('transform')
       const g = document.createElementNS('http://www.w3.org/2000/svg', 'g')
       g.setAttributeNS(null, 'transform', transform)
@@ -131,16 +128,31 @@ export default {
       }
       return { x: value.matrix.e, y: value.matrix.f }
     },
-    drawMap () {
-      this.svg.append('g')
+    drawMap() {
+      this.svg
+        .append('g')
         .attr('class', 'boundaries')
         .append('path')
         // .attr('filter', 'url(#drop-shadow)')
-        .attr('d', this.path(topojson.mesh(this.mapData, this.mapData.objects.states, (a, b) => a === b)))
+        .attr(
+          'd',
+          this.path(
+            topojson.mesh(
+              this.mapData,
+              this.mapData.objects.states,
+              (a, b) => a === b
+            )
+          )
+        )
 
-      this.svg.append('g').selectAll('.states')
-        .data(topojson.feature(this.mapData, this.mapData.objects.states).features)
-        .enter().append('path')
+      this.svg
+        .append('g')
+        .selectAll('.states')
+        .data(
+          topojson.feature(this.mapData, this.mapData.objects.states).features
+        )
+        .enter()
+        .append('path')
         .attr('class', 'states')
         .attr('d', this.path)
         .attr('fill', 'gray')
@@ -150,12 +162,13 @@ export default {
       //   // .style('stroke', 'black')
       //   .attr('d', this.projection.getCompositionBorders())
     },
-    setStateColor (state = null, color = 'gray') {
-      this.svg.selectAll('.states')
-        .filter(e => !state ? true : state === e.properties.STUSPS)
+    setStateColor(state = null, color = 'gray') {
+      this.svg
+        .selectAll('.states')
+        .filter((e) => (!state ? true : state === e.properties.STUSPS))
         .attr('fill', color)
     },
-    resizeContainer () {
+    resizeContainer() {
       const targetWidth = parseInt(this.svg.node().parentNode.clientWidth)
       this.svg.attr('width', targetWidth)
       this.svg.attr('height', Math.round(targetWidth / this.aspect))
@@ -175,8 +188,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-@import "~@/css/vars";
-@import "~@/css/mixins";
+@import '~@/css/vars';
+@import '~@/css/mixins';
 
 /deep/ #map {
   .state-label {

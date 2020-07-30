@@ -1,30 +1,26 @@
 <template>
-  <div
-    ref="headerImage"
-    :class="[`${mode}-overlay`,'feature-container']"
-  >
+  <div ref="headerImage" :class="[`${mode}-overlay`, 'feature-container']">
     <img
       src="~./assets/blank.jpg"
-      :data-srcset="`${headerData.featureImage}x375.jpg 375w,
+      :data-srcset="
+        `${headerData.featureImage}x375.jpg 375w,
         ${headerData.featureImage}x563.jpg 563w,
         ${headerData.featureImage}x1125.jpg 1125w,
         ${headerData.featureImage}x1500.jpg 1500w,
         ${headerData.featureImage}x1875.jpg 1875w,
-        `"
+        `
+      "
       :data-src="`${headerData.featureImage}x1875.jpg`"
       alt="Elva dressed as a fairy"
       class="img-fluid lazyload"
       @load="updateHeaderHeight"
-    >
+    />
     <div :class="[`${mode}-header`, `${mode}-text`, 'title']">
-      <h2> {{ headerData.title }}</h2>
-      <h3> by {{ headerData.author }}</h3>
-      <h5> {{ headerData.publishDate }}</h5>
+      <h2>{{ headerData.title }}</h2>
+      <h3>by {{ headerData.author }}</h3>
+      <h5>{{ headerData.publishDate }}</h5>
     </div>
-    <div
-      v-if="headerData.imageCaption"
-      class="image-caption"
-    >
+    <div v-if="headerData.imageCaption" class="image-caption">
       <span> {{ headerData.imageCaption }}</span>
     </div>
   </div>
@@ -44,22 +40,24 @@ export default {
       default: 'base'
     }
   },
-  data () {
+  data() {
     return {
       innervalue: null
     }
   },
   methods: {
-    updateHeaderHeight () {
-      this.$emit('onHeaderImgHeight', this.$refs.headerImage.getBoundingClientRect().height)
+    updateHeaderHeight() {
+      this.$emit(
+        'onHeaderImgHeight',
+        this.$refs.headerImage.getBoundingClientRect().height
+      )
     }
   }
-
 }
 </script>
 
 <style lang="scss" scoped>
-@import "~@/css/vars";
+@import '~@/css/vars';
 .img-fluid {
   max-width: 100%;
   width: 100%;
@@ -81,7 +79,7 @@ export default {
 .full-overlay {
 }
 .base-overlay::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -123,7 +121,7 @@ export default {
   z-index: 1;
 
   h2 {
-    font-family: "Days Sans", sans-serif;
+    font-family: 'Days Sans', sans-serif;
     font-weight: 900;
     letter-spacing: 0.64px;
     text-transform: uppercase;
@@ -135,7 +133,7 @@ export default {
     padding-bottom: 0px;
 
     font-weight: 500;
-    font-family: "Solano Gothic MVB", sans-serif;
+    font-family: 'Solano Gothic MVB', sans-serif;
     text-transform: none;
   }
   h5 {
@@ -156,7 +154,7 @@ export default {
     font-weight: 400;
     font-size: 0.5rem;
     line-height: 1rem;
-    font-family: "Roboto Mono", sans-serif;
+    font-family: 'Roboto Mono', sans-serif;
     text-align: center;
     color: $blue-button;
   }

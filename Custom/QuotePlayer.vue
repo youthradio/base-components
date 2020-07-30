@@ -1,18 +1,10 @@
 <template>
-  <div
-    class="quote-container"
-    :style=" randomPos "
-  >
-    <div
-      class="fade"
-      :style="fadeStyle"
-    >
+  <div class="quote-container" :style="randomPos">
+    <div class="fade" :style="fadeStyle">
       <blockquote>
         {{ quoteData.Quote }}
       </blockquote>
-      <h4>
-        {{ quoteData.Speaker_Name }}, {{ quoteData.Year }}
-      </h4>
+      <h4>{{ quoteData.Speaker_Name }}, {{ quoteData.Year }}</h4>
       <h5>
         {{ quoteData.Title }}
       </h5>
@@ -36,7 +28,7 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       sound: null,
       soundID: null,
@@ -46,25 +38,25 @@ export default {
     }
   },
   computed: {
-    isActive () {
+    isActive() {
       return this.quoteData.isActive
     },
-    randomPos () {
+    randomPos() {
       const w = this.innerWidth > 500 ? 10 : 0
       return {
         marginTop: `${Math.random() * 30}%`,
         marginLeft: `${-2 * (Math.random() - 0.5) * w}%`
       }
     },
-    startTime () {
+    startTime() {
       const time = this.quoteData.Start.split(':')
-      return (+time[1] * 60 + +time[2])
+      return +time[1] * 60 + +time[2]
     },
-    durationTime () {
+    durationTime() {
       const time = this.quoteData.End.split(':')
-      return (+time[1] * 60 + +time[2]) - this.startTime
+      return +time[1] * 60 + +time[2] - this.startTime
     },
-    fadeStyle () {
+    fadeStyle() {
       if (!this.isSoundPlaying) {
         return {
           transform: 'scale(0.9)',
@@ -77,18 +69,18 @@ export default {
         // textShadow: '0px 0px 20px darkgray'
       }
     },
-    fileName () {
+    fileName() {
       // return only file name
       return this.quoteData.File_Name.split('.')[0]
     }
   },
   watch: {
-    isVisible () {
+    isVisible() {
       if (this.isVisible) {
         this.sound.load()
       }
     },
-    isActive () {
+    isActive() {
       if (this.isActive) {
         this.playSound()
       } else {
@@ -96,11 +88,11 @@ export default {
       }
     }
   },
-  mounted () {
+  mounted() {
     this.innerWidth = window.innerWidth
     this.innerHeight = window.innerHeight
   },
-  created () {
+  created() {
     // eslint-disable-next-line no-undef
     this.sound = new Howl({
       autoplay: false,
@@ -117,30 +109,29 @@ export default {
     this.sound.once('end', this.soundPaused)
     this.sound.once('pause', this.soundPaused)
   },
-  beforeDestroy () {
+  beforeDestroy() {
     this.sound.unload()
   },
   methods: {
-    soundLoaded () {
+    soundLoaded() {
       // eslint-disable-next-line no-console
       console.log(this.quoteData.title, 'LOADED')
     },
-    playSound () {
+    playSound() {
       // this.sound.load()
       if (this.sound.state() === 'loaded' && !this.isSoundPlaying) {
         this.isSoundPlaying = true
         this.soundID = this.sound.play()
       }
     },
-    pauseSound () {
+    pauseSound() {
       // this.sound.pause()
       this.sound.stop()
       this.isSoundPlaying = false
       this.quoteData.isActive = false
     },
-    soundPlayed () {
-    },
-    soundPaused () {
+    soundPlayed() {},
+    soundPaused() {
       this.isSoundPlaying = false
     }
   }
@@ -160,19 +151,20 @@ export default {
   transition-timing-function: ease-in-out;
   transform-origin: 50% 50%;
 }
-h4, h5 {
+h4,
+h5 {
   padding: 0px;
   margin: 0em;
   margin-left: 1rem;
 }
 h4:before {
-    content: "—";
-    // font-size: 2rem;
-    // vertical-align: bottom;
-    // position: absolute;
-    // left: 0px;
-    /* margin-right: 4px; */
-    /* margin-left: -8px; */
+  content: '—';
+  // font-size: 2rem;
+  // vertical-align: bottom;
+  // position: absolute;
+  // left: 0px;
+  /* margin-right: 4px; */
+  /* margin-left: -8px; */
 }
 blockquote {
   font-weight: 700;
@@ -182,7 +174,7 @@ blockquote {
   // line-height: 1rem;
 
   &:before {
-    content: "\201C";
+    content: '\201C';
     font-size: 2rem;
     vertical-align: bottom;
     // position: absolute;
@@ -192,7 +184,7 @@ blockquote {
   }
 
   &:after {
-    content: "\201D";
+    content: '\201D';
     font-size: 2rem;
     vertical-align: bottom;
     position: absolute;
@@ -200,5 +192,5 @@ blockquote {
     /* margin-left: 4px; */
     /* margin-right: -8px; */
   }
-}
-</style>>
+}</style
+>>

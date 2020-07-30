@@ -5,20 +5,18 @@
         {{ questionData.headline }}
       </h3>
       <ul>
-        <li
-          v-for="(option,i) in questionData.options"
-          :key="`question-${i}`"
-        >
+        <li v-for="(option, i) in questionData.options" :key="`question-${i}`">
           <input
             :id="`question-${id}-option-${i}`"
             v-model="innervalue"
             :name="questionData.topic"
             type="radio"
             :value="option"
-          >
+          />
           <div class="check" />
           <label :for="`question-${id}-option-${i}`">
-            {{ option.option }} </label>
+            {{ option.option }}
+          </label>
         </li>
       </ul>
     </main>
@@ -43,37 +41,36 @@ export default {
       default: null
     }
   },
-  data () {
+  data() {
     return {
       innervalue: null
     }
   },
   watch: {
-    innervalue () {
+    innervalue() {
       this.$emit('input', this.innervalue)
     }
   }
-
 }
 </script>
 
 <style lang="scss" scoped>
 @import '~@/css/vars';
 // Unique colors for both Subheader and Break question
-.question-0{
-  background-color: #FFDB5A;
+.question-0 {
+  background-color: #ffdb5a;
 }
-.question-1{
-  background-color: #F7825D;
+.question-1 {
+  background-color: #f7825d;
 }
-.question-2{
-  background-color: #ED5B5B;
+.question-2 {
+  background-color: #ed5b5b;
 }
-.question-3{
-  background-color: #3C76CB;
+.question-3 {
+  background-color: #3c76cb;
 }
-.question-4{
-  background-color: #3CC2CB;
+.question-4 {
+  background-color: #3cc2cb;
 }
 .break-question {
   border-radius: 1rem;
@@ -82,17 +79,17 @@ export default {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-.break-question label{
+.break-question label {
   display: block;
   position: relative;
 }
-.questionstyle{
+.questionstyle {
   font-size: 1rem;
 }
 h3 {
   font-weight: 900;
 }
-main{
+main {
   max-width: 30rem;
 }
 
@@ -101,7 +98,7 @@ ul {
   margin: 0;
   padding: 0;
 
-  li{
+  li {
     color: $black;
     display: block;
     display: flex;
@@ -115,10 +112,10 @@ ul {
       left: 3px;
       border: 1.5px solid $black;
       border-radius: 100%;
-      height:1rem;
+      height: 1rem;
       width: 1rem;
       z-index: 5;
-      transition: border .25s linear;
+      transition: border 0.25s linear;
 
       &::before {
         display: block;
@@ -132,7 +129,7 @@ ul {
         transition: background 0.25s linear;
       }
     }
-    input[type=radio]{
+    input[type='radio'] {
       position: absolute;
       visibility: hidden;
     }
@@ -142,24 +139,23 @@ ul {
       padding-left: 1.5rem;
       transition: all 0.25s linear;
     }
-    &:hover label{
+    &:hover label {
       color: $white;
     }
     &:hover .check {
-      border:1.5px solid $white;
+      border: 1.5px solid $white;
     }
   }
-
 }
-  input[type=radio]:checked ~ .check {
-    border: 1.5px solid $white;
-  }
+input[type='radio']:checked ~ .check {
+  border: 1.5px solid $white;
+}
 
-  input[type=radio]:checked ~ .check::before{
-    background: $white;
-  }
+input[type='radio']:checked ~ .check::before {
+  background: $white;
+}
 
-  input[type=radio]:checked ~ label{
-    color: $white;
-  }
+input[type='radio']:checked ~ label {
+  color: $white;
+}
 </style>

@@ -1,49 +1,59 @@
 <template>
   <div class="top-block">
     <div class="item logo-container">
-      <a href="https://yr.media">
-        <FullLogo class="logo" /></a>
+      <a class="no-underline dim db" href="https://yr.media">
+        <FullLogo class="logo"
+      /></a>
     </div>
     <div class="item menu-container">
-      <ul
-        id="menu-footer-menu"
-        class="pages-menu"
-      >
+      <ul id="menu-footer-menu" class="pages-menu">
         <li
           id="menu-item-36521"
           class="menu-item menu-item-type-post_type menu-item-object-page menu-item-36521"
         >
-          <a href="https://yr.media/about-yr/">About YR Media</a>
+          <a class="no-underline" href="https://yr.media/about-yr/"
+            >About YR Media</a
+          >
         </li>
         <li
           id="menu-item-35672"
           class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35672"
         >
-          <a href="https://yr.media/donate/">Support Our Work</a>
+          <a class="no-underline" href="https://yr.media/donate/"
+            >Support Our Work</a
+          >
         </li>
         <li
           id="menu-item-42578"
           class="menu-item menu-item-type-post_type menu-item-object-page menu-item-42578"
         >
-          <a href="https://yr.media/career-opportunities/">Careers at YR</a>
+          <a class="no-underline" href="https://yr.media/career-opportunities/"
+            >Careers at YR</a
+          >
         </li>
         <li
           id="menu-item-66507"
           class="menu-item menu-item-type-post_type menu-item-object-page menu-item-66507"
         >
-          <a href="https://yr.media/yr-classes/">Apply to Classes</a>
+          <a class="no-underline" href="https://yr.media/yr-classes/"
+            >Apply to Classes</a
+          >
         </li>
         <li
           id="menu-item-43302"
           class="menu-item menu-item-type-post_type menu-item-object-page menu-item-43302"
         >
-          <a href="https://yr.media/contact/">Contact Us</a>
+          <a class="no-underline" href="https://yr.media/contact/"
+            >Contact Us</a
+          >
         </li>
         <li
           id="menu-item-49761"
           class="menu-item menu-item-type-post_type menu-item-object-page menu-item-49761"
         >
-          <a href="https://yr.media/privacy-policy/">Privacy Policy</a>
+          <a class="no-underline" href="https://yr.media/privacy-policy/"
+            >Privacy Policy</a
+          >
         </li>
       </ul>
     </div>
@@ -51,27 +61,35 @@
       <ul class="social-menu">
         <li>
           <a
+            class="no-underline dim db"
             href="https://www.youtube.com/user/youthradio"
             target="_blank"
-          ><span class="icon-youtube" /></a>
+            ><span class="icon-youtube"
+          /></a>
         </li>
         <li>
           <a
+            class="no-underline dim db"
             href="https://www.facebook.com/yrmediapage"
             target="_blank"
-          ><span class="icon-facebook" /></a>
+            ><span class="icon-facebook"
+          /></a>
         </li>
         <li>
           <a
+            class="no-underline dim db"
             href="https://twitter.com/itsYRmedia"
             target="_blank"
-          ><span class="icon-twitter" /></a>
+            ><span class="icon-twitter"
+          /></a>
         </li>
         <li>
           <a
+            class="no-underline dim db"
             href="https://www.instagram.com/yr.media"
             target="_blank"
-          ><span class="icon-instagram" /></a>
+            ><span class="icon-instagram"
+          /></a>
         </li>
       </ul>
       <p>YR Media © 2019</p>
@@ -90,8 +108,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "~@/css/mixins";
-@import "~@/css/vars";
+@import '~@/css/mixins';
+@import '~@/css/vars';
 
 ul {
   padding: 0;
@@ -138,7 +156,7 @@ footer {
 }
 .menu-container {
   text-transform: uppercase;
-  font: 900 22px/1.8 "Roboto Mono", sans-serif;
+  font: 900 22px/1.8 'Roboto Mono', sans-serif;
   letter-spacing: 2px;
   text-transform: uppercase;
   a {

@@ -1,21 +1,18 @@
 <template>
   <div class="container">
     <div class="quiz-question">
-      <h3> {{ questionSet.question }} </h3>
+      <h3>{{ questionSet.question }}</h3>
     </div>
     <div class="quiz-answers">
       <button
         v-for="option in questionSet.options"
         :key="option.title"
-        :style="{visibility: hasVoted? 'hidden' : ''}"
+        :style="{ visibility: hasVoted ? 'hidden' : '' }"
         @click="submitVote(option)"
       >
         {{ option.title }}
       </button>
-      <div
-        v-if="hasVoted"
-        class="quiz-result"
-      >
+      <div v-if="hasVoted" class="quiz-result">
         <div class="content">
           <strong> {{ result.total }}% </strong>
           chose {{ result.title }}
@@ -35,26 +32,25 @@ export default {
       default: null
     }
   },
-  data () {
+  data() {
     return {
       hasVoted: false,
       result: null
     }
   },
-  mounted () {
-  },
+  mounted() {},
   methods: {
-    async submitVote (vote) {
+    async submitVote(vote) {
       const res = await fetch(
         `${POSTCONFIG.POLLSERVER}/vote_poll/${this.questionSet.id}/${vote.id}`,
         {
           method: 'GET',
           credentials: 'include'
         }
-      ).then(res => res.json())
+      ).then((res) => res.json())
       const total = res.poll.options.reduce((a, i) => a + i.count, 0) // adds total counts
-      const selectedVote = res.poll.options.find(i => i.id === vote.id) // find count for voted option
-      const percentage = 100 * selectedVote.count / total
+      const selectedVote = res.poll.options.find((i) => i.id === vote.id) // find count for voted option
+      const percentage = (100 * selectedVote.count) / total
       this.result = {
         total: percentage.toFixed(),
         title: vote.title
@@ -65,8 +61,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import "~@/css/mixins";
-@import "~@/css/vars";
+@import '~@/css/mixins';
+@import '~@/css/vars';
 
 .container {
   display: flex;
@@ -125,7 +121,7 @@ h3 {
   }
   //First button
   button {
-    font-family: "Assistant", Arial, Helvetica, sans-serif;
+    font-family: 'Assistant', Arial, Helvetica, sans-serif;
     cursor: pointer;
     flex-basis: 50%;
     text-align: center;

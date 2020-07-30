@@ -5,7 +5,7 @@ C<template>
         src="~./assets/blank-profile.jpg"
         :data-src="profileData.picture"
         class="card-img lazyload"
-      >
+      />
       <div>
         <h4>High Profile Case #{{ index + 1 }}</h4>
         <h3>
@@ -14,7 +14,7 @@ C<template>
       </div>
     </div>
     <div
-      :class="['box-collapse', isCollapsed? 'collapsed': '']"
+      :class="['box-collapse', isCollapsed ? 'collapsed' : '']"
       @click="toggleBox"
     >
       <div class="ico-align">
@@ -22,10 +22,7 @@ C<template>
       </div>
       <ul>
         <template v-for="item in profileData.list">
-          <li
-            :key="item.text"
-            v-html="item.text"
-          />
+          <li :key="item.text" v-html="item.text" />
         </template>
       </ul>
     </div>
@@ -46,15 +43,14 @@ export default {
       default: null
     }
   },
-  data () {
+  data() {
     return {
       isCollapsed: true
     }
   },
-  computed: {
-  },
+  computed: {},
   methods: {
-    toggleBox () {
+    toggleBox() {
       this.isCollapsed = !this.isCollapsed
     }
   }
@@ -62,8 +58,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~@/css/mixins";
-@import "~@/css/vars";
+@import '~@/css/mixins';
+@import '~@/css/vars';
 
 .container {
   position: relative;
@@ -100,7 +96,7 @@ export default {
   }
 }
 .collapsed::after {
-  content: " ";
+  content: ' ';
   position: absolute;
   bottom: 0rem;
   height: 50%;

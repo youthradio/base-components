@@ -2,29 +2,32 @@
   <header class="article-header">
     <div
       v-if="headType === 'main'"
-      :class="[headType === 'main' ? 'bg-container' : '' ]"
+      :class="[headType === 'main' ? 'bg-container' : '']"
     >
       <img
-        :data-srcset="`${headerImg}x300.jpg 375w,
+        :data-srcset="
+          `${headerImg}x300.jpg 375w,
         ${headerImg}x750.jpg 563w,
         ${headerImg}x1050.jpg 1125w,
         ${headerImg}x1350.jpg 1500w,
         ${headerImg}x1500.jpg 1875w,
-        `"
+        `
+        "
         :data-src="`${headerImg}x1500.jpg`"
         alt="The golden gate bridge"
         class="img-fluid lazyload"
-      >
+      />
     </div>
-    <div :class="[headType === 'main' ? 'top-container title' : 'sub-container sub-title' ]">
+    <div
+      :class="[
+        headType === 'main' ? 'top-container title' : 'sub-container sub-title'
+      ]"
+    >
       <div v-if="headType === 'main'">
-        <h1> {{ articleData.title }} </h1>
-        <h3> {{ articleData.subtitle }} </h3>
+        <h1>{{ articleData.title }}</h1>
+        <h3>{{ articleData.subtitle }}</h3>
       </div>
-      <div
-        v-if="headType === 'subpage'"
-        class="headline-margins"
-      >
+      <div v-if="headType === 'subpage'" class="headline-margins">
         <h2>
           {{ articleData.title }}
         </h2>
@@ -37,12 +40,9 @@
 </template>
 
 <script>
-
 export default {
-  components: {
-  },
-  mixins: [
-  ],
+  components: {},
+  mixins: [],
   props: {
     articleData: {
       required: false,
@@ -55,25 +55,21 @@ export default {
       default: 'main'
     }
   },
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
   computed: {
-    headerImg () {
+    headerImg() {
       return this.articleData.featureImage.trim()
     }
   },
-  watch: {
-
-  },
-  mounted () {
-  }
+  watch: {},
+  mounted() {}
 }
 </script>
 
 <style lang="scss" scoped>
-@import "~@/css/vars";
+@import '~@/css/vars';
 
 .sub-title,
 .title {

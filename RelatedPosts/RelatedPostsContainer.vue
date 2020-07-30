@@ -1,9 +1,6 @@
 <template>
   <div>
-    <RelatedPosts
-      class="row"
-      :posts-data="postsData"
-    />
+    <RelatedPosts class="row" :posts-data="postsData" />
   </div>
 </template>
 
@@ -15,28 +12,27 @@ export default {
   components: {
     RelatedPosts
   },
-  data () {
+  data() {
     return {
       postsData: null
     }
   },
-  computed: {
-  },
-  watch: {
-  },
-  created () {
+  computed: {},
+  watch: {},
+  created() {
     this.loadRelatedPosts()
   },
-  mounted () {
-  },
+  mounted() {},
   methods: {
-    async loadRelatedPosts () {
+    async loadRelatedPosts() {
       const slug = POSTCONFIG.wpPostSlug
-      const post = await fetch(`https://yr.media/wp-json/wp/v2/posts?slug=${slug}`)
-        .then(d => d.json())
+      const post = await fetch(
+        `https://yr.media/wp-json/wp/v2/posts?slug=${slug}`
+      ).then((d) => d.json())
       const relatedIds = post[0].acf.related_posts.join(',')
-      const relatedData = await fetch(`https://yr.media/wp-json/wp/v2/posts?include=${relatedIds}`)
-        .then(d => d.json())
+      const relatedData = await fetch(
+        `https://yr.media/wp-json/wp/v2/posts?include=${relatedIds}`
+      ).then((d) => d.json())
 
       // const slug = await ctx.params.slug
       this.postsData = relatedData

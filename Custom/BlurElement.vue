@@ -1,16 +1,9 @@
 <template>
-  <div
-    class="blur-container"
-    @click="toggle"
-  >
+  <div class="blur-container" @click="toggle">
     <div>
       {{ element }}
     </div>
-    <div
-      v-for="n in num"
-      :key="n"
-      :style="animaStart"
-    >
+    <div v-for="n in num" :key="n" :style="animaStart">
       <div :style="computeBlur(n)">
         {{ element }}
       </div>
@@ -27,18 +20,17 @@ export default {
       default: null
     }
   },
-  data () {
+  data() {
     return {
       animaON: false
     }
   },
   computed: {
-    animaStart () {
+    animaStart() {
       if (this.animaON) {
         return {
           opacity: 0.99,
           animation: '2000ms linear 0s 1 normal forwards running onKey '
-
         }
       } else {
         return {
@@ -49,10 +41,10 @@ export default {
     }
   },
   methods: {
-    toggle () {
+    toggle() {
       this.animaON = !this.animaON
     },
-    computeBlur (n) {
+    computeBlur(n) {
       return {
         opacity: 0.99,
         filter: `blur(${n}px)`
@@ -81,7 +73,7 @@ div {
     opacity: 0.01;
   }
   50% {
-    opacity: 0.50;
+    opacity: 0.5;
   }
   100% {
     opacity: 0.99;
@@ -92,7 +84,7 @@ div {
     opacity: 0.99;
   }
   50% {
-    opacity: 0.50;
+    opacity: 0.5;
   }
   100% {
     opacity: 0.01;
