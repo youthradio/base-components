@@ -2,6 +2,8 @@
   <div ref="headerImage" :class="[`${mode}-overlay`, 'feature-container']">
     <img
       src="~./assets/blank.jpg"
+      width="1687"
+      height="949"
       :data-srcset="
         `${headerData.featureImage}x375.jpg 375w,
         ${headerData.featureImage}x563.jpg 563w,
