@@ -1,10 +1,11 @@
 <template>
   <header>
-    <FeatureHeader
-      :header-data="headerData"
-      :mode="mode"
+    <component
+      :is="headerType === 'video' ? 'FeatureHeaderVideo' : 'FeatureHeader'"
+      v-bind="{ 'header-data': headerData, mode: mode }"
       @onHeaderImgHeight="setHeaderHeight"
     />
+
     <MenuHeader :offset="headerImageHeight" />
   </header>
 </template>
@@ -13,15 +14,23 @@
 import POSTCONFIG from '../../post.config'
 import MenuHeader from './MenuHeader'
 import FeatureHeader from './FeatureHeader'
+import FeatureHeaderVideo from './FeatureHeaderVideo'
 
 export default {
   name: 'HeadContainer',
   components: {
+    // eslint-disable-next-line vue/no-unused-components
     FeatureHeader,
+    FeatureHeaderVideo,
     MenuHeader
   },
   props: {
     mode: {
+      type: String,
+      required: false,
+      default: 'base'
+    },
+    headerType: {
       type: String,
       required: false,
       default: 'base'
