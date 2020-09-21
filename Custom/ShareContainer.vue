@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <div class="flex flex-row-ns flex-column bg-blue-op-50 br-pill">
+  <div class="fixed-ns flex-s top-2-ns ">
+    <div class="">
       <a
-        class="db link grow"
+        class="db w-25 link grow"
         target="_blank"
         rel="nofollow"
         :href="
@@ -19,7 +19,7 @@
         </svg>
       </a>
       <a
-        class="db link grow"
+        class="db w-25 link grow"
         target="_blank"
         rel="nofollow"
         :href="
