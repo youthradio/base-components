@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed-ns flex-s top-2-ns ">
+  <div class="fixed-ns mv5-ns flex-s top-2-ns ">
     <div class="">
       <a
         class="db w-25 link grow"
