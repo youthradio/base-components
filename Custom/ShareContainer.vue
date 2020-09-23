@@ -1,9 +1,9 @@
 <template>
   <!-- Whatever the SVGs get replaced with, use the 'center' class and reduce as much left and right spacing  -->
   <div class="">
-    <div class="fixed-ns mv5-ns flex-s top-2-ns">
+    <div class="fixed-ns mv5-ns flex-s top-2-ns center-ns">
       <a
-        class="db link grow"
+        class="db-ns link grow"
         target="_blank"
         rel="nofollow"
         :href="
@@ -13,7 +13,7 @@
         "
       >
         <svg
-          class="db pb2 pt2 center"
+          class="db-ns pb2 pt2 center"
           height="20"
           viewBox="0 0 12 24"
           fill="none"
@@ -25,7 +25,7 @@
         </svg>
       </a>
       <a
-        class="db link grow"
+        class="db-ns link grow"
         target="_blank"
         rel="nofollow"
         :href="
@@ -35,7 +35,7 @@
         "
       >
         <svg
-          class="db pb2 pt2 center"
+          class="db-ns pb2 pt2 center"
           height="20"
           viewBox="0 0 24 20"
           fill="none"
@@ -49,7 +49,7 @@
       <a
         target="_blank"
         rel="nofollow"
-        class="db link grow"
+        class="db-ns link grow"
         :href="
           `mailto:info@example.com?&subject=${encodeURIComponent(
             title
@@ -57,7 +57,7 @@
         "
       >
         <svg
-          class="db pb2 pt2 center"
+          class="db-ns pb2 pt2 center"
           height="20"
           viewBox="0 0 24 18"
           fill="none"
