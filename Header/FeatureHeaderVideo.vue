@@ -6,6 +6,8 @@
       autoplay
       muted
       loop
+      playsinline
+      disablePictureInPicture
     >
       <source src="images/feature-eyf.webp" type="video/webp" />
       <source src="images/feature-eyf.mp4" type="video/mp4" />
