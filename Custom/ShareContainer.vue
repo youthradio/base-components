@@ -1,6 +1,6 @@
 <template>
-  <aside>
-    <div class="flex justify-around db-ns fixed-ns mv5-ns top-2-ns">
+  <div class="container">
+    <div class="flex justify-center db-ns">
       <a
         class="db-ns ph3 ph0-ns"
         target="_blank"
@@ -71,7 +71,7 @@
         </svg>
       </a>
     </div>
-  </aside>
+  </div>
 </template>
 <script>
 export default {
