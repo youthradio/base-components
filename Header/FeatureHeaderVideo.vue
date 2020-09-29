@@ -12,6 +12,8 @@
       <source src="images/feature-eyf.webp" type="video/webp" />
       <source src="images/feature-eyf.mp4" type="video/mp4" />
     </video>
+    <div class="absolute left-0 top-0 right-0 bottom-0 bg-black-40" />
+
     <div class="absolute bottom-0 text-shadow mh3 mv3 mh5-ns mv5-ns">
       <h1 class="lh-title days-sans f1-ns f3">
         {{ headerData.title }}
