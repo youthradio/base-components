@@ -15,12 +15,12 @@
     <div class="absolute left-0 top-0 right-0 bottom-0 bg-black-40" />
 
     <div class="absolute bottom-0 text-shadow w-100">
-      <div class="mw8 center ph3 pb4-ns">
-        <h1 class="lh-title days-sans f1-ns f3">
+      <div class="mw8 center pb4-ns ml5 tc">
+        <h1 class="lh-title days-sans f-5-ns f3">
           {{ headerData.title }}
         </h1>
-        <h2 class="lh-title f5 f3-ns mb0">by {{ headerData.author }}</h2>
-        <h5 class="lh-title f7 f4-ns mt0">
+        <h2 class="lh-title f5 f3-ns mb0 normal">by {{ headerData.author }}</h2>
+        <h5 class="lh-title f7 f4-ns mt0 normal">
           {{ headerData.publishDate }}
         </h5>
       </div>
