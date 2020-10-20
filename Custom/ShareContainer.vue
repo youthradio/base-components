@@ -30,7 +30,7 @@
         rel="nofollow"
         :href="
           `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-            `${title}: ${url} with @itsYRmedia @WNYC @radiorookies`
+            `${title}: ${url} ${tweetMessage}`
           )}`
         "
       >
@@ -81,6 +81,10 @@ export default {
       required: true
     },
     description: {
+      type: String,
+      required: true
+    },
+    tweetMessage: {
       type: String,
       required: true
     }
