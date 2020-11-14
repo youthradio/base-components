@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <div class="flex justify-center db-ns">
+    <div :class="['flex justify-center', verticalMode ? 'flex-column-ns' : '']">
       <a
-        class="db-ns ph3 ph0-ns"
+        :class="['db-ns ph3', verticalMode ? 'ph0-ns' : '']"
         target="_blank"
         rel="nofollow"
         :href="
@@ -25,7 +25,7 @@
         </svg>
       </a>
       <a
-        class="db-ns ph3 ph0-ns"
+        :class="['db-ns ph3', verticalMode ? 'ph0-ns' : '']"
         target="_blank"
         rel="nofollow"
         :href="
@@ -50,7 +50,7 @@
       <a
         target="_blank"
         rel="nofollow"
-        class="db-ns ph3 ph0-ns"
+        :class="['db-ns ph3', verticalMode ? 'ph0-ns' : '']"
         :href="
           `mailto:info@example.com?&subject=${encodeURIComponent(
             title
@@ -87,15 +87,28 @@ export default {
     tweetMessage: {
       type: String,
       required: true
+    },
+    verticalMode: {
+      type: Boolean,
+      required: false,
+      default: true
+    }
+  },
+  data() {
+    return {
+      isMounted: false
     }
   },
   computed: {
     url() {
-      if (process.client) {
+      if (process.client && this.isMounted) {
         return window.location.href
       }
       return null
     }
+  },
+  mounted() {
+    this.isMounted = true
   }
 }
 </script>
