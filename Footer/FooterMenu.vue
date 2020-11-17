@@ -102,8 +102,8 @@ import FullLogo from './FullLogo'
 
 export default {
   components: {
-    FullLogo
-  }
+    FullLogo,
+  },
 }
 </script>
 

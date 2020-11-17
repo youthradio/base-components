@@ -18,21 +18,21 @@ import USAMap from './USAMap.vue'
 export default {
   name: 'MapContainer',
   components: {
-    USAMap
+    USAMap,
   },
   props: {
     activeState: {
       type: Object,
       default: null,
-      required: false
-    }
+      required: false,
+    },
   },
   data() {
     return {
       mapData: {},
       loadingMap: false,
       loadingData: false,
-      mapReady: false
+      mapReady: false,
     }
   },
   computed: {},
@@ -55,8 +55,8 @@ export default {
         'maps/us-all-states-20m-ligth-basic.json'
       ).then((res) => res.json())
       this.loadingMap = false
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -5,14 +5,12 @@
       :class="[headType === 'main' ? 'bg-container' : '']"
     >
       <img
-        :data-srcset="
-          `${headerImg}x300.jpg 375w,
+        :data-srcset="`${headerImg}x300.jpg 375w,
         ${headerImg}x750.jpg 563w,
         ${headerImg}x1050.jpg 1125w,
         ${headerImg}x1350.jpg 1500w,
         ${headerImg}x1500.jpg 1875w,
-        `
-        "
+        `"
         :data-src="`${headerImg}x1500.jpg`"
         alt="The golden gate bridge"
         class="img-fluid lazyload"
@@ -20,7 +18,7 @@
     </div>
     <div
       :class="[
-        headType === 'main' ? 'top-container title' : 'sub-container sub-title'
+        headType === 'main' ? 'top-container title' : 'sub-container sub-title',
       ]"
     >
       <div v-if="headType === 'main'">
@@ -47,13 +45,13 @@ export default {
     articleData: {
       required: false,
       type: Object,
-      default: null
+      default: null,
     },
     headType: {
       required: false,
       type: String,
-      default: 'main'
-    }
+      default: 'main',
+    },
   },
   data() {
     return {}
@@ -61,10 +59,10 @@ export default {
   computed: {
     headerImg() {
       return this.articleData.featureImage.trim()
-    }
+    },
   },
   watch: {},
-  mounted() {}
+  mounted() {},
 }
 </script>
 

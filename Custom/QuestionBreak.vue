@@ -29,28 +29,28 @@ export default {
     id: {
       type: Number,
       require: true,
-      default: null
+      default: null,
     },
     questionData: {
       type: Object,
       require: true,
-      default: null
+      default: null,
     },
     value: {
       type: Object,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
-      innervalue: null
+      innervalue: null,
     }
   },
   watch: {
     innervalue() {
       this.$emit('input', this.innervalue)
-    }
-  }
+    },
+  },
 }
 </script>
 

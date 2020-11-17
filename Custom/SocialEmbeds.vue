@@ -11,7 +11,7 @@
           { backgroundColor: category.color },
           selectedCategory.name === category.name
             ? { fontWeight: 'bold' }
-            : null
+            : null,
         ]"
         class="tab-link"
         @click="setCategory(category)"
@@ -26,7 +26,7 @@
       class="embeds-container"
       :style="[
         { backgroundColor: selectedCategory.color },
-        checkSelectedCategory(category)
+        checkSelectedCategory(category),
       ]"
     >
       <Embed
@@ -48,14 +48,14 @@ import Embed from './Embed.vue'
 
 export default {
   components: {
-    Embed
+    Embed,
   },
   props: {
     embedsData: {
       type: Object,
       require: true,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
@@ -63,7 +63,7 @@ export default {
       twttr: null,
       instgrm: null,
       tiktokEmbed: null,
-      currentActiveState: null
+      currentActiveState: null,
     }
   },
   computed: {},
@@ -74,7 +74,7 @@ export default {
     const initPost = this.filteredEmbeds(this.selectedCategory)[0]
     this.currentActiveState = {
       state: initPost.state,
-      location: initPost.location
+      location: initPost.location,
     }
     this.$emit('onActiveState', this.currentActiveState)
   },
@@ -89,10 +89,10 @@ export default {
       {
         threshold: Array(50)
           .fill()
-          .map((_, i) => i / 50)
+          .map((_, i) => i / 50),
       }
     )
-    this.$refs.embedsRef.map((e) => {
+    this.$refs.embedsRef.forEach((e) => {
       observer.observe(e.$el)
     })
   },
@@ -101,7 +101,7 @@ export default {
       if (event === 'enter') {
         this.$emit('onActiveState', {
           state: postData.state,
-          location: postData.location
+          location: postData.location,
         })
       } else {
         this.$emit('onActiveState', this.currentActiveState)
@@ -120,7 +120,7 @@ export default {
         )
         this.currentActiveState = {
           state: post.postData.state,
-          location: post.postData.location
+          location: post.postData.location,
         }
         this.$emit('onActiveState', this.currentActiveState)
       }
@@ -173,8 +173,8 @@ export default {
             .catch(() => setTimeout(() => resolve(window.tiktokEmbed), 1000))
         })
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

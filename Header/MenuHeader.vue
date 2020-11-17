@@ -3,7 +3,7 @@
     :class="[
       'top-header header-sticky row',
       activeMenu ? 'navigation-open' : '',
-      hideNavbar ? 'hide-navigation' : ''
+      hideNavbar ? 'hide-navigation' : '',
     ]"
     :style="
       menuFixed ? '' : !toggleEnable ? { position: 'sticky', top: 0 } : ''
@@ -205,25 +205,25 @@ export default {
     menuFixed: {
       type: Boolean,
       required: false,
-      default: false
+      default: false,
     },
     toggleEnable: {
       type: Boolean,
       required: false,
-      default: true
+      default: true,
     },
     offset: {
       type: Number,
       required: false,
-      default: 0
-    }
+      default: 0,
+    },
   },
   data() {
     return {
       activeMenu: false,
       searchContainer: false,
       hideNavbar: true,
-      lastScrollY: 0
+      lastScrollY: 0,
     }
   },
   computed: {
@@ -232,9 +232,9 @@ export default {
         position: 'fixed',
         top: '10px',
         left: '6px',
-        margin: '0px'
+        margin: '0px',
       }
-    }
+    },
   },
   mounted() {
     window.addEventListener(
@@ -266,8 +266,8 @@ export default {
         this.toggleMenu()
       }
       this.searchContainer = !this.searchContainer
-    }
-  }
+    },
+  },
 }
 </script>
 

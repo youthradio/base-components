@@ -4,14 +4,12 @@
       src="~./assets/blank.jpg"
       width="1687"
       height="949"
-      :data-srcset="
-        `${headerData.featureImage}x375.jpg 375w,
+      :data-srcset="`${headerData.featureImage}x375.jpg 375w,
         ${headerData.featureImage}x563.jpg 563w,
         ${headerData.featureImage}x1125.jpg 1125w,
         ${headerData.featureImage}x1500.jpg 1500w,
         ${headerData.featureImage}x1875.jpg 1875w,
-        `
-      "
+        `"
       :data-src="`${headerData.featureImage}x1875.jpg`"
       alt="Elva dressed as a fairy"
       class="img-fluid lazyload"
@@ -34,17 +32,17 @@ export default {
     headerData: {
       type: Object,
       require: true,
-      default: null
+      default: null,
     },
     mode: {
       type: String,
       required: false,
-      default: 'base'
-    }
+      default: 'base',
+    },
   },
   data() {
     return {
-      innervalue: null
+      innervalue: null,
     }
   },
   methods: {
@@ -53,8 +51,8 @@ export default {
         'onHeaderImgHeight',
         this.$refs.headerImage.getBoundingClientRect().height
       )
-    }
-  }
+    },
+  },
 }
 </script>
 

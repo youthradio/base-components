@@ -10,11 +10,11 @@ import RelatedPosts from './RelatedPosts.vue'
 
 export default {
   components: {
-    RelatedPosts
+    RelatedPosts,
   },
   data() {
     return {
-      postsData: null
+      postsData: null,
     }
   },
   computed: {},
@@ -36,7 +36,7 @@ export default {
 
       // const slug = await ctx.params.slug
       this.postsData = relatedData
-    }
-  }
+    },
+  },
 }
 </script>

@@ -18,23 +18,23 @@ export default {
     contentData: {
       type: Array,
       default: null,
-      required: false
+      required: false,
     },
     mapData: {
       type: Object,
       default: null,
-      required: true
+      required: true,
     },
     mapReady: {
       type: Boolean,
       default: false,
-      required: true
+      required: true,
     },
     activeState: {
       type: Object,
       default: null,
-      required: false
-    }
+      required: false,
+    },
   },
   data() {
     return {
@@ -42,7 +42,7 @@ export default {
       aspect: null,
       projection: null,
       path: null,
-      isMapReady: false
+      isMapReady: false,
     }
   },
   computed: {},
@@ -64,8 +64,8 @@ export default {
           this.setStateColor(newval.state, newval.color)
         }
       },
-      deep: true
-    }
+      deep: true,
+    },
   },
   created() {},
   mounted() {
@@ -78,7 +78,7 @@ export default {
       this.aspect = WIDTH / HEIGHT
       this.projection = geoAlbersUsaTerritories().translate([
         WIDTH / 2,
-        HEIGHT / 2
+        HEIGHT / 2,
       ])
       this.path = d3.geoPath(this.projection)
       // this.svg.attr('width', WIDTH)
@@ -172,7 +172,7 @@ export default {
       const targetWidth = parseInt(this.svg.node().parentNode.clientWidth)
       this.svg.attr('width', targetWidth)
       this.svg.attr('height', Math.round(targetWidth / this.aspect))
-    }
+    },
     // setAnimation (state) {
     //   if (state && !this.timer) {
     //     this.timer = setInterval(() => {
@@ -182,7 +182,7 @@ export default {
     //     clearInterval(this.timer)
     //   }
     // }
-  }
+  },
 }
 </script>
 

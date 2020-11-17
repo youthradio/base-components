@@ -1,9 +1,7 @@
 <template>
   <div class="subscriptions">
     <div>
-      <h3 class="title">
-        Get Fresh Updates
-      </h3>
+      <h3 class="title">Get Fresh Updates</h3>
       <form class="mc-form" method="POST" action="" @submit.prevent="submit">
         <input
           v-model="email"
@@ -39,7 +37,7 @@ export default {
     return {
       name: null,
       email: null,
-      response: null
+      response: null,
     }
   },
   methods: {
@@ -55,22 +53,22 @@ export default {
 
       const data = {
         action: 'mailchimp_subscription',
-        email: this.email
+        email: this.email,
       }
       try {
         const res = await fetch(url, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;'
+            'Content-Type': 'application/x-www-form-urlencoded;',
           },
-          body: this.encode(data)
+          body: this.encode(data),
         })
         this.response = await res.json()
       } catch (error) {
         // console.log(error)
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

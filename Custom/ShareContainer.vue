@@ -5,11 +5,9 @@
         :class="['db-ns ph3', verticalMode ? 'ph0-ns' : '']"
         target="_blank"
         rel="nofollow"
-        :href="
-          `https://www.facebook.com/sharer/sharer.php?u=${url}&t=${encodeURIComponent(
-            title
-          )}`
-        "
+        :href="`https://www.facebook.com/sharer/sharer.php?u=${url}&t=${encodeURIComponent(
+          title
+        )}`"
       >
         <svg
           class="center dib v-mid db-ns pb2-ns pt2-ns"
@@ -28,11 +26,9 @@
         :class="['db-ns ph3', verticalMode ? 'ph0-ns' : '']"
         target="_blank"
         rel="nofollow"
-        :href="
-          `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-            `${title}: ${url} ${tweetMessage}`
-          )}`
-        "
+        :href="`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+          `${title}: ${url} ${tweetMessage}`
+        )}`"
       >
         <svg
           class="center dib v-mid db-ns pb2-ns pt2-ns"
@@ -51,11 +47,9 @@
         target="_blank"
         rel="nofollow"
         :class="['db-ns ph3', verticalMode ? 'ph0-ns' : '']"
-        :href="
-          `mailto:info@example.com?&subject=${encodeURIComponent(
-            title
-          )}&body=${encodeURIComponent(`${description}\n${url}`)}`
-        "
+        :href="`mailto:info@example.com?&subject=${encodeURIComponent(
+          title
+        )}&body=${encodeURIComponent(`${description}\n${url}`)}`"
       >
         <svg
           class="center dib v-mid db-ns pb2-ns pt2-ns"
@@ -78,25 +72,25 @@ export default {
   props: {
     title: {
       type: String,
-      required: true
+      required: true,
     },
     description: {
       type: String,
-      required: true
+      required: true,
     },
     tweetMessage: {
       type: String,
-      required: true
+      required: true,
     },
     verticalMode: {
       type: Boolean,
       required: false,
-      default: true
-    }
+      default: true,
+    },
   },
   data() {
     return {
-      isMounted: false
+      isMounted: false,
     }
   },
   computed: {
@@ -105,11 +99,11 @@ export default {
         return window.location.href
       }
       return null
-    }
+    },
   },
   mounted() {
     this.isMounted = true
-  }
+  },
 }
 </script>
 

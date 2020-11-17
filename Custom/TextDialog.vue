@@ -15,15 +15,15 @@ export default {
     dialogs: {
       type: Array,
       require: true,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {}
   },
   computed: {},
   mounted() {},
-  methods: {}
+  methods: {},
 }
 </script>
 

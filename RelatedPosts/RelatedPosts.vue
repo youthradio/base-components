@@ -51,15 +51,15 @@ export default {
       } else {
         return ''
       }
-    }
+    },
   },
   props: {
     postsData: {
       type: Array,
-      default: null
-    }
+      default: null,
+    },
   },
-  computed: {}
+  computed: {},
 }
 </script>
 

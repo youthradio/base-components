@@ -2,7 +2,7 @@
   <div
     v-observe-visibility="{
       callback: visibilityChanged,
-      once: true
+      once: true,
     }"
   >
     <div class="margin">
@@ -23,7 +23,7 @@ import USAMap from './USAMap.vue'
 export default {
   name: 'MapContainer',
   components: {
-    USAMap
+    USAMap,
   },
   data() {
     return {
@@ -33,7 +33,7 @@ export default {
       loadingMarkers: false,
       loadingMap: false,
       loadingData: false,
-      mapReady: false
+      mapReady: false,
     }
   },
   computed: {},
@@ -60,7 +60,7 @@ export default {
           delete data.columns
           return data.map((e) => ({
             geo: [parseFloat(e.long), parseFloat(e.lat)],
-            address: e.Address
+            address: e.Address,
           }))
         })
       this.loadingMarkers = false
@@ -75,7 +75,7 @@ export default {
           return data.map((e) => ({
             abbr: e.Abbr,
             state: e.State,
-            values: years.map((y) => [y, e[y]])
+            values: years.map((y) => [y, e[y]]),
           }))
         })
       this.loadingData = false
@@ -87,8 +87,8 @@ export default {
         'maps/us-all-states-20m-ligth-basic.json'
       ).then((res) => res.json())
       this.loadingMap = false
-    }
-  }
+    },
+  },
 }
 </script>
 

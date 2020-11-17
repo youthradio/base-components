@@ -22,23 +22,23 @@ export default {
     // eslint-disable-next-line vue/no-unused-components
     FeatureHeader,
     FeatureHeaderVideo,
-    MenuHeader
+    MenuHeader,
   },
   props: {
     mode: {
       type: String,
       required: false,
-      default: 'base'
+      default: 'base',
     },
     headerType: {
       type: String,
       required: false,
-      default: 'base'
-    }
+      default: 'base',
+    },
   },
   data() {
     return {
-      headerImageHeight: 0
+      headerImageHeight: 0,
     }
   },
   computed: {
@@ -49,17 +49,17 @@ export default {
         author: POSTCONFIG.author,
         imageCaption: POSTCONFIG.featureImageCaption,
         publishDate: POSTCONFIG.publishDate,
-        location: POSTCONFIG.location
+        location: POSTCONFIG.location,
       }
-    }
+    },
   },
   created() {},
   mounted() {},
   methods: {
     setHeaderHeight(val) {
       this.headerImageHeight = val
-    }
-  }
+    },
+  },
 }
 </script>
 

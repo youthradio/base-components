@@ -37,17 +37,17 @@ export default {
     headerData: {
       type: Object,
       require: true,
-      default: null
+      default: null,
     },
     mode: {
       type: String,
       required: false,
-      default: 'base'
-    }
+      default: 'base',
+    },
   },
   data() {
     return {
-      innervalue: null
+      innervalue: null,
     }
   },
   methods: {
@@ -56,8 +56,8 @@ export default {
         'onHeaderImgHeight',
         this.$refs.headerImage.getBoundingClientRect().height
       )
-    }
-  }
+    },
+  },
 }
 </script>
 

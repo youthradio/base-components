@@ -20,13 +20,13 @@ export default {
     quoteData: {
       type: Object,
       defaul: null,
-      required: true
+      required: true,
     },
     isVisible: {
       type: Boolean,
       defaul: false,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
@@ -34,7 +34,7 @@ export default {
       soundID: null,
       isSoundPlaying: false,
       innerWidth: 0,
-      innerHeight: 0
+      innerHeight: 0,
     }
   },
   computed: {
@@ -45,7 +45,7 @@ export default {
       const w = this.innerWidth > 500 ? 10 : 0
       return {
         marginTop: `${Math.random() * 30}%`,
-        marginLeft: `${-2 * (Math.random() - 0.5) * w}%`
+        marginLeft: `${-2 * (Math.random() - 0.5) * w}%`,
       }
     },
     startTime() {
@@ -60,19 +60,19 @@ export default {
       if (!this.isSoundPlaying) {
         return {
           transform: 'scale(0.9)',
-          opacity: '0.05'
+          opacity: '0.05',
         }
       }
       return {
         opacity: '0.99',
-        transform: 'scale(1)'
+        transform: 'scale(1)',
         // textShadow: '0px 0px 20px darkgray'
       }
     },
     fileName() {
       // return only file name
       return this.quoteData.File_Name.split('.')[0]
-    }
+    },
   },
   watch: {
     isVisible() {
@@ -86,7 +86,7 @@ export default {
       } else {
         this.pauseSound()
       }
-    }
+    },
   },
   mounted() {
     this.innerWidth = window.innerWidth
@@ -99,7 +99,7 @@ export default {
       volume: 1.0,
       preload: false,
       loop: false,
-      src: [`audios/${this.fileName}.webm`, `audios/${this.fileName}.mp3`]
+      src: [`audios/${this.fileName}.webm`, `audios/${this.fileName}.mp3`],
       // sprite: {
       //   quote: [this.startTime * 1000, this.durationTime * 1000]
       // }
@@ -133,8 +133,8 @@ export default {
     soundPlayed() {},
     soundPaused() {
       this.isSoundPlaying = false
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -192,5 +192,6 @@ blockquote {
     /* margin-left: 4px; */
     /* margin-right: -8px; */
   }
-}</style
->>
+}
+</style>
+>

@@ -2,9 +2,7 @@
   <div>
     <div id="map" ref="map" />
     <div>
-      <div class="title">
-        Year
-      </div>
+      <div class="title">Year</div>
       <div class="options">
         <button
           v-for="(year, id) in yearsButtonsData"
@@ -37,23 +35,23 @@ export default {
     markersData: {
       type: Array,
       default: null,
-      required: false
+      required: false,
     },
     contentData: {
       type: Array,
       default: null,
-      required: false
+      required: false,
     },
     mapData: {
       type: Object,
       default: null,
-      required: true
+      required: true,
     },
     mapReady: {
       type: Boolean,
       default: false,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
@@ -67,7 +65,7 @@ export default {
       makeAnnotations: null,
       yearSlider: 0,
       legendData: null,
-      yearsButtonsData: []
+      yearsButtonsData: [],
     }
   },
   computed: {},
@@ -96,7 +94,7 @@ export default {
         this.renderLegend()
         // this.setAnimation(true)
       }
-    }
+    },
   },
   created() {},
   mounted() {
@@ -110,7 +108,7 @@ export default {
       this.aspect = WIDTH / HEIGHT
       this.projection = geoAlbersUsaTerritories().translate([
         WIDTH / 2,
-        HEIGHT / 2
+        HEIGHT / 2,
       ])
       this.path = d3.geoPath(this.projection)
       // this.svg.attr('width', WIDTH)
@@ -173,8 +171,8 @@ export default {
         note: {
           padding: 0,
           bgPadding: 0,
-          wrap: 10
-        }
+          wrap: 10,
+        },
       })
       const allAges = this.contentData
         .map((e) => e.values.map((d) => +d[1]))
@@ -225,14 +223,14 @@ export default {
                   : 'leftRight'
                 : 'topBottom',
               custom: !!custom,
-              years: stateData ? stateData.values : null
+              years: stateData ? stateData.values : null,
             },
             offset: 0,
             type: basetype,
             x,
             y,
             dx: custom ? custom.dx : 0,
-            dy: custom ? custom.dy : 0
+            dy: custom ? custom.dy : 0,
           }
         })
     },
@@ -252,7 +250,7 @@ export default {
         .append('g')
         .attr('class', 'annotation-group')
         .call(this.makeAnnotations)
-        .on('dblclick', function() {
+        .on('dblclick', function () {
           d3.event.preventDefault()
           this.makeAnnotations
             .editMode(!this.makeAnnotations.editMode())
@@ -314,11 +312,7 @@ export default {
 
       const legendWidth = dots.size() * side
 
-      legend
-        .append('text')
-        .attr('x', 0)
-        .attr('y', '-5px')
-        .text('Youngest')
+      legend.append('text').attr('x', 0).attr('y', '-5px').text('Youngest')
       legend
         .append('text')
         .attr('x', legendWidth)
@@ -390,8 +384,9 @@ export default {
         .attr(
           'transform',
           (e) =>
-            `translate(${this.projection(e.geo)[0]},${-Math.random() *
-              1000})scale(${MARKER_S_MAX},${MARKER_S_MAX})`
+            `translate(${this.projection(e.geo)[0]},${
+              -Math.random() * 1000
+            })scale(${MARKER_S_MAX},${MARKER_S_MAX})`
         )
         .transition()
         .ease(d3.easeBounce)
@@ -410,7 +405,7 @@ export default {
       const targetWidth = parseInt(this.svg.node().parentNode.clientWidth)
       this.svg.attr('width', targetWidth)
       this.svg.attr('height', Math.round(targetWidth / this.aspect))
-    }
+    },
     // setAnimation (state) {
     //   if (state && !this.timer) {
     //     this.timer = setInterval(() => {
@@ -420,7 +415,7 @@ export default {
     //     clearInterval(this.timer)
     //   }
     // }
-  }
+  },
 }
 </script>
 

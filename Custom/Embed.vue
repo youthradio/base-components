@@ -2,7 +2,7 @@
   <div
     v-observe-visibility="{
       callback: visibilityChanged,
-      once: true
+      once: true,
     }"
     class="container"
     @mouseenter="mouseEventHand"
@@ -18,13 +18,13 @@ export default {
     postData: {
       type: Object,
       require: true,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
       isVisible: false,
-      isReady: false
+      isReady: false,
     }
   },
   computed: {
@@ -33,7 +33,7 @@ export default {
     },
     className() {
       return this.postData.embed.classname
-    }
+    },
   },
   methods: {
     mouseEventHand(event) {
@@ -52,12 +52,12 @@ export default {
         this.$emit('onLoadEmbed', {
           provider: this.postData.embed.provider_name,
           el,
-          entry
+          entry,
         })
         // send visibility event, with element node and provider name, now we can trigger provider render script
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

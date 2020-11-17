@@ -12,8 +12,8 @@ import FooterMenu from './FooterMenu'
 export default {
   components: {
     FooterEmailSubscribe,
-    FooterMenu
-  }
+    FooterMenu,
+  },
 }
 </script>
 

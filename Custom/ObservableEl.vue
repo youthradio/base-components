@@ -12,8 +12,8 @@ export default {
   props: {
     cellName: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {}
@@ -30,7 +30,7 @@ export default {
       )
     })
   },
-  methods: {}
+  methods: {},
 }
 </script>
 

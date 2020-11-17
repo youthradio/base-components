@@ -1,132 +1,132 @@
 export default [
   {
-    x: 740.0849895461586,
-    y: 268.9751849465421,
-    dx: 61.118896484375,
-    dy: 72.91372680664062,
+    x: 740.0849,
+    y: 268.97518,
+    dx: 61.118,
+    dy: 72.913726,
     note: {
       label: 'DC',
       title: '10',
       align: 'dynamic',
       orientation: 'leftRight',
-      custom: true
-    }
+      custom: true,
+    },
   },
   {
-    x: 743.4746223867401,
-    y: 265.89961992131657,
-    dx: 57.9022216796875,
-    dy: 48.25177001953125,
+    x: 743.4746,
+    y: 265.899619,
+    dx: 57.9022,
+    dy: 48.25177,
     note: {
       label: 'MD',
       title: '10',
       align: 'dynamic',
       orientation: 'leftRight',
-      custom: true
-    }
+      custom: true,
+    },
   },
   {
-    x: 815.4069125271898,
-    y: 126.2672009342402,
-    dx: 39.673583984375,
-    dy: 8.578094482421875,
+    x: 815.4069,
+    y: 126.2672,
+    dx: 39.673,
+    dy: 8.5780944,
     note: {
       label: 'ME',
       title: '10',
       align: 'dynamic',
       orientation: 'leftRight',
-      custom: true
-    }
+      custom: true,
+    },
   },
   {
-    x: 787.8938928856286,
-    y: 205.75244924877535,
-    dx: 67.55242919921875,
-    dy: 47.179473876953125,
+    x: 787.8938,
+    y: 205.752449,
+    dx: 67.55242,
+    dy: 47.1794738,
     note: {
       label: 'CT',
       title: '10',
       align: 'dynamic',
       orientation: 'leftRight',
-      custom: true
-    }
+      custom: true,
+    },
   },
   {
-    x: 761.065598396688,
-    y: 262.7419972859574,
-    dx: 40.745849609375,
-    dy: 23.5897216796875,
+    x: 761.065,
+    y: 262.74199,
+    dx: 40.745,
+    dy: 23.58972,
     note: {
       label: 'DE',
       title: '7',
       align: 'dynamic',
       orientation: 'leftRight',
-      custom: true
-    }
+      custom: true,
+    },
   },
   {
-    x: 798.0169056737703,
-    y: 191.16485949689456,
-    dx: 57.90216064453125,
-    dy: 2.1445159912109375,
+    x: 798.0169,
+    y: 191.164859,
+    dx: 57.90216,
+    dy: 2.14451599,
     note: {
       label: 'MA',
       title: '10',
       align: 'dynamic',
       orientation: 'leftRight',
-      custom: true
-    }
+      custom: true,
+    },
   },
   {
-    x: 793.4707328728683,
-    y: 164.364382245589,
-    dx: 62.191162109375,
+    x: 793.4707,
+    y: 164.3643,
+    dx: 62.191,
     dy: 0,
     note: {
       label: 'NH',
       title: '10',
       align: 'dynamic',
       orientation: 'leftRight',
-      custom: true
-    }
+      custom: true,
+    },
   },
   {
-    x: 767.8506848054253,
-    y: 238.40275364135388,
-    dx: 34.3123779296875,
-    dy: 20.373016357421875,
+    x: 767.8506,
+    y: 238.402753,
+    dx: 34.3123,
+    dy: 20.3730163,
     note: {
       label: 'NJ',
       title: '10',
       align: 'dynamic',
       orientation: 'leftRight',
-      custom: true
-    }
+      custom: true,
+    },
   },
   {
-    x: 803.736373653626,
-    y: 200.8502403038496,
-    dx: 52.540771484375,
-    dy: 22.517471313476562,
+    x: 803.736,
+    y: 200.85024,
+    dx: 52.54,
+    dy: 22.5174713,
     note: {
       label: 'RI',
       title: '10',
       align: 'dynamic',
       orientation: 'leftRight',
-      custom: true
-    }
+      custom: true,
+    },
   },
   {
-    x: 777.5488720941044,
-    y: 160.9148348403736,
-    dx: -1.07232666015625,
-    dy: -23.58971405029297,
+    x: 777.5488,
+    y: 160.91483,
+    dx: -1.07232,
+    dy: -23.589714,
     note: {
       label: 'VT',
       title: '10',
       align: 'middle',
       orientation: 'topBottom',
-      custom: true
-    }
-  }
+      custom: true,
+    },
+  },
 ]

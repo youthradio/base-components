@@ -31,12 +31,12 @@ export default {
     headerData: {
       type: Object,
       require: true,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
-      innervalue: null
+      innervalue: null,
     }
   },
   methods: {
@@ -45,8 +45,8 @@ export default {
         'onHeaderImgHeight',
         this.$refs.headerImage.getBoundingClientRect().height
       )
-    }
-  }
+    },
+  },
 }
 </script>
 

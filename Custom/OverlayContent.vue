@@ -28,23 +28,23 @@ import CustomFormat from './CustomFormat'
 
 export default {
   components: {
-    CustomFormat
+    CustomFormat,
   },
   props: {
     topic: {
       type: Object,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
-      isEnable: false
+      isEnable: false,
     }
   },
   watch: {
     topic() {
       this.isEnable = true
-    }
+    },
   },
   mounted() {
     window.addEventListener('keydown', (e) => {
@@ -59,8 +59,8 @@ export default {
     },
     setState(state) {
       this.isEnable = state
-    }
-  }
+    },
+  },
 }
 </script>
 

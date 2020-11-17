@@ -51,14 +51,14 @@ export default {
       default: null,
       validator(value) {
         return value instanceof AudioContext
-      }
-    }
+      },
+    },
   },
   data() {
     return {
       muteState: true,
       silentPlayer: null,
-      audioContextState: null
+      audioContextState: null,
     }
   },
   watch: {
@@ -69,7 +69,7 @@ export default {
         'statechange',
         async () => (this.audioContextState = await this.audioContext.state)
       )
-    }
+    },
   },
   mounted() {
     this.silentPlayer = document.createElement('audio')
@@ -89,8 +89,8 @@ export default {
         this.muteState = !this.muteState
         this.$emit('mutedEvent', this.muteState)
       }
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -115,5 +115,6 @@ export default {
   background-color: lighten($color: $dark, $amount: 20%);
   border-radius: 1px;
   cursor: pointer;
-}</style
->>
+}
+</style>
+>

@@ -16,7 +16,7 @@ export default {
       required: false,
       default() {
         return {}
-      }
+      },
     },
     /** Array of events to emit from the plyr object **/
     emit: {
@@ -24,12 +24,12 @@ export default {
       required: false,
       default() {
         return []
-      }
-    }
+      },
+    },
   },
   data() {
     return {
-      player: {}
+      player: {},
     }
   },
   computed: {
@@ -39,7 +39,7 @@ export default {
         options.hideYouTubeDOMError = true
       }
       return options
-    }
+    },
   },
   mounted() {
     this.player = new Plyr(this.$el.firstChild, this.opts)
@@ -65,8 +65,8 @@ export default {
   methods: {
     emitPlayerEvent(event) {
       this.$emit(event.type, event)
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -58,13 +58,13 @@
             <svg width="20" height="20" viewBox="0 0 512 512">
               <path
                 v-if="activePassage === i && isPlaying"
-                style="fill:black;"
+                style="fill: black"
                 d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm96-280v160c0 8.8-7.2 16-16 16h-48c-8.8 0-16-7.2-16-16V176c0-8.8 7.2-16 16-16h48c8.8 0 16 7.2 16 16zm-112 0v160c0 8.8-7.2 16-16 16h-48c-8.8 0-16-7.2-16-16V176c0-8.8 7.2-16 16-16h48c8.8 0 16 7.2 16 16z"
                 class=""
               />
               <path
                 v-else
-                style="fill:black;"
+                style="fill: black"
                 d="M371.7 238l-176-107c-15.8-8.8-35.7 2.5-35.7 21v208c0 18.4 19.8 29.8 35.7 21l176-101c16.4-9.1 16.4-32.8 0-42zM504 256C504 119 393 8 256 8S8 119 8 256s111 248 248 248 248-111 248-248zm-448 0c0-110.5 89.5-200 200-200s200 89.5 200 200-89.5 200-200 200S56 366.5 56 256z"
                 class=""
               />
@@ -113,23 +113,23 @@ export default {
     audios: {
       type: Array,
       require: true,
-      default: null
+      default: null,
     },
     guests: {
       type: Array,
       require: true,
-      default: null
+      default: null,
     },
     dialogs: {
       type: Array,
       require: true,
-      default: null
+      default: null,
     },
     sectionId: {
       type: String,
       require: true,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
@@ -137,7 +137,7 @@ export default {
       activePassage: 0,
       progress: '0%',
       audioDuration: 0,
-      isPlaying: false
+      isPlaying: false,
     }
   },
   computed: {
@@ -160,11 +160,11 @@ export default {
           'mute', // Toggle mute
           'volume', // Volume control
           'pip', // Picture-in-picture (currently Safari only)
-          'airplay' // Airplay (currently Safari only)
+          'airplay', // Airplay (currently Safari only)
           // 'settings' // Settings menu
-        ]
+        ],
       }
-    }
+    },
   },
   mounted() {
     this.vueplayer = this.$refs.audioPlayer
@@ -177,7 +177,7 @@ export default {
         })
       },
       {
-        threshold: 0
+        threshold: 0,
       }
     )
     observer.observe(this.$refs.container)
@@ -228,15 +228,15 @@ export default {
     },
     setCurrPassage() {
       const currTime = this.vueplayer.player.currentTime
-      this.dialogs.map((e, i) => {
+      this.dialogs.forEach((e, i) => {
         const start = e.startSeconds
         const end = e.endSeconds
         if (currTime >= start && currTime < end) {
           this.activePassage = i
         }
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

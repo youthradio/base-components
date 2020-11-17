@@ -1,4 +1,5 @@
-C<template>
+C
+<template>
   <div class="container">
     <div class="head-profile">
       <img
@@ -35,25 +36,25 @@ export default {
     index: {
       type: Number,
       required: true,
-      default: 0
+      default: 0,
     },
     profileData: {
       type: Object,
       require: true,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
-      isCollapsed: true
+      isCollapsed: true,
     }
   },
   computed: {},
   methods: {
     toggleBox() {
       this.isCollapsed = !this.isCollapsed
-    }
-  }
+    },
+  },
 }
 </script>
 

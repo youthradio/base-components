@@ -37,8 +37,8 @@ export default {
     slideContent: {
       type: Object,
       require: true,
-      default: null
-    }
+      default: null,
+    },
   },
   asyncData(ctx) {
     return {}
@@ -50,7 +50,7 @@ export default {
     borderColor() {
       if (this.slideContent) {
         return {
-          'border-top-color': this.slideContent.color
+          'border-top-color': this.slideContent.color,
         }
       }
       return ''
@@ -58,19 +58,19 @@ export default {
     titleColor() {
       if (this.slideContent) {
         return {
-          color: this.slideContent.color
+          color: this.slideContent.color,
         }
       }
       return ''
-    }
+    },
   },
   watch: {},
   mounted() {},
   methods: {
     selectTopic(topic) {
       this.$emit('onTopicChange', topic)
-    }
-  }
+    },
+  },
 }
 </script>
 

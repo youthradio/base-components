@@ -29,13 +29,13 @@ export default {
     questionSet: {
       type: Object,
       required: true,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
       hasVoted: false,
-      result: null
+      result: null,
     }
   },
   mounted() {},
@@ -45,7 +45,7 @@ export default {
         `${POSTCONFIG.POLLSERVER}/vote_poll/${this.questionSet.id}/${vote.id}`,
         {
           method: 'GET',
-          credentials: 'include'
+          credentials: 'include',
         }
       ).then((res) => res.json())
       const total = res.poll.options.reduce((a, i) => a + i.count, 0) // adds total counts
@@ -53,11 +53,11 @@ export default {
       const percentage = (100 * selectedVote.count) / total
       this.result = {
         total: percentage.toFixed(),
-        title: vote.title
+        title: vote.title,
       }
       this.hasVoted = true
-    }
-  }
+    },
+  },
 }
 </script>
 <style lang="scss" scoped>
