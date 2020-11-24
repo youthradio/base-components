@@ -57,7 +57,7 @@ button {
 }
 
 header.main-header {
-  position: fixed;
+  // position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -569,6 +569,8 @@ nav.main-navigation {
   }
 }
 .top-header.header-sticky {
+  position: absolute;
+  width: 100%;
   header.main-header {
     height: 68px;
 

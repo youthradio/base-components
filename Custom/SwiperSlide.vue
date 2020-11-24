@@ -1,5 +1,7 @@
 <template>
-  <div class="swiper-slide h-100 bg-dark-gray flex justify-center items-center">
+  <div
+    class="swiper-slide h-100 min-vh-100 bg-dark-gray flex justify-center items-center relative"
+  >
     <slot />
   </div>
 </template>
