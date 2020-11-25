@@ -19,14 +19,14 @@
         <button
           :disabled="toggled"
           class="bn pointer black bg-green br4 db pa1 ph2 grow mh2 tc"
-          @click.prevent="processOption(scenario.option.id)"
+          @click.prevent="processOption(scenario.option.a.id)"
         >
           <span>{{ scenario.option.a.content }}</span>
         </button>
         <button
           :disabled="toggled"
           class="bn pointer black bg-green br4 db pa1 ph2 grow mh2 tc"
-          @click.prevent="processOption(scenario.option.id)"
+          @click.prevent="processOption(scenario.option.b.id)"
         >
           <span>{{ scenario.option.b.content }}</span>
         </button>
