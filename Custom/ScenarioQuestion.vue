@@ -35,7 +35,7 @@
     <article
       v-if="toggled"
       ref="modal"
-      class="lh-copy absolute left-0 top-3 green ph3"
+      class="lh-copy absolute top-3 green ph3"
       @click="toggled = !toggled"
     >
       <div class="measure pa3 bg-black shadow br4">
