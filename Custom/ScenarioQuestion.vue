@@ -7,10 +7,10 @@
         loop
         muted
         playsinlines
-        :poster="`${scenario.image}.gif`"
+        :poster="`${scenario.image}.jpg`"
       >
         <source :src="`${scenario.image}.mp4`" />
-        <source :src="`${scenario.image}.webm`" />
+        <source :src="`${scenario.image}.webp`" />
       </video>
     </div>
     <article class="measure lh-copy ph3 relative">
@@ -32,7 +32,12 @@
         </button>
       </div>
     </article>
-    <article v-if="toggled" class="lh-copy absolute left-0 top-3 green ph3">
+    <article
+      v-if="toggled"
+      ref="modal"
+      class="lh-copy absolute left-0 top-3 green ph3"
+      @click="toggled = !toggled"
+    >
       <div class="measure ph3 pv1 bg-black shadow br4">
         <div v-html="scenario.response.text"></div>
         <div>{{ scenario.option.a.content }}</div>
