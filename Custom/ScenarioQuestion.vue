@@ -38,12 +38,16 @@
       class="lh-copy absolute left-0 top-3 green ph3"
       @click="toggled = !toggled"
     >
-      <div class="measure ph3 pv1 bg-black shadow br4">
+      <div class="measure pa3 bg-black shadow br4">
         <div v-html="scenario.response.text"></div>
-        <div>{{ scenario.option.a.content }}</div>
-        <div>▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 3.9%</div>
-        <div>{{ scenario.option.b.content }}</div>
-        <div>▓▓▓▓▓▓ 1.9%</div>
+        <div>
+          <div>{{ scenario.option.a.content }}</div>
+          <div v-if="result">{{ generateState(result.a) }}</div>
+          <div v-else class="fadein-loading">██████ %</div>
+          <div>{{ scenario.option.b.content }}</div>
+          <div v-if="result">{{ generateState(result.b) }}</div>
+          <div v-else class="fadein-loading">██████ %</div>
+        </div>
       </div>
       <div class="ph3">
         <button
@@ -62,6 +66,7 @@
 
 <script>
 import SwiperSlide from './SwiperSlide'
+import { POLLSERVER } from '~/post.config'
 
 export default {
   name: 'ScenarioQuestion',
@@ -83,11 +88,38 @@ export default {
   data() {
     return {
       toggled: false,
+      voteLoading: false,
+      result: null,
     }
   },
   methods: {
-    processOption(optionid) {
+    generateState(val) {
+      const CHAR = '▓'
+      const stat = Array(~~(15 * val))
+        .fill(CHAR)
+        .join('')
+      return `${stat} ${(100 * val).toFixed()}%`
+    },
+    async processOption(voteid) {
       this.toggled = true
+      this.voteLoading = true
+
+      const res = await fetch(
+        `${POLLSERVER}/vote_poll/${this.scenario.option.id}/${voteid}`,
+        {
+          method: 'GET',
+          credentials: 'include',
+        }
+      ).then((res) => res.json())
+      const total = res.poll.options.reduce((a, i) => a + i.count, 0) // adds total counts
+      const votes = Object.fromEntries(
+        res.poll.options.map((e) => [e.id, e.count])
+      )
+      this.result = {
+        a: votes[this.scenario.option.a.id] / total,
+        b: votes[this.scenario.option.b.id] / total,
+      }
+      this.voteLoading = false
     },
   },
 }
@@ -98,5 +130,14 @@ export default {
 
 .shadow {
   box-shadow: 5px 5px 5px $green;
+}
+@keyframes fadein {
+  from {
+    opacity: 0.2;
+  }
+}
+
+.fadein-loading {
+  animation: fadein 1s infinite alternate;
 }
 </style>
