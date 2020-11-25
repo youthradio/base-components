@@ -1,24 +1,38 @@
 <template>
   <swiper-slide class="relative">
     <div class="absolute w-100 h-100 z--1 o-30">
-      <video class="db w-100" autoplay loop muted playsinlines>
-        <source :src="`${scenario.image}.webm`" />
+      <video
+        class="db w-100"
+        autoplay
+        loop
+        muted
+        playsinlines
+        :poster="`${scenario.image}.gif`"
+      >
         <source :src="`${scenario.image}.mp4`" />
-        <img class="db w-100" :src="`${scenario.image}.gif`" />
+        <source :src="`${scenario.image}.webm`" />
       </video>
     </div>
     <article class="measure lh-copy ph3 relative">
       <div class="bg-green br4 ph3 pv1" v-html="scenario.prompt.text"></div>
       <div class="flex justify-center mt3">
-        <a href="" class="no-underline black bg-green br4 db pa2 grow mh2 tc">
+        <button
+          :disabled="toggled"
+          class="bn pointer black bg-green br4 db pa1 ph2 grow mh2 tc"
+          @click.prevent="processOption(scenario.option.id)"
+        >
           <span>{{ scenario.option.a.content }}</span>
-        </a>
-        <a href="" class="no-underline black bg-green br4 db pa2 grow mh2 tc">
+        </button>
+        <button
+          :disabled="toggled"
+          class="bn pointer black bg-green br4 db pa1 ph2 grow mh2 tc"
+          @click.prevent="processOption(scenario.option.id)"
+        >
           <span>{{ scenario.option.b.content }}</span>
-        </a>
+        </button>
       </div>
     </article>
-    <article class="lh-copy absolute left-0 top-3 green">
+    <article v-if="toggled" class="lh-copy absolute left-0 top-3 green ph3">
       <div class="measure ph3 pv1 bg-black shadow br4">
         <div v-html="scenario.response.text"></div>
         <div>{{ scenario.option.a.content }}</div>
@@ -27,7 +41,15 @@
         <div>▓▓▓▓▓▓ 1.9%</div>
       </div>
       <div class="ph3">
-        <p>NEXT SCENARIO ></p>
+        <button
+          class="bn pointer green db grow mt2 bg-inherit"
+          @click.prevent="
+            $emit('next-page', next)
+            toggled = !toggled
+          "
+        >
+          {{ next ? 'NEXT SCENARIO >' : 'CONCLUSION >' }}
+        </button>
       </div>
     </article>
   </swiper-slide>
@@ -44,12 +66,24 @@ export default {
   props: {
     scenario: {
       type: Object,
-      required: false,
+      required: true,
       default: () => {},
+    },
+    next: {
+      type: Number,
+      required: true,
+      default: 0,
     },
   },
   data() {
-    return {}
+    return {
+      toggled: false,
+    }
+  },
+  methods: {
+    processOption(optionid) {
+      this.toggled = true
+    },
   },
 }
 </script>
