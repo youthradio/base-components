@@ -6,11 +6,12 @@
         autoplay
         loop
         muted
-        playsinlines
+        playsinline
         :poster="`${scenario.image}.jpg`"
+        defaultMuted
       >
-        <source :src="`${scenario.image}.mp4`" />
-        <source :src="`${scenario.image}.webp`" />
+        <source :src="`${scenario.image}.mp4`" type="video/mp4" />
+        <source :src="`${scenario.image}.webp`" type="video/webp" />
       </video>
     </div>
     <article class="measure lh-copy ph3 relative">
