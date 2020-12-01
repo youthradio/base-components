@@ -1,6 +1,6 @@
 <template>
   <swiper-slide class="relative">
-    <div class="absolute w-100 h-100 z--1 o-30">
+    <div class="absolute w-100 h-100 z--1 o-50">
       <video
         class="db w-100"
         autoplay
@@ -19,14 +19,14 @@
       <div class="flex justify-center mt3">
         <button
           :disabled="toggled"
-          class="bn pointer black bg-green br4 db pa1 ph2 grow mh2 tc"
+          class="bn pointer black bg-green br4 db pa1 ph3 grow mh2 tc"
           @click.prevent="processOption(scenario.option.a.id)"
         >
           <span>{{ scenario.option.a.content }}</span>
         </button>
         <button
           :disabled="toggled"
-          class="bn pointer black bg-green br4 db pa1 ph2 grow mh2 tc"
+          class="bn pointer black bg-green br4 db pa1 ph3 grow mh2 tc"
           @click.prevent="processOption(scenario.option.b.id)"
         >
           <span>{{ scenario.option.b.content }}</span>
@@ -40,7 +40,7 @@
       @click="toggled = !toggled"
     >
       <div class="measure pa3 bg-black shadow br4">
-        <div v-html="scenario.response.text"></div>
+        <div class="reset-p-m" v-html="scenario.response.text"></div>
         <div>
           <div>{{ scenario.option.a.content }}</div>
           <div v-if="result">{{ generateState(result.a) }}</div>
