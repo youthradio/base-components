@@ -11,7 +11,6 @@
       >
         <svg
           class="center dib v-mid db-ns pb2-ns pt2-ns"
-          width="12"
           height="24"
           viewBox="0 0 12 24"
           fill="none"
@@ -32,8 +31,7 @@
       >
         <svg
           class="center dib v-mid db-ns pb2-ns pt2-ns"
-          width="24"
-          height="20"
+          height="24"
           viewBox="0 0 24 20"
           fill="none"
         >
@@ -53,8 +51,7 @@
       >
         <svg
           class="center dib v-mid db-ns pb2-ns pt2-ns"
-          width="24"
-          height="18"
+          height="24"
           viewBox="0 0 24 18"
           fill="none"
         >
