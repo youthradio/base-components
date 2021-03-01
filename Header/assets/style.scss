@@ -1,5 +1,5 @@
-@import "../../css/vars";
-@import "../../css/mixins";
+@import '../../css/vars';
+@import '../../css/mixins';
 
 * {
   position: relative;
@@ -43,10 +43,10 @@ ol {
   list-style: none;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="password"],
+input[type='text'],
+input[type='email'],
+input[type='tel'],
+input[type='password'],
 textarea {
   background-color: white;
 }
@@ -56,17 +56,64 @@ button {
   border-radius: 1px;
 }
 
+// body:not(.home) {
+//   header.main-header {
+//     .header-container.mobile {
+//       .logo-menu-wrapper {
+//         .hamburger {
+//           margin: 22px 0 0 20px;
+//         }
+//       }
+//     }
+//   }
+// }
+// .header-sticky:not(.home) {
+//   header.main-header {
+//     .header-container.mobile {
+//       .logo-menu-wrapper {
+//         .hamburger {
+//           margin: 9px 0 0 20px;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .home {
+//   header.main-header {
+//     .header-container.mobile {
+//       .logo-menu-wrapper {
+//         .hamburger {
+//           margin: 14px 0 0 20px;
+//         }
+//       }
+//     }
+//   }
+// }
+// .home.header-sticky {
+//   header.main-header {
+//     .header-container.mobile {
+//       .logo-menu-wrapper {
+//         .hamburger {
+//           margin: 9px 0 0 20px;
+//         }
+//       }
+//     }
+//   }
+// }
+
 header.main-header {
-  // position: fixed;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
-  // height: $header-height;
+  height: $header-height;
+
   &:before {
     position: absolute;
-    content: "";
-    z-index: 2000;
+    content: '';
+    z-index: 150;
     top: -100vh;
     left: 0;
     right: 0;
@@ -76,11 +123,192 @@ header.main-header {
 
   // Base header
   .header-container {
+    .adp-fm-link {
+      color: #000;
+      background: #fff;
+      text-transform: uppercase;
+      font-family: 'Solano Gothic MVB', sans-serif;
+      font-size: 22px;
+      height: 31px;
+      padding: 6px 11px 0 12px;
+      margin-right: 15px;
+
+      .blinking-red {
+        width: 10px;
+        height: 10px;
+        display: inline-block;
+        background: #ff0000;
+        border-radius: 50%;
+        margin: 0 7px 2px 0;
+        animation: 1.5s blink ease infinite;
+
+        @media (max-width: 575px) {
+          width: 6px;
+          height: 6px;
+          margin: 0 7px 1px 0;
+        }
+      }
+
+      &.mobile {
+        @media (min-width: 768px) {
+          display: none;
+        }
+      }
+      &.desktop {
+        display: none;
+
+        @media (min-width: 768px) {
+          display: block;
+        }
+
+        &.ellipsis {
+          width: auto;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          @media (min-width: 768px) {
+            max-width: 300px;
+            display: block;
+          }
+          @media (min-width: 992px) {
+            max-width: 450px;
+          }
+        }
+      }
+
+      .lds-ripple {
+        display: inline-block;
+        position: relative;
+        width: 20px;
+        height: 20px;
+        margin-top: -1px;
+        margin-left: 4px;
+
+        div {
+          position: absolute;
+          border: 2px solid #000;
+          opacity: 1;
+          border-radius: 50%;
+          animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+
+          &:nth-child(2) {
+            animation-delay: -0.5s;
+          }
+        }
+      }
+      @keyframes lds-ripple {
+        0% {
+          top: 9px;
+          left: 9px;
+          width: 0;
+          height: 0;
+          opacity: 1;
+        }
+        100% {
+          top: 0px;
+          left: 0px;
+          width: 18px;
+          height: 18px;
+          opacity: 0;
+        }
+      }
+    }
+    .get-involved {
+      color: #000;
+      background: #fff;
+      text-transform: uppercase;
+      font-family: 'Solano Gothic MVB', sans-serif;
+      font-size: 22px;
+      height: 31px;
+      padding: 6px 11px 0 12px;
+      margin-right: 15px;
+
+      &.mobile {
+        @media (min-width: 768px) {
+          display: none;
+        }
+      }
+      &.desktop {
+        display: none;
+
+        @media (min-width: 768px) {
+          display: block;
+        }
+      }
+    }
+
+    &.mobile {
+      .logo-menu-wrapper {
+        display: flex;
+
+        .hamburger {
+          margin: 22px 0 0 0;
+        }
+      }
+
+      @media (min-width: 576px) {
+        display: none;
+      }
+
+      .mobile-flex-right {
+        width: 185px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-right: -5px;
+
+        .get-involved,
+        .adp-fm-link {
+          &.mobile {
+            @media (max-width: 575px) {
+              font-size: 15px;
+              height: 21px;
+              padding: 5px 7px 0 4px;
+              margin-right: 15px;
+
+              .blinking-red {
+                margin: 0 5px 1px 0;
+              }
+            }
+            @media (min-width: 768px) {
+              display: none;
+            }
+          }
+        }
+        @media (min-width: 421px) {
+          margin-right: 10px;
+        }
+        @media (min-width: 576px) {
+          display: none;
+        }
+
+        .icon-search,
+        .icon-join-us {
+          position: inherit;
+          right: inherit;
+          padding-top: 2px;
+          padding-left: 2px;
+          @include breakpoint(medium) {
+            padding-top: 0;
+            padding-left: 0;
+          }
+        }
+      }
+    }
+
+    &.desktop {
+      @media (max-width: 575px) {
+        display: none;
+      }
+    }
+  }
+
+  .header-container {
     width: 100%;
-    // height: $header-height;
+    height: $header-height;
     display: flex;
     justify-content: space-between;
-    z-index: 2010;
+    z-index: 120;
     background-color: $black;
 
     > div {
@@ -92,23 +320,46 @@ header.main-header {
         justify-content: space-between;
       }
     }
+
+    .btns-wrp {
+      height: 20px;
+      overflow: hidden;
+      @media (min-width: 575px) {
+        height: auto;
+        overflow: inherit;
+      }
+    }
+
     .logo {
       margin-left: 35px;
-      height: 40px;
+      height: 70px;
+
+      @media (max-width: 420px) {
+        margin-left: 5px;
+      }
 
       a {
         overflow: hidden;
         display: block;
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
       }
-      a:hover {
-        background-color: unset;
+      &.prod {
+        a {
+          width: 70px;
+          height: 75px;
+          svg {
+            width: auto;
+            height: auto;
+          }
+        }
       }
-
-      .svg-logo {
-        width: 50px;
-        height: 50px;
+      &.staging {
+        height: 70px;
+        a {
+          width: 90px;
+          height: 75px;
+        }
       }
     }
 
@@ -154,6 +405,12 @@ header.main-header {
     .icon-join-us {
       position: absolute;
       right: 115px;
+      height: 31px;
+      overflow: hidden;
+      @media (max-width: 575px) {
+        height: 21px;
+        padding-top: 1px !important;
+      }
 
       &:before {
         color: white;
@@ -222,7 +479,7 @@ header.main-header {
   .search-container {
     display: flex;
     position: absolute;
-    z-index: 2000;
+    z-index: 110;
     top: -71px;
     left: 0;
     right: 0;
@@ -257,7 +514,7 @@ header.main-header {
           height: 31px;
           background-color: rgba(255, 255, 255, 0.5);
           color: white;
-          font-family: "Solano Gothic MVB", sans-serif;
+          font-family: 'Solano Gothic MVB', sans-serif;
           font-weight: 600;
           font-size: 25px;
           text-transform: uppercase;
@@ -302,21 +559,20 @@ header.main-header {
 nav.main-navigation {
   position: fixed;
   overflow-y: auto;
-  z-index: 80;
+  z-index: 90;
   top: -100vh;
   left: 0;
   padding: $header-height + 30px 35px 35px;
   width: 100vw;
   height: 100vh;
   background-color: $black;
-  background-image: url("~assets/images/texture.png");
+  background-image: url('~assets/images/texture.png');
   background-position: 110% center;
 
   a {
     color: white;
 
     &:hover {
-      background-color: unset;
       color: $green;
     }
   }
@@ -325,7 +581,7 @@ nav.main-navigation {
     margin-bottom: 40px;
 
     li {
-      font-family: "Days Sans", sans-serif;
+      font-family: 'Days Sans', sans-serif;
       font-size: 16px;
       font-weight: 900;
       line-height: 1.625;
@@ -381,7 +637,7 @@ nav.main-navigation {
     margin-bottom: 40px;
 
     li {
-      font-family: "Solano Gothic MVB", sans-serif;
+      font-family: 'Solano Gothic MVB', sans-serif;
       font-size: 24px;
       font-weight: 500;
       letter-spacing: 0.5px;
@@ -395,7 +651,7 @@ nav.main-navigation {
 
   ul.pages-menu {
     li {
-      font-family: "Roboto Mono", sans-serif;
+      font-family: 'Roboto Mono', sans-serif;
       font-size: 12px;
       font-weight: 600;
       line-height: 1.875;
@@ -487,9 +743,50 @@ nav.main-navigation {
       }
     }
   }
+
+  .mobile-only {
+    @include breakpoint(small) {
+      display: none;
+    }
+    form {
+      margin: 20px 0 0;
+      display: flex;
+      justify-content: space-between;
+
+      input {
+        width: calc(100% - 60px);
+        padding: 0 13px;
+        height: 31px;
+        line-height: 31px;
+        font-size: 16px;
+        border-radius: 1px;
+      }
+
+      button {
+        width: 40px;
+        height: 31px;
+        border-radius: 1px;
+        background-clip: padding-box;
+        padding-top: 3px;
+        background-color: $green;
+        color: white;
+        font-family: 'Solano Gothic MVB', sans-serif;
+        font-weight: 600;
+        font-size: 25px;
+        text-transform: uppercase;
+        text-align: center;
+
+        &:focus,
+        &:active,
+        &:hover {
+          background-color: rgba($green, 0.75);
+        }
+      }
+    }
+  }
 }
 
-.top-header.navigation-open {
+.navigation-open {
   overflow: hidden;
 
   ::-webkit-scrollbar {
@@ -500,7 +797,7 @@ nav.main-navigation {
     .header-container {
       &:after {
         position: absolute;
-        content: "";
+        content: '';
         right: 0;
         left: 0;
         bottom: -29px;
@@ -516,13 +813,11 @@ nav.main-navigation {
         z-index: 110;
 
         a {
-          width: 66px;
+          width: 60px;
           height: 66px;
 
           .svg-logo {
             fill: $green;
-            width: 66px;
-            height: 66px;
           }
         }
       }
@@ -563,19 +858,53 @@ nav.main-navigation {
     top: 0;
   }
 }
-.top-header.hide-navigation {
-  header.main-header {
-    top: -100px;
-  }
-}
-.top-header.header-sticky {
-  position: absolute;
-  width: 100%;
+
+.header-sticky {
   header.main-header {
     height: 68px;
 
     .header-container {
       height: 68px;
+
+      .logo.staging {
+        height: 45px;
+        a {
+          width: 55px;
+          height: 45px;
+        }
+      }
+      .logo.prod {
+        height: 45px;
+        a {
+          width: 45px;
+          height: 45px;
+          svg {
+            width: auto;
+            height: 40px;
+          }
+        }
+      }
+
+      .logo-menu-wrapper {
+        .hamburger {
+          margin: 9px 0 0 20px;
+        }
+      }
+
+      .mobile-flex-right {
+        width: 185px;
+      }
+
+      .adp-fm-link {
+        &.mobile {
+          @media (max-width: 575px) {
+            font-size: 13px;
+          }
+          @media (min-width: 768px) {
+            display: none;
+          }
+        }
+      }
     }
 
     .search-container {
@@ -586,55 +915,12 @@ nav.main-navigation {
   }
 }
 
-// WP admin bar adjustments
-.top-header.admin-bar {
-  #wpadminbar {
-    display: none;
+@keyframes blink {
+  from,
+  to {
+    opacity: 0;
   }
-
-  .page-wrapper {
-    padding-top: $header-height - 46px;
+  50% {
+    opacity: 1;
   }
-
-  @include breakpoint(medium) {
-    #wpadminbar {
-      display: block;
-
-      * {
-        color: white;
-      }
-    }
-
-    header.main-header {
-      top: 46px;
-    }
-
-    nav.main-navigation {
-      padding-top: $header-height + 46px;
-    }
-
-    .page-wrapper {
-      padding-top: $header-height;
-    }
-  }
-
-  @include breakpoint(782px) {
-    header.main-header {
-      top: 32px;
-    }
-
-    nav.main-navigation {
-      padding-top: $header-height + 32px;
-    }
-  }
-}
-
-a:focus {
-  left: auto;
-  top: auto;
-  height: auto;
-  overflow: auto;
-  outline: 3px solid gray;
-  text-align: center;
-  z-index: 999;
 }
