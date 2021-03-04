@@ -4,11 +4,14 @@
       'top-header header-sticky row',
       activeMenu ? 'navigation-open' : '',
     ]"
+    :style="
+      menuFixed ? { position: 'sticky', top: 0 } : { position: 'initial' }
+    "
   >
     <header
       class="main-header"
       tabindex="-1"
-      :style="hideNavbar ? { top: '-68px' } : {}"
+      :style="hideNavbar && !menuFixed ? { top: '-68px' } : {}"
     >
       <div class="header-container mobile">
         <div>
@@ -316,12 +319,7 @@ export default {
     menuFixed: {
       type: Boolean,
       required: false,
-      default: false,
-    },
-    toggleEnable: {
-      type: Boolean,
-      required: false,
-      default: false,
+      default: true,
     },
     offset: {
       type: Number,
@@ -348,12 +346,12 @@ export default {
     },
   },
   mounted() {
-    window.addEventListener(
-      'scroll',
-      (event) => this.debouceEvent(event, this.onScroll),
-      false
-    )
-    if (!this.toggleEnable) {
+    if (!this.menuFixed) {
+      window.addEventListener(
+        'scroll',
+        (event) => this.debouceEvent(event, this.onScroll),
+        false
+      )
       this.hideNavbar = false
     }
   },
