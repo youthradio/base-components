@@ -1,104 +1,81 @@
 <template>
   <div class="top-block">
-    <div class="item logo-container">
-      <a class="no-underline dim db" href="https://yr.media">
-        <FullLogo class="logo"
-      /></a>
+    <div>
+      <ul class="social-menu">
+        <li>
+          <a href="https://www.youtube.com/user/youthradio" target="_blank"
+            ><span class="icon-youtube"></span
+          ></a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/yrmediapage" target="_blank"
+            ><span class="icon-facebook"></span
+          ></a>
+        </li>
+        <li>
+          <a href="https://twitter.com/itsYRmedia" target="_blank"
+            ><span class="icon-twitter"></span
+          ></a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/yr.media" target="_blank"
+            ><span class="icon-instagram"></span
+          ></a>
+        </li>
+      </ul>
+      <p class="copyright">YR Media © 2021</p>
     </div>
-    <div class="item menu-container">
+    <div>
+      <div class="logo">
+        <a href="https://yr.media">
+          <full-logo />
+        </a>
+      </div>
+
       <ul id="menu-footer-menu" class="pages-menu">
         <li
           id="menu-item-36521"
           class="menu-item menu-item-type-post_type menu-item-object-page menu-item-36521"
         >
-          <a class="no-underline" href="https://yr.media/about-yr/"
-            >About YR Media</a
-          >
+          <a href="https://yr.media/about-yr/">About YR Media</a>
         </li>
         <li
           id="menu-item-35672"
           class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35672"
         >
-          <a class="no-underline" href="https://yr.media/donate/"
-            >Support Our Work</a
-          >
+          <a href="https://yr.media/donate/">Support Our Work</a>
         </li>
         <li
           id="menu-item-42578"
           class="menu-item menu-item-type-post_type menu-item-object-page menu-item-42578"
         >
-          <a class="no-underline" href="https://yr.media/career-opportunities/"
-            >Careers at YR</a
-          >
+          <a href="https://yr.media/career-opportunities/">Careers at YR</a>
         </li>
         <li
           id="menu-item-66507"
           class="menu-item menu-item-type-post_type menu-item-object-page menu-item-66507"
         >
-          <a class="no-underline" href="https://yr.media/yr-classes/"
-            >Apply to Classes</a
-          >
+          <a href="https://yr.media/yr-classes/">Apply to Classes</a>
         </li>
         <li
           id="menu-item-43302"
           class="menu-item menu-item-type-post_type menu-item-object-page menu-item-43302"
         >
-          <a class="no-underline" href="https://yr.media/contact/"
-            >Contact Us</a
-          >
+          <a href="https://yr.media/contact/">Contact Us</a>
         </li>
         <li
           id="menu-item-49761"
           class="menu-item menu-item-type-post_type menu-item-object-page menu-item-49761"
         >
-          <a class="no-underline" href="https://yr.media/privacy-policy/"
-            >Privacy Policy</a
-          >
+          <a href="https://yr.media/privacy-policy/">Privacy Policy</a>
         </li>
       </ul>
-    </div>
-    <div class="item social-container">
-      <ul class="social-menu">
-        <li>
-          <a
-            class="no-underline dim db"
-            href="https://www.youtube.com/user/youthradio"
-            target="_blank"
-            ><span class="icon-youtube"
-          /></a>
-        </li>
-        <li>
-          <a
-            class="no-underline dim db"
-            href="https://www.facebook.com/yrmediapage"
-            target="_blank"
-            ><span class="icon-facebook"
-          /></a>
-        </li>
-        <li>
-          <a
-            class="no-underline dim db"
-            href="https://twitter.com/itsYRmedia"
-            target="_blank"
-            ><span class="icon-twitter"
-          /></a>
-        </li>
-        <li>
-          <a
-            class="no-underline dim db"
-            href="https://www.instagram.com/yr.media"
-            target="_blank"
-            ><span class="icon-instagram"
-          /></a>
-        </li>
-      </ul>
-      <p>YR Media © 2019</p>
     </div>
   </div>
 </template>
 
 <script>
-import FullLogo from './FullLogo'
+import FullLogo from './FullLogo.vue'
 
 export default {
   components: {
@@ -118,6 +95,7 @@ ul {
 }
 a {
   border-bottom: 0px;
+  text-decoration: none;
 }
 
 footer {
@@ -125,71 +103,160 @@ footer {
 }
 
 .top-block {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 3rem 2rem 3rem 2rem;
+  padding: 50px 30px;
   background-color: $black;
-  @include breakpoint(medium) {
-    padding: 2rem 4rem 2rem 4rem;
-    flex-direction: row;
-  }
-  .item {
-    padding: 1rem 1rem 1rem 1rem;
-    @include breakpoint(medium) {
-      padding: 0rem 0.5rem 0rem 0.5rem;
-    }
-  }
-}
-.logo {
-  display: none;
-  width: 0;
-  margin-right: 0;
-  transform: translateY(0) scale(0);
+
   @include breakpoint(small) {
-    transform: translateY(0.5rem) scale(1.65);
-    display: block;
-    width: 40px;
-    margin-right: 2rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 60px;
+  }
+
+  & > div {
+    @include breakpoint(small) {
+      &:last-of-type {
+        order: 1;
+        display: flex;
+      }
+
+      &:first-of-type {
+        order: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  .logo {
+    display: none;
+    margin-right: 40px;
+    a {
+      display: block;
+      width: 70px;
+      height: 70px;
+      overflow: hidden;
+
+      .svg-logo {
+        transform: scale(1.65);
+      }
+    }
+
+    @include breakpoint(small) {
+      display: block;
+    }
+  }
+
+  .copyright {
+    display: none;
+    font: 300 17px/2 'Calps', sans-serif;
+    color: $grey;
+
+    @include breakpoint(small) {
+      display: block;
+    }
   }
 }
-.menu-container {
-  text-transform: uppercase;
-  font: 900 22px/1.8 'Roboto Mono', sans-serif;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  a {
-    color: $green;
-  }
-  a:hover {
-    color: $white;
-    background-color: inherit;
-  }
-  ul {
-    column-count: 1;
-    @include breakpoint(large) {
-      column-count: 2;
+
+.pages-menu {
+  li {
+    font: 900 22px/1.8 'Roboto Mono', sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    a {
+      color: $green;
+
+      &:hover {
+        color: white;
+      }
     }
+
+    @include breakpoint(small) {
+      font: 500 19px/1.6 'Roboto Mono', sans-serif;
+      letter-spacing: 3px;
+    }
+  }
+
+  @include breakpoint(medium) {
+    column-count: 2;
     column-gap: 40px;
   }
-  li {
-    padding: 0.2rem 0 0.2rem 0;
+
+  @include breakpoint(large) {
+    column-width: 300px;
   }
 }
-.social-container {
-  a {
-    color: $grey;
-  }
-  p {
-    font-size: 70%;
-    color: $grey;
-  }
+
+ul.social-menu {
+  display: flex;
+  margin-bottom: 20px;
+  align-items: center;
+
   li {
-    text-align: center;
+    margin-right: 30px;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    a {
+      span {
+        &:before {
+          color: $grey;
+          font-size: 24px;
+        }
+
+        &.icon-youtube {
+          &:before {
+            font-size: 20px;
+          }
+        }
+
+        &:hover {
+          &:before {
+            color: white;
+          }
+        }
+      }
+    }
   }
-  ul {
-    column-count: 4;
+
+  @include breakpoint(small) {
+    margin-top: 10px;
+  }
+}
+
+.subscriptions {
+  padding: 40px 30px;
+  background-color: $green;
+
+  & > div {
+    @include breakpoint(large) {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .title {
+    margin-bottom: 20px;
+    color: white;
+    font: 700 25px 'Calps', sans-serif;
+    letter-spacing: 1.35px;
+
+    @include breakpoint(small) {
+      font: 700 57px 'Calps', sans-serif;
+      letter-spacing: 0.57px;
+    }
+    @include breakpoint(large) {
+      margin: 0;
+      margin-right: 30px;
+    }
+  }
+
+  .message {
+    margin-top: 20px;
+    font: 20px 'Roboto Mono', sans-serif;
+    color: white;
   }
 }
 </style>
