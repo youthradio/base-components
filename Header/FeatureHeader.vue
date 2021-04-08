@@ -143,6 +143,16 @@ export default {
     // font-family: "Solano Gothic MVB", sans-serif;
     text-transform: uppercase;
   }
+
+  @media only screen and (max-width: 575px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    left: 0;
+    top: 20%;
+  }
 }
 .image-caption {
   position: absolute;
