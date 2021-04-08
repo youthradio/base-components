@@ -78,16 +78,16 @@ export default {
 }
 .full-overlay {
 }
-/*.base-overlay::after {
+.base-overlay::after {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
-  width: 45%;
+  width: 100%;
   background-color: rgba(lighten($feature-header-color, 20%), 0.8);
   z-index: 0;
-}*/
+}
 
 .base-text {
   h2 {
