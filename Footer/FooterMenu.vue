@@ -35,37 +35,61 @@
       <ul id="menu-footer-menu" class="pages-menu">
         <li
           id="menu-item-36521"
-          class="menu-item menu-item-type-post_type menu-item-object-page menu-item-36521"
+          class="
+            menu-item
+            menu-item-type-post_type
+            menu-item-object-page menu-item-36521
+          "
         >
           <a href="https://yr.media/about-yr/">About YR Media</a>
         </li>
         <li
           id="menu-item-35672"
-          class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35672"
+          class="
+            menu-item
+            menu-item-type-post_type
+            menu-item-object-page menu-item-35672
+          "
         >
           <a href="https://yr.media/donate/">Support Our Work</a>
         </li>
         <li
           id="menu-item-42578"
-          class="menu-item menu-item-type-post_type menu-item-object-page menu-item-42578"
+          class="
+            menu-item
+            menu-item-type-post_type
+            menu-item-object-page menu-item-42578
+          "
         >
           <a href="https://yr.media/career-opportunities/">Careers at YR</a>
         </li>
         <li
           id="menu-item-66507"
-          class="menu-item menu-item-type-post_type menu-item-object-page menu-item-66507"
+          class="
+            menu-item
+            menu-item-type-post_type
+            menu-item-object-page menu-item-66507
+          "
         >
           <a href="https://yr.media/yr-classes/">Apply to Classes</a>
         </li>
         <li
           id="menu-item-43302"
-          class="menu-item menu-item-type-post_type menu-item-object-page menu-item-43302"
+          class="
+            menu-item
+            menu-item-type-post_type
+            menu-item-object-page menu-item-43302
+          "
         >
           <a href="https://yr.media/contact/">Contact Us</a>
         </li>
         <li
           id="menu-item-49761"
-          class="menu-item menu-item-type-post_type menu-item-object-page menu-item-49761"
+          class="
+            menu-item
+            menu-item-type-post_type
+            menu-item-object-page menu-item-49761
+          "
         >
           <a href="https://yr.media/privacy-policy/">Privacy Policy</a>
         </li>

@@ -185,37 +185,67 @@
       <ul id="menu-main-menu" class="main-menu">
         <li
           id="menu-item-35699"
-          class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-35699"
+          class="
+            menu-item
+            menu-item-type-taxonomy
+            menu-item-object-category
+            menu-item-35699
+          "
         >
           <a href="https://yr.media/category/news/">News</a>
         </li>
         <li
           id="menu-item-35695"
-          class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-35695"
+          class="
+            menu-item
+            menu-item-type-taxonomy
+            menu-item-object-category
+            menu-item-35695
+          "
         >
           <a href="https://yr.media/category/arts-culture/">Arts + Culture</a>
         </li>
         <li
           id="menu-item-36929"
-          class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-36929"
+          class="
+            menu-item
+            menu-item-type-taxonomy
+            menu-item-object-category
+            menu-item-36929
+          "
         >
           <a href="https://yr.media/category/identity/">Identity</a>
         </li>
         <li
           id="menu-item-35698"
-          class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-35698"
+          class="
+            menu-item
+            menu-item-type-taxonomy
+            menu-item-object-category
+            menu-item-35698
+          "
         >
           <a href="https://yr.media/category/tech/">Tech</a>
         </li>
         <li
           id="menu-item-35697"
-          class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-35697"
+          class="
+            menu-item
+            menu-item-type-taxonomy
+            menu-item-object-category
+            menu-item-35697
+          "
         >
           <a href="https://yr.media/category/health/">Health</a>
         </li>
         <li
           id="menu-item-36719"
-          class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36719"
+          class="
+            menu-item
+            menu-item-type-custom
+            menu-item-object-custom
+            menu-item-36719
+          "
         >
           <a href="https://yr.media/tag/opinion/">Opinion</a>
         </li>
@@ -248,13 +278,23 @@
           <ul id="menu-media-categories-menu" class="media-menu">
             <li
               id="menu-item-82546"
-              class="menu-item menu-item-type-custom menu-item-object-custom menu-item-82546"
+              class="
+                menu-item
+                menu-item-type-custom
+                menu-item-object-custom
+                menu-item-82546
+              "
             >
               <a href="https://behindourmasks.net/">Behind Our Masks</a>
             </li>
             <li
               id="menu-item-38608"
-              class="menu-item menu-item-type-custom menu-item-object-custom menu-item-38608"
+              class="
+                menu-item
+                menu-item-type-custom
+                menu-item-object-custom
+                menu-item-38608
+              "
             >
               <a target="_blank" rel="noopener" href="https://adp.fm/"
                 >ADP.FM Stream</a
@@ -262,13 +302,22 @@
             </li>
             <li
               id="menu-item-36510"
-              class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36510"
+              class="
+                menu-item
+                menu-item-type-custom
+                menu-item-object-custom
+                menu-item-36510
+              "
             >
               <a href="https://yr.media/adult-ish/">Adult ISH Podcast</a>
             </li>
             <li
               id="menu-item-82312"
-              class="menu-item menu-item-type-post_type menu-item-object-page menu-item-82312"
+              class="
+                menu-item
+                menu-item-type-post_type
+                menu-item-object-page menu-item-82312
+              "
             >
               <a href="https://yr.media/ryl-studios-type-beat-challenge/"
                 >RYL Studios</a
@@ -280,25 +329,42 @@
           <ul id="menu-second-header-menu" class="pages-menu">
             <li
               id="menu-item-57009"
-              class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57009"
+              class="
+                menu-item
+                menu-item-type-post_type
+                menu-item-object-page menu-item-57009
+              "
             >
               <a href="https://yr.media/about-yr/">About YR Media</a>
             </li>
             <li
               id="menu-item-66508"
-              class="menu-item menu-item-type-post_type menu-item-object-page menu-item-66508"
+              class="
+                menu-item
+                menu-item-type-post_type
+                menu-item-object-page menu-item-66508
+              "
             >
               <a href="https://yr.media/yr-classes/">Apply to Classes</a>
             </li>
             <li
               id="menu-item-63928"
-              class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-63928"
+              class="
+                menu-item
+                menu-item-type-taxonomy
+                menu-item-object-category
+                menu-item-63928
+              "
             >
               <a href="https://yr.media/category/diy/">Our DIY Tools</a>
             </li>
             <li
               id="menu-item-57010"
-              class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57010"
+              class="
+                menu-item
+                menu-item-type-post_type
+                menu-item-object-page menu-item-57010
+              "
             >
               <a href="https://yr.media/career-opportunities/">Careers at YR</a>
             </li>

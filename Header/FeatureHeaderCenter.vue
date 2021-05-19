@@ -4,7 +4,15 @@
       :style="{
         backgroundImage: `url(${headerData.featureImage})`,
       }"
-      class="bg-img-cover min-70vh text-shadow flex justify-center items-center z-1"
+      class="
+        bg-img-cover
+        min-70vh
+        text-shadow
+        flex
+        justify-center
+        items-center
+        z-1
+      "
     >
       <h1 class="lh-title-1-1 daysans f1-ns f3 ma0 pa0 ttu">
         {{ headerData.title }}
