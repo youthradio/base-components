@@ -3,22 +3,34 @@
     <div>
       <ul class="social-menu">
         <li>
-          <a href="https://www.youtube.com/user/youthradio" target="_blank"
+          <a
+            aria-label="YR Media Youtube"
+            href="https://www.youtube.com/user/youthradio"
+            target="_blank"
             ><span class="icon-youtube"></span
           ></a>
         </li>
         <li>
-          <a href="https://www.facebook.com/yrmediapage" target="_blank"
+          <a
+            aria-label="YR Media Facebook"
+            href="https://www.facebook.com/yrmediapage"
+            target="_blank"
             ><span class="icon-facebook"></span
           ></a>
         </li>
         <li>
-          <a href="https://twitter.com/itsYRmedia" target="_blank"
+          <a
+            aria-label="YR Media Twitter"
+            href="https://twitter.com/itsYRmedia"
+            target="_blank"
             ><span class="icon-twitter"></span
           ></a>
         </li>
         <li>
-          <a href="https://www.instagram.com/yr.media" target="_blank"
+          <a
+            aria-label="YR Media Instagram"
+            href="https://www.instagram.com/yr.media"
+            target="_blank"
             ><span class="icon-instagram"></span
           ></a>
         </li>
