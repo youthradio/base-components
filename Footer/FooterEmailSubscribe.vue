@@ -76,6 +76,12 @@ export default {
 @import '~@/css/mixins';
 @import '~@/css/vars';
 
+.subscriptions {
+  .title {
+    color: #2e2e2e !important; // Sorry!
+  }
+}
+
 form {
   > input[type='text'],
   > input[type='email'] {
@@ -223,19 +229,20 @@ footer {
 
     &::-webkit-input-placeholder {
       /* Chrome/Opera/Safari */
-      color: white;
+      color: #2e2e2e;
     }
     &::-moz-placeholder {
       /* Firefox 19+ */
-      color: white;
+      color: #2e2e2e;
     }
     &:-ms-input-placeholder {
       /* IE 10+ */
-      color: white;
+      color: #2e2e2e;
     }
     &:-moz-placeholder {
       /* Firefox 18- */
-      color: white;
+
+      color: #2e2e2e;
     }
 
     @include breakpoint(small) {
@@ -246,19 +253,19 @@ footer {
 
       &::-webkit-input-placeholder {
         /* Chrome/Opera/Safari */
-        color: white;
+        color: #2e2e2e;
       }
       &::-moz-placeholder {
         /* Firefox 19+ */
-        color: white;
+        color: #2e2e2e;
       }
       &:-ms-input-placeholder {
         /* IE 10+ */
-        color: white;
+        color: #2e2e2e;
       }
       &:-moz-placeholder {
         /* Firefox 18- */
-        color: white;
+        color: #2e2e2e;
       }
     }
   }
