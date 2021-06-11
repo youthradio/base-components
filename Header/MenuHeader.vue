@@ -17,7 +17,7 @@
         <div>
           <div class="logo-menu-wrapper">
             <div class="logo prod">
-              <a href="https://yr.media">
+              <a tabindex="0" href="https://yr.media">
                 <!--?xml version="1.0" encoding="UTF-8"?-->
                 <svg
                   width="66px"
@@ -59,7 +59,7 @@
                 </svg>
               </a>
             </div>
-            <button class="hamburger" @click="toggleMenu()">
+            <button tabindex="0" class="hamburger" @click="toggleMenu()">
               <span></span>
               <span></span>
               <span></span>
