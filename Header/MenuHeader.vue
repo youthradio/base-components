@@ -193,7 +193,11 @@
       </div>
       <div :class="['search-container', searchContainer ? 'active' : '']">
         <div class="search-input">
-          <form action="https://yr.media/search">
+          <form
+            aria-label="Search"
+            role="search"
+            action="https://yr.media/search"
+          >
             <input type="text" name="s" />
             <button>Go</button>
           </form>
