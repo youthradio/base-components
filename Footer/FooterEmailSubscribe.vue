@@ -13,12 +13,18 @@
         />
         <input
           v-model="name"
+          aria-label=""
           type="text"
           value="pending"
           name="status"
           hidden=""
         />
-        <button class="submit icon-arrow-right" type="submit" name="submit" />
+        <button
+          aria-label="Submit"
+          class="submit icon-arrow-right"
+          type="submit"
+          name="submit"
+        />
         <p v-if="response && response.error" class="message error-message">
           {{ response.message }}
         </p>
@@ -75,6 +81,12 @@ export default {
 <style scoped lang="scss">
 @import '~@/css/mixins';
 @import '~@/css/vars';
+
+.subscriptions {
+  .title {
+    color: #2e2e2e !important; // Sorry!
+  }
+}
 
 form {
   > input[type='text'],
@@ -223,19 +235,20 @@ footer {
 
     &::-webkit-input-placeholder {
       /* Chrome/Opera/Safari */
-      color: white;
+      color: #2e2e2e;
     }
     &::-moz-placeholder {
       /* Firefox 19+ */
-      color: white;
+      color: #2e2e2e;
     }
     &:-ms-input-placeholder {
       /* IE 10+ */
-      color: white;
+      color: #2e2e2e;
     }
     &:-moz-placeholder {
       /* Firefox 18- */
-      color: white;
+
+      color: #2e2e2e;
     }
 
     @include breakpoint(small) {
@@ -246,19 +259,19 @@ footer {
 
       &::-webkit-input-placeholder {
         /* Chrome/Opera/Safari */
-        color: white;
+        color: #2e2e2e;
       }
       &::-moz-placeholder {
         /* Firefox 19+ */
-        color: white;
+        color: #2e2e2e;
       }
       &:-ms-input-placeholder {
         /* IE 10+ */
-        color: white;
+        color: #2e2e2e;
       }
       &:-moz-placeholder {
         /* Firefox 18- */
-        color: white;
+        color: #2e2e2e;
       }
     }
   }

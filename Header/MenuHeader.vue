@@ -17,9 +17,14 @@
         <div>
           <div class="logo-menu-wrapper">
             <div class="logo prod">
-              <a href="https://yr.media">
+              <a
+                aria-label="YR Media Home"
+                tabindex="0"
+                href="https://yr.media"
+              >
                 <!--?xml version="1.0" encoding="UTF-8"?-->
                 <svg
+                  alt="YR Media Logo"
                   width="66px"
                   height="66px"
                   viewBox="0 0 66 66"
@@ -59,7 +64,13 @@
                 </svg>
               </a>
             </div>
-            <button class="hamburger" @click="toggleMenu()">
+            <button
+              tabindex="0"
+              :aria-checked="activeMenu"
+              aria-label="Open menu"
+              class="hamburger"
+              @click="toggleMenu()"
+            >
               <span></span>
               <span></span>
               <span></span>
@@ -97,9 +108,10 @@
       <div class="header-container desktop">
         <div>
           <div class="logo prod">
-            <a href="https://yr.media">
+            <a aria-label="YR Media Home" href="https://yr.media">
               <!--?xml version="1.0" encoding="UTF-8"?-->
               <svg
+                alt="YR Media Logo"
                 width="66px"
                 height="66px"
                 viewBox="0 0 66 66"
@@ -139,7 +151,11 @@
               </svg>
             </a>
           </div>
-          <button class="hamburger" @click="toggleMenu()">
+          <button
+            aria-label="Open menu"
+            class="hamburger"
+            @click="toggleMenu()"
+          >
             <span></span>
             <span></span>
             <span></span>
@@ -168,17 +184,29 @@
             target="_blank"
             >Get Involved</a
           >
-          <button class="icon-search" @click="toggleSeach()"></button>
+          <button
+            aria-label="Search for..."
+            class="icon-search"
+            @click="toggleSeach()"
+          ></button>
         </div>
       </div>
       <div :class="['search-container', searchContainer ? 'active' : '']">
         <div class="search-input">
-          <form action="https://yr.media/search">
+          <form
+            aria-label="Search"
+            role="search"
+            action="https://yr.media/search"
+          >
             <input type="text" name="s" />
             <button>Go</button>
           </form>
         </div>
-        <button class="icon-close" @click="toggleSeach()" />
+        <button
+          aria-label="Search for..."
+          class="icon-close"
+          @click="toggleSeach()"
+        />
       </div>
     </header>
     <nav class="main-navigation">
@@ -254,22 +282,34 @@
         <div>
           <ul class="social-menu">
             <li>
-              <a href="https://www.youtube.com/user/youthradio" target="_blank"
+              <a
+                aria-label="YR Media Youtube"
+                href="https://www.youtube.com/user/youthradio"
+                target="_blank"
                 ><span class="icon-youtube"></span
               ></a>
             </li>
             <li>
-              <a href="https://www.facebook.com/yrmediapage" target="_blank"
+              <a
+                aria-label="YR Media Facebook"
+                href="https://www.facebook.com/yrmediapage"
+                target="_blank"
                 ><span class="icon-facebook"></span
               ></a>
             </li>
             <li>
-              <a href="https://twitter.com/itsYRmedia" target="_blank"
+              <a
+                aria-label="YR Media Twitter"
+                href="https://twitter.com/itsYRmedia"
+                target="_blank"
                 ><span class="icon-twitter"></span
               ></a>
             </li>
             <li>
-              <a href="https://www.instagram.com/yr.media" target="_blank"
+              <a
+                aria-label="YR Media Instagram"
+                href="https://www.instagram.com/yr.media"
+                target="_blank"
                 ><span class="icon-instagram"></span
               ></a>
             </li>
