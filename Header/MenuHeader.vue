@@ -198,7 +198,7 @@
             role="search"
             action="https://yr.media/search"
           >
-            <input type="text" name="s" />
+            <input id="search=" type="text" aria-label="search yr media" />
             <button>Go</button>
           </form>
         </div>

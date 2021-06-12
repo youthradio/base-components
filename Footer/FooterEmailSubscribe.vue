@@ -6,14 +6,15 @@
         <input
           v-model="email"
           class="text email"
+          aria-label="text-email"
           type="email"
           name="mc-email"
-          rrequired
+          required
           placeholder="enter email address"
         />
         <input
           v-model="name"
-          aria-label=""
+          aria-label="name"
           type="text"
           value="pending"
           name="status"
@@ -92,11 +93,11 @@ form {
   > input[type='text'],
   > input[type='email'] {
     &:invalid {
-      color: $red;
+      color: #993636;
     }
 
     &:valid {
-      color: $white;
+      color: #2e2e2e;
     }
   }
 }
@@ -307,7 +308,7 @@ footer {
   }
 
   .error-message {
-    color: red;
+    color: #993636;
   }
 }
 </style>
