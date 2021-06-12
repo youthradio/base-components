@@ -66,6 +66,7 @@
             </div>
             <button
               tabindex="0"
+              :aria-checked="activeMenu"
               aria-label="Open menu"
               class="hamburger"
               @click="toggleMenu()"
