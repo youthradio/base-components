@@ -13,12 +13,18 @@
         />
         <input
           v-model="name"
+          aria-label=""
           type="text"
           value="pending"
           name="status"
           hidden=""
         />
-        <button class="submit icon-arrow-right" type="submit" name="submit" />
+        <button
+          aria-label="Submit"
+          class="submit icon-arrow-right"
+          type="submit"
+          name="submit"
+        />
         <p v-if="response && response.error" class="message error-message">
           {{ response.message }}
         </p>
