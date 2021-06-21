@@ -7,6 +7,7 @@
             aria-label="YR Media Youtube"
             href="https://www.youtube.com/user/youthradio"
             target="_blank"
+            rel="noreferrer"
             ><span class="icon-youtube"></span
           ></a>
         </li>
@@ -15,6 +16,7 @@
             aria-label="YR Media Facebook"
             href="https://www.facebook.com/yrmediapage"
             target="_blank"
+            rel="noreferrer"
             ><span class="icon-facebook"></span
           ></a>
         </li>
@@ -23,6 +25,7 @@
             aria-label="YR Media Twitter"
             href="https://twitter.com/itsYRmedia"
             target="_blank"
+            rel="noreferrer"
             ><span class="icon-twitter"></span
           ></a>
         </li>
@@ -31,6 +34,7 @@
             aria-label="YR Media Instagram"
             href="https://www.instagram.com/yr.media"
             target="_blank"
+            rel="noreferrer"
             ><span class="icon-instagram"></span
           ></a>
         </li>

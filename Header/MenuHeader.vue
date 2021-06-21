@@ -85,21 +85,25 @@
               href="https://adp.fm/"
               class="adp-fm-link desktop ellipsis"
               target="_blank"
+              rel="noreferrer"
               ><span class="blinking-red"></span>Live on ADP.FM: SZA
             </a>
             <a href="https://adp.fm/" class="adp-fm-link mobile" target="_blank"
+            rel="noreferrer"
               ><span class="blinking-red"></span>Live: ADP.FM</a
             > -->
             <a
               href="https://yr.media/yr-media-community/"
               class="get-involved desktop"
               target="_blank"
+              rel="noreferrer"
               >Get Involved</a
             >
             <a
               href="https://yr.media/yr-media-community/"
               class="get-involved mobile"
               target="_blank"
+              rel="noreferrer"
               >Get Involved</a
             >
           </div>
@@ -167,21 +171,25 @@
             href="https://adp.fm/"
             class="adp-fm-link desktop ellipsis"
             target="_blank"
+            rel="noreferrer"
             ><span class="blinking-red"></span>Live on ADP.FM: Ginger Root
           </a>
           <a href="https://adp.fm/" class="adp-fm-link mobile" target="_blank"
+          rel="noreferrer"
             ><span class="blinking-red"></span>Live: ADP.FM</a
           > -->
           <a
             href="https://yr.media/yr-media-community/"
             class="get-involved desktop"
             target="_blank"
+            rel="noreferrer"
             >Get Involved</a
           >
           <a
             href="https://yr.media/yr-media-community/"
             class="get-involved mobile"
             target="_blank"
+            rel="noreferrer"
             >Get Involved</a
           >
           <button
@@ -286,6 +294,7 @@
                 aria-label="YR Media Youtube"
                 href="https://www.youtube.com/user/youthradio"
                 target="_blank"
+                rel="noreferrer"
                 ><span class="icon-youtube"></span
               ></a>
             </li>
@@ -294,6 +303,7 @@
                 aria-label="YR Media Facebook"
                 href="https://www.facebook.com/yrmediapage"
                 target="_blank"
+                rel="noreferrer"
                 ><span class="icon-facebook"></span
               ></a>
             </li>
@@ -302,6 +312,7 @@
                 aria-label="YR Media Twitter"
                 href="https://twitter.com/itsYRmedia"
                 target="_blank"
+                rel="noreferrer"
                 ><span class="icon-twitter"></span
               ></a>
             </li>
@@ -310,6 +321,7 @@
                 aria-label="YR Media Instagram"
                 href="https://www.instagram.com/yr.media"
                 target="_blank"
+                rel="noreferrer"
                 ><span class="icon-instagram"></span
               ></a>
             </li>
@@ -336,7 +348,7 @@
                 menu-item-38608
               "
             >
-              <a target="_blank" rel="noopener" href="https://adp.fm/"
+              <a target="_blank" rel="noreferrer" href="https://adp.fm/"
                 >ADP.FM Stream</a
               >
             </li>
