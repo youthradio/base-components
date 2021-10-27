@@ -2,7 +2,7 @@
   <div
     :class="[
       'top-header header-sticky row',
-      activeMenu ? 'navigation-open' : '',
+      activeMenu ? 'navigation-open' : 'navigation-closed',
     ]"
     :style="
       menuFixed ? { position: 'sticky', top: 0 } : { position: 'initial' }
@@ -10,18 +10,13 @@
   >
     <header
       class="main-header"
-      tabindex="-1"
       :style="hideNavbar && !menuFixed ? { top: '-68px' } : {}"
     >
       <div class="header-container mobile">
         <div>
           <div class="logo-menu-wrapper">
             <div class="logo prod">
-              <a
-                aria-label="YR Media Home"
-                tabindex="0"
-                href="https://yr.media"
-              >
+              <a aria-label="YR Media Home" href="https://yr.media">
                 <!--?xml version="1.0" encoding="UTF-8"?-->
                 <svg
                   alt="YR Media Logo"
@@ -65,7 +60,6 @@
               </a>
             </div>
             <button
-              tabindex="0"
               :aria-checked="activeMenu"
               aria-label="Open menu"
               class="hamburger"
@@ -217,7 +211,7 @@
         />
       </div>
     </header>
-    <nav class="main-navigation">
+    <nav class="main-navigation" aria-label="main YR Media Menu">
       <ul id="menu-main-menu" class="main-menu">
         <li
           id="menu-item-35699"

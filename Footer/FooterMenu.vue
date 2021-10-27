@@ -1,117 +1,113 @@
 <template>
-  <div class="top-block">
-    <div>
-      <ul class="social-menu">
-        <li>
-          <a
-            aria-label="YR Media Youtube"
-            href="https://www.youtube.com/user/youthradio"
-            target="_blank"
-            rel="noreferrer"
-            ><span class="icon-youtube"></span
-          ></a>
-        </li>
-        <li>
-          <a
-            aria-label="YR Media Facebook"
-            href="https://www.facebook.com/yrmediapage"
-            target="_blank"
-            rel="noreferrer"
-            ><span class="icon-facebook"></span
-          ></a>
-        </li>
-        <li>
-          <a
-            aria-label="YR Media Twitter"
-            href="https://twitter.com/itsYRmedia"
-            target="_blank"
-            rel="noreferrer"
-            ><span class="icon-twitter"></span
-          ></a>
-        </li>
-        <li>
-          <a
-            aria-label="YR Media Instagram"
-            href="https://www.instagram.com/yr.media"
-            target="_blank"
-            rel="noreferrer"
-            ><span class="icon-instagram"></span
-          ></a>
-        </li>
-      </ul>
-      <p class="copyright">YR Media © 2021</p>
+  <nav class="top-block" aria-label="YR Media footer menu">
+    <ul class="social-menu">
+      <li>
+        <a
+          aria-label="YR Media Youtube"
+          href="https://www.youtube.com/user/youthradio"
+          target="_blank"
+          rel="noreferrer"
+          ><span class="icon-youtube"></span
+        ></a>
+      </li>
+      <li>
+        <a
+          aria-label="YR Media Facebook"
+          href="https://www.facebook.com/yrmediapage"
+          target="_blank"
+          rel="noreferrer"
+          ><span class="icon-facebook"></span
+        ></a>
+      </li>
+      <li>
+        <a
+          aria-label="YR Media Twitter"
+          href="https://twitter.com/itsYRmedia"
+          target="_blank"
+          rel="noreferrer"
+          ><span class="icon-twitter"></span
+        ></a>
+      </li>
+      <li>
+        <a
+          aria-label="YR Media Instagram"
+          href="https://www.instagram.com/yr.media"
+          target="_blank"
+          rel="noreferrer"
+          ><span class="icon-instagram"></span
+        ></a>
+      </li>
+    </ul>
+    <p class="copyright">YR Media © 2021</p>
+    <div class="logo">
+      <a href="https://yr.media">
+        <full-logo />
+      </a>
     </div>
-    <div>
-      <div class="logo">
-        <a href="https://yr.media">
-          <full-logo />
-        </a>
-      </div>
 
-      <ul id="menu-footer-menu" class="pages-menu">
-        <li
-          id="menu-item-36521"
-          class="
-            menu-item
-            menu-item-type-post_type
-            menu-item-object-page menu-item-36521
-          "
-        >
-          <a href="https://yr.media/about-yr/">About YR Media</a>
-        </li>
-        <li
-          id="menu-item-35672"
-          class="
-            menu-item
-            menu-item-type-post_type
-            menu-item-object-page menu-item-35672
-          "
-        >
-          <a href="https://yr.media/donate/">Support Our Work</a>
-        </li>
-        <li
-          id="menu-item-42578"
-          class="
-            menu-item
-            menu-item-type-post_type
-            menu-item-object-page menu-item-42578
-          "
-        >
-          <a href="https://yr.media/career-opportunities/">Careers at YR</a>
-        </li>
-        <li
-          id="menu-item-66507"
-          class="
-            menu-item
-            menu-item-type-post_type
-            menu-item-object-page menu-item-66507
-          "
-        >
-          <a href="https://yr.media/yr-classes/">Apply to Classes</a>
-        </li>
-        <li
-          id="menu-item-43302"
-          class="
-            menu-item
-            menu-item-type-post_type
-            menu-item-object-page menu-item-43302
-          "
-        >
-          <a href="https://yr.media/contact/">Contact Us</a>
-        </li>
-        <li
-          id="menu-item-49761"
-          class="
-            menu-item
-            menu-item-type-post_type
-            menu-item-object-page menu-item-49761
-          "
-        >
-          <a href="https://yr.media/privacy-policy/">Privacy Policy</a>
-        </li>
-      </ul>
-    </div>
-  </div>
+    <ul id="menu-footer-menu" class="pages-menu">
+      <li
+        id="menu-item-36521"
+        class="
+          menu-item
+          menu-item-type-post_type
+          menu-item-object-page menu-item-36521
+        "
+      >
+        <a href="https://yr.media/about-yr/">About YR Media</a>
+      </li>
+      <li
+        id="menu-item-35672"
+        class="
+          menu-item
+          menu-item-type-post_type
+          menu-item-object-page menu-item-35672
+        "
+      >
+        <a href="https://yr.media/donate/">Support Our Work</a>
+      </li>
+      <li
+        id="menu-item-42578"
+        class="
+          menu-item
+          menu-item-type-post_type
+          menu-item-object-page menu-item-42578
+        "
+      >
+        <a href="https://yr.media/career-opportunities/">Careers at YR</a>
+      </li>
+      <li
+        id="menu-item-66507"
+        class="
+          menu-item
+          menu-item-type-post_type
+          menu-item-object-page menu-item-66507
+        "
+      >
+        <a href="https://yr.media/yr-classes/">Apply to Classes</a>
+      </li>
+      <li
+        id="menu-item-43302"
+        class="
+          menu-item
+          menu-item-type-post_type
+          menu-item-object-page menu-item-43302
+        "
+      >
+        <a href="https://yr.media/contact/">Contact Us</a>
+      </li>
+      <li
+        id="menu-item-49761"
+        class="
+          menu-item
+          menu-item-type-post_type
+          menu-item-object-page menu-item-49761
+        "
+      >
+        <a href="https://yr.media/privacy-policy/">Privacy Policy</a>
+      </li>
+    </ul>
+  </nav>
 </template>
 
 <script>
