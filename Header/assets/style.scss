@@ -479,6 +479,8 @@ header.main-header {
   .search-container {
     display: flex;
     position: absolute;
+    visibility: hidden;
+
     z-index: 110;
     top: -71px;
     left: 0;
@@ -559,6 +561,7 @@ header.main-header {
 nav.main-navigation {
   position: fixed;
   overflow-y: auto;
+  visibility: hidden;
   z-index: 90;
   top: -100vh;
   left: 0;
@@ -788,6 +791,7 @@ nav.main-navigation {
 
 .navigation-open {
   overflow: hidden;
+  visibility: visible;
 
   ::-webkit-scrollbar {
     display: none;
@@ -850,11 +854,13 @@ nav.main-navigation {
     .search-container {
       &.active {
         top: 99px;
+        visibility: visible;
       }
     }
   }
 
   nav.main-navigation {
+    visibility: visible;
     top: 0;
   }
 }
