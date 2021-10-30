@@ -7,6 +7,7 @@
     :style="
       menuFixed ? { position: 'sticky', top: 0 } : { position: 'initial' }
     "
+    tabindex="0"
   >
     <header
       class="main-header"
