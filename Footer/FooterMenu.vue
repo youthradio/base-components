@@ -139,13 +139,13 @@ footer {
 }
 
 .top-block {
-  padding: 50px 30px;
+  padding: 2.5rem 1rem;
   background-color: $black;
 
   @include breakpoint(small) {
     display: flex;
     justify-content: space-between;
-    padding: 50px 60px;
+    padding: 2.5rem 1rem;
   }
 
   & > div {
@@ -159,14 +159,13 @@ footer {
         order: 2;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: center;
       }
     }
   }
 
   .logo {
     display: none;
-    margin-right: 40px;
     a {
       display: block;
       width: 70px;

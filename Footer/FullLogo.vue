@@ -1,5 +1,5 @@
 <template>
-  <svg xmlns="http://www.w3.org/2000/svg">
+  <svg xmlns="http://www.w3.org/2000/svg" width="66" viewBox="0 0 66 50.66">
     <path
       class="svg-logo"
       fill="#fff"
